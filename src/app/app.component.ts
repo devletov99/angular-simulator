@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import './trining'
+import './training'
 
 @Component({
   selector: 'app-root',

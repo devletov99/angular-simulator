@@ -1,6 +1,6 @@
 // 1. Создать функцию, которая принимает 2 числа и возвращает их сумму.
 
-function getSum(a: number, b: number): number {
+function sum(a: number, b: number): number {
   return a + b
 };
 
@@ -39,13 +39,10 @@ let student: IStudent = {
 
 function formatString(line: string, variant: 'uppercase' | 'lowercase' | 'capitalize'): string {
   switch (variant) {
-
     case 'uppercase':
       return line.toUpperCase();
-  
     case 'lowercase':
       return line.toLowerCase();
-
     case 'capitalize':
       return line[0].toUpperCase() + line.slice(1);
   }
@@ -53,12 +50,8 @@ function formatString(line: string, variant: 'uppercase' | 'lowercase' | 'capita
 
 // 7. Создать функцию, которая принимает строку и символ, возвращает строку без переданного символа.
 
-function getString(line: string, char: string): string {
-  if (char){
-   return line.replace(char, '')
-  } else {
-    return line
-  }
+function getString(line: string, symbol: string): string {
+  return line.replace(symbol, '')
 };
 
 // 8. Создать массив объектов на основе интерфейса с задания №6. Отфильтровать его по одному из параметров.
@@ -87,4 +80,4 @@ const users: IUser[] = [
   }
 ]
 
-const getUser = users.filter(user => user.age !== undefined);
+const getUser = users.filter(user => user.age);
