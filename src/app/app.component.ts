@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import './training';
-import { Colors } from '../enums/Color';
-import './Colection'
-
+import { Color } from '../enums/Color';
+import './collection';
 
 @Component({
   selector: 'app-root',
@@ -12,27 +11,26 @@ import './Colection'
 })
 
 export class AppComponent {
-  companyName: String = 'румтибет'
+  companyName: String = 'румтибет';
 
-  rgbColors: Colors[] = [Colors.RED, Colors.GREEN, Colors.BLUE];
-
-  checkMainColor(color: Colors): boolean {
-    return this.rgbColors.includes(color);
+  getMainColor(color: Color): boolean {
+    const rgbColors: Color[] = [Color.RED, Color.GREEN, Color.BLUE];
+    return rgbColors.includes(color);
   }
 
   saveTimeVisit(): void {
-    const timeVisit: Date = new Date()
-    localStorage.setItem('time', JSON.stringify(timeVisit))
-  };
+    const lastVisitTime: Date = new Date();
+    localStorage.setItem('time', JSON.stringify(lastVisitTime));
+  }
 
-  saveQuantityVisit(): void {
-    const visit: string | null = localStorage.getItem('visit')
-    const visitNumber: number = Number(visit || 0) + 1;
-    localStorage.setItem('visit', String(visitNumber))
+  saveNumberVisit(): void {
+    const gatVisit: string | null = localStorage.getItem('visit');
+    const visitNumber: number = Number(gatVisit || 0) + 1;
+    localStorage.setItem('visit', String(visitNumber));
   }
 
   constructor() {
     this.saveTimeVisit();
-    this.saveQuantityVisit();
+    this.saveNumberVisit();
   }
 };

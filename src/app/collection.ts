@@ -1,32 +1,29 @@
 class Collection<T> {
 
   collection: T[] = [];
-
-	constructor(collection: T[]) {
+	
+  constructor(collection: T[]) {
 		this.collection = collection;
 	}
 
 	getAll(): T[] {
-	  return this.collection
+	  return this.collection;
 	}
 
-	getSpecificElement(index: number): T {
-		return this.collection[index]
+	getElement(index: number): T {
+		return this.collection[index];
 	}
 
-	clearCollection(): T[] {
-    return this.collection = []
+	clearCollection(): void {
+    	this.collection = [];
 	}
 
-	removeSpecificElement(index: number): T[] {
+	removeElement(index: number): void {
 		this.collection.splice(index, 1);
-    return this.collection
 	}
 
-	replaceSpecificElement(index: number, newElement: T): T[] {
+	replaceElement(index: number, newElement: T): void {
     this.collection.splice(index, 1, newElement);
-    return this.collection 
-    
 	}
 }
 
