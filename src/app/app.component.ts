@@ -11,6 +11,7 @@ import './collection';
 })
 
 export class AppComponent {
+
   companyName: String = 'румтибет';
 
   isMainColor(color: Color): boolean {
@@ -33,4 +34,5 @@ export class AppComponent {
     this.saveLastVisit();
     this.saveQuantityVisit();
   }
+  
 };
