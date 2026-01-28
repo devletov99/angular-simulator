@@ -25,6 +25,7 @@ class Collection<T> {
 	replaceElement(index: number, newElement: T): void {
     this.collection.splice(index, 1, newElement);
 	}
+	
 };
 
 const products: string[] = ['яблоки', 'банана', 'груши', 'мандарин'];
