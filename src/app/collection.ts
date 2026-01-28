@@ -25,10 +25,10 @@ class Collection<T> {
 	replaceElement(index: number, newElement: T): void {
     this.collection.splice(index, 1, newElement);
 	}
-}
+};
 
-const products: string[] = ['яблоки', 'банана', 'груши', 'мандарин']
-const number: number[] = [1, 2, 3, 4, 5]
+const products: string[] = ['яблоки', 'банана', 'груши', 'мандарин'];
+const number: number[] = [1, 2, 3, 4, 5];
 
-const productss: Collection<string> = new Collection<string>(products)
-const numberr: Collection<number> = new Collection<number>(number)
+const collectionProducts: Collection<string> = new Collection<string>(products);
+const collectionNumbes: Collection<number> = new Collection<number>(number);
