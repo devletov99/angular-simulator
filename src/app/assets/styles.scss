@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+@use './fonts.scss';
+@use './normalize.scss';
+
+* {
+  font-family: 'Nunito Sans';
+  margin: 0px;
+  padding: 0px;
+}
+
+:root {
+  --white-color: #FDFDFD;
+}
+
+.container {
+  display: block;
+  width: 1180px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
