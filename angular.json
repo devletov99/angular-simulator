@@ -36,7 +36,7 @@
               }
             ],
             "styles": [
-              "src/app/assets/styles.scss"
+              "src/styles.scss"
             ]
           }, 
           "configurations": {
