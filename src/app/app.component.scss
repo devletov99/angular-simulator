@@ -6,6 +6,7 @@
   position: absolute;
   display: flex;
   justify-content: center;
+  z-index: 3;
 
   .company-name {
     text-transform: uppercase;
@@ -26,8 +27,14 @@
   }
 
   .header {
+    height: 72px;
     display: flex;
     justify-content: space-between;
+
+
+    .date {
+      width: 290px;
+    }
   }
 
   .container-nav {
@@ -46,11 +53,6 @@
     width: 157px;
     height: 44px;
     margin-left: 42px;
-    color: var(--white-color);
-    border-radius: 4px;
-    border: none;
-    background-color: #1A3E3E;
-    cursor: pointer;
   }
 }
 
@@ -61,8 +63,9 @@
   background-size: cover;
   width: 100%;
   height: 985px;
-  z-index: -4;
-  position: absolute;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 .text-wrapper {
@@ -73,6 +76,7 @@
   justify-content: center;
   font-size: 50px;
   bottom: 284px;
+  z-index: 5;
 }
 
 .contaner-panel {
@@ -82,6 +86,7 @@
   bottom: 82px;
   display: flex;
   justify-content: center;
+  z-index: 1;
 
   &-signup{
     backdrop-filter: blur(6px);
@@ -109,17 +114,22 @@
         box-sizing: border-box;
         background: transparent;
         border: 1px solid hsla(200, 5%, 89%, 1);
+        z-index: 2;
       }
 
       button {
         width: 213px;
-        height: 52px;
-        font-size: 16px;
         font-weight: 700;
-        border-radius: 4px;
         color: #1A3E3E;
-        border: none;
-        cursor: pointer;
+        background-color: var(--white-color);
+        z-index: 5;
+      }
+
+      button:disabled {
+        background-color: #ccc;
+        color: #666;
+        cursor: not-allowed;
+        opacity: 0.6;
       }
 
       input::placeholder {
@@ -148,6 +158,185 @@
           margin-top: 8px;
         }
       }
+    }
+  }
+}
+
+.tour-info {
+  margin: 0 auto;
+  height: 726px;
+  padding: 100px 0px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  
+
+  .text-container {
+    width: 580px;
+    height: 398px;
+
+    button {
+      color: var(--white-color);
+      width: 200px;
+    }
+  }
+
+  .container-img {
+    height: 526px;
+    width: 480px;
+    display: flex;
+    justify-content: space-between;
+
+    .img-1 {
+      transform: translate(126px, 130px);
+    }
+
+    img {
+      position: absolute;
+    }
+  }
+}
+
+.services-section {
+  background-color: var(--lite-color);
+  width: 100%;
+  height: 771px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .container-services {
+    display: flex;
+    justify-content: space-between;
+
+    .info-container {
+      width: 580px;
+      height: 591px;
+
+      button{
+        width: 236px;
+      }
+
+      .service {
+        height: 64px;
+        margin-bottom: 40px;
+        gap: 16px;
+        display: flex;
+        justify-content: space-between;
+        
+
+        &.active {
+          color: #1A3E3E;
+          background-color: rgba(26, 62, 62, 0.05);
+          border-color: #1A3E3E;
+        }
+        
+        p{
+          font-size: 14px;
+          max-width: 514px;
+        }
+      }
+    }
+   
+    .container-img {
+      width: 510px;
+      height: 510px;
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+
+      img {
+        width: 250px;
+        height: 250px;
+      }
+    }
+  }
+}
+
+.container-widget {
+  position: absolute;
+  height: 50px;
+  margin-top: 90px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 0;
+
+  .widget {
+    display: flex;
+    justify-content: flex-end;
+
+    .date {
+      width: 280px;
+      height: 58px;
+    }
+ 
+    .container-counter {
+      width: 280px;
+      height: 58px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+
+      p {
+        margin: 0;
+      }
+
+      button {
+        border: none;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.container-live-input{
+  position: absolute;
+  height: 52px;
+  bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 50px;
+
+  .live-input {
+    background-color: transparent;
+    width: 270px;
+    height: 52px;
+    font-size: 16px;
+    padding: 0px 25px 0px 16px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background: transparent;
+    border: 1px solid hsla(200, 5%, 89%, 1);
+    z-index: 2;
+  }
+
+  img {
+    position: absolute;
+    left: 246px;
+  }
+}
+
+.loading-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(50%, -50%);
+
+  .loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #e0e0e0;
+    border-top-color: #f2c94c;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
     }
   }
 }

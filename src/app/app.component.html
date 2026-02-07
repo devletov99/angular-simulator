@@ -1,48 +1,115 @@
- <div class="header-container">
-    <header class="container header">
-      <div class="container-logo">
-        <img src="/images/logo-company.svg" alt="логотип компании">
-        <span class="company-name">{{ companyName }}</span>
-      </div>
-      <nav class="container-nav fs-18"> 
-        <a href="">Главная</a>
-        <a href="">Про гида</a>
-        <a href="">Программа тура</a>
-        <a href="">Стоимость</a>
-        <a href="">Блог</a>
-        <a href="">Контакты</a>
-        <button class="btn-consultation">Консультация</button>
-      </nav>
-    </header>
- </div>
-<section class="banner">
-  <div class="text-wrapper">
-    <p class="container">Насладись прогулкой в горах<br>с командой единомышленников</p>
-  </div>
-  <div class= "contaner-panel">
-    <div class="container contaner-panel-signup">
-      <form class="form-container">
-        <label>
-          <select>
-            <option>Локация для тура</option>
-          </select>
-          <span>выберите из списка</span>
-        </label>
-        <label>
-          <div class="input-wrapper">
-            <input type="text" placeholder="Дата похода">
-            <img class="calendar-icon" src="/images/calendar-icon.svg" alt="Дата">
-          </div>
-          <span>укажите диапазон</span>
-        </label>
-        <label>
-          <select>
-            <option>Участники</option>
-          </select>
-          <span>минимум 4 человека</span>
-        </label>
-        <button>Найти программу</button>
-      </form>
+<div class="loading-container" [hidden]="!isPageVisible">
+  <p class="loader"></p>
+</div>
+<div [hidden]="isPageVisible">
+  <section class="banner">
+    <div class="header-container">
+      <header class="header container">
+        <div class="container-logo">
+          <img src="/images/logo-company.svg" alt="логотип компании">
+          <span class="company-name">{{ companyName }}</span>
+        </div>
+        <nav class="container-nav fs-18"> 
+          <a href="">Главная</a>
+          <a href="">Про гида</a>
+          <a href="">Программа тура</a>
+          <a href="">Стоимость</a>
+          <a href="">Блог</a>
+          <a href="">Контакты</a>
+          <button class="btn-consultation primary-button">Консультация</button>
+        </nav>
+      </header>
     </div>
-  </div>
-</section>
+    <div class="container-widget">
+      <div class="widget container">
+        <p [hidden]="!isTimeVisible" class="date">{{ selectedDate }}</p>
+        <div [hidden]="!isCounterVisible"  class="container-counter">
+          <button (click)="buttonIncrease()">+</button>
+          <p>{{ counter }}</p>
+          <button [disabled]="disabledCounter()" (click)="buttonDecrease()">-</button>
+        </div>
+        <button (click)="changeText()" class="primary-button">{{ buttonText }}</button>
+      </div>
+    </div>
+    <div class="text-wrapper">
+      <p class="container">Насладись прогулкой в горах<br>с командой единомышленников</p>
+    </div>
+    <div class= "contaner-panel">
+      <div class="container contaner-panel-signup">
+        <form class="form-container" name="form">
+          <label>
+            <select [(ngModel)]="selectedLocation" name="location" required>
+              <option value="" selected>Локация для тура</option>
+              @for (location of locations; track location.id) {
+                <option>{{ location.location }}</option>
+              }
+            </select>
+            <span>выберите из списка</span>
+          </label>
+          <label>
+            <div class="input-wrapper">
+              <input [(ngModel)]="inputDate" type="text" placeholder="Дата похода" name="date" required>
+              <img class="calendar-icon" src="/images/calendar-icon.svg" alt="Дата">
+            </div>
+            <span>укажите диапазон</span>
+          </label>
+          <label>
+            <select [(ngModel)]="selectedParticipant" name="participant" required>
+              <option value="" selected>Участники</option>
+              @for (participant of participants; track participant.id) {
+                <option>{{ participant.participant }}</option>
+              }
+            </select>
+            <span>выберите из списка</span>
+          </label>
+          <button  [disabled]="isFormInvalid()" class="primary-button">Найти программу</button>
+        </form>
+      </div>
+    </div>
+    <div class="container container-live-input">
+      <input [(ngModel)]="liveInput" class="live-input" type="text" name="input-live">
+      <img src="/images/arrow.svg" alt="стрелка">
+      <p>{{ liveInput }}</p>
+    </div>
+  </section>
+  <section class="tour-info container">
+      <div class="container-img">
+        <img src="/images/misty-mountain.png">
+        <img class="img-1" src="/images/mountain-meadow.png">
+      </div>
+      <div class="text-container">
+        <span class="fs-24 collor-yello">о нашем походе</span>
+        <h1 class="fs-32 lh-120">Исследуйте все горные массивы мира вместе с нами</h1>
+        <p class="fs-18 margin-40">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.</p>
+        <button class="primary-button">Программа тура</button>
+      </div>
+  </section>
+  <section class="services-section">
+    <div class="container container-services">
+      <div class="info-container">
+        <span class="fs-24 fw-400 collor-yello">наше предложение</span>
+        <h2 class="fs-32 lh-120">Лучшие программы для тебя</h2>
+        <p class="fs-18 margin-40">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.</p>
+        @for (service of services; track service.id) {
+          <div class="service" 
+          (mouseenter)="service.hover = true"
+          (mouseleave)="service.hover = false"
+          [class.active] = "service.hover">
+            <img [src]="'/images/' + service.img + '.svg'">
+            <div>
+              <h3 class="fs-18">{{ service.title }}</h3>
+              <p>{{ service.description }}</p>
+            </div>
+          </div>
+        } 
+        <button class="primary-button">Стоимость программ</button>
+      </div>
+      <div class="container-img">
+        <img src="/images/canyon.png">
+        <img src="/images/cliff-view.png">
+        <img src="/images/snowmobile-ride.png">
+        <img src="/images/mountain-spring.png">
+      </div>
+    </div> 
+  </section>
+</div>

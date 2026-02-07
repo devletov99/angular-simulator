@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @use './fonts.scss';
 @use './normalize.scss';
+@use './button.scss';
 
 * {
   font-family: 'Nunito Sans';
@@ -8,8 +9,13 @@
   padding: 0px;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 :root {
   --white-color: #FDFDFD;
+  --lite-color: #F3F5F4;
 }
 
 .container {
@@ -18,10 +24,35 @@
 }
 
 .fs-18 {
+  font-size: 14px;
+}
+
+
+.fs-18 {
   font-size: 18px;
+}
+
+.fs-24 {
+  font-size: 24px;
+}
+
+.fs-32 {
+  font-size: 32px;
+}
+
+.margin-40 {
+  margin: 40px 0;
 }
 
 .wrap {
   display: flex;
   flex-wrap: wrap;
+}
+
+.lh-120 {
+  line-height: 120%;
+}
+
+.collor-yello{
+color: #F2BE22;
 }
