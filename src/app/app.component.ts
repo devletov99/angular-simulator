@@ -35,10 +35,8 @@ export class AppComponent {
   selectedParticipant!: string;
   inputDate!: string;
   selectedDate: Date = new Date();
-  counter: number = 0;
-  buttonText: string = 'показать счётчик';
   isCounterVisible: boolean = false;
-  isTimeVisible: boolean = true;
+  counter: number = 0;
   liveInput!: string;
   isPageVisible: boolean = true;
 
@@ -120,6 +118,14 @@ export class AppComponent {
     this.saveLastVisit();
     this.saveQuantityVisit();
 
+    setInterval(() => {
+      this.selectedDate = new Date();
+    },1000);
+    
+
+    setTimeout(() =>{
+      this.isPageVisible = false;
+    }, 2000);
   }
   
   isMainColor(color: Color): boolean {
@@ -138,37 +144,16 @@ export class AppComponent {
     localStorage.setItem('visit', String(visitNumber));
   }
 
-  isFormInvalid(): boolean {
-    return !this.selectedLocation || !this.inputDate || !this.selectedParticipant
+  isFormValid(): boolean {
+    return !this.selectedLocation || !this.inputDate || !this.selectedParticipant;
+  }
+  
+  onClickIncrease(): void {
+    this.counter++;
   }
 
-  ngOnInit(): void {
-    setInterval(() => {
-      this.selectedDate = new Date()
-    },1000);
-
-    setTimeout(() =>{
-      this.isPageVisible = false;
-    }, 2000)
-
-  }
-
-  buttonIncrease(): void {
-    this.counter = this.counter + 1;
-  }
-
-  buttonDecrease(): void {
-    this.counter = this.counter - 1;
-  }
-
-  disabledCounter(): boolean {
-    return this.counter <= 0;
-  }
-
-  changeText(): void {
-    this.buttonText = this.buttonText === 'показать счётчик' ? 'показать таймер' : 'показать счётчик';
-    this.isTimeVisible = !this.isTimeVisible;
-    this.isCounterVisible = !this.isCounterVisible;
+  onClickDecrease(): void {
+    this.counter--;
   }
 
 };
