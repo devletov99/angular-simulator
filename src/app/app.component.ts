@@ -148,11 +148,11 @@ export class AppComponent {
     return !this.selectedLocation || !this.inputDate || !this.selectedParticipant;
   }
   
-  onClickIncrease(): void {
+  incrementCounter(): void {
     this.counter++;
   }
 
-  onClickDecrease(): void {
+  decreaseCounter(): void {
     this.counter--;
   }
 

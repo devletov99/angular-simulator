@@ -30,12 +30,12 @@
           }
           @if (isCounterVisible) {
             <div class="container-counter">
-              <button id="btn-increase-counter" (click)="onClickIncrease()">+</button>
+              <button id="btn-increase-counter" (click)="incrementCounter()">+</button>
               <p>{{ counter }}</p>
               <button 
                 id="btn-decrease-counter" 
                 [disabled]="counter <= 0" 
-                (click)="onClickDecrease()">
+                (click)="decreaseCounter()">
                 -
               </button>
             </div>
