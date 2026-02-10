@@ -3,9 +3,9 @@ import './training';
 import { Color } from '../enums/Color';
 import './collection';
 import { FormsModule } from '@angular/forms';
-import { ILocation } from './assets/interfaces/location';
-import { IService } from './assets/interfaces/service';
-import { IParticipant } from './assets/interfaces/participant';
+import { ILocation } from './assets/interfaces/ILocation';
+import { IService } from './assets/interfaces/IService';
+import { IParticipant } from './assets/interfaces/IParticipant';
 
 @Component({
   selector: 'app-root',
@@ -16,11 +16,11 @@ import { IParticipant } from './assets/interfaces/participant';
 export class AppComponent {
 
   companyName: string = 'румтибет';
-  selectedLocation!: string;
-  selectedParticipant!: string;
-  selectedDate!: string;
+  selectedLocation!: boolean;
+  selectedParticipant!: boolean;
+  selectedDate!: boolean;
   currentDate: Date = new Date();
-  isCounterVisible: boolean = false;
+  isCounterVisible!: boolean;
   counter: number = 0;
   liveInput!: string;
   isDownload: boolean = true;
@@ -103,7 +103,7 @@ export class AppComponent {
 
     setInterval(() => {
       this.currentDate = new Date();
-    },1000);
+    }, 1000);
     
 
     setTimeout(() => {
@@ -127,8 +127,8 @@ export class AppComponent {
     localStorage.setItem('visit', String(visitNumber));
   }
 
-  isFormValid(): boolean {
-    return !this.selectedLocation || !this.selectedDate || !this.selectedParticipant;
+  isFormInValid(): boolean {
+    return this.selectedLocation && this.selectedDate && this.selectedParticipant;
   }
   
   incrementCounter(): void {
