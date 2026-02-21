@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IMessage } from './app/assets/interfaces/IMessage';
 import { Message } from './enums/Message';
+import { filter } from 'rxjs';
 
 @Injectable()
 export class MessageService {
@@ -32,21 +33,21 @@ export class MessageService {
 
   constructor() {
     setInterval(() => {
-      this.currentMessages.pop();
+      this.currentMessages = this.currentMessages.filter(m => m !== this.currentMessages[0]);
     }, 5000);
   }
   
   addMessage(type: Message): void {
     const message = this.messages.find((message: IMessage) => message.type === type);
     if (message) {
-      this.currentMessages.unshift({ ...message });
+      this.currentMessages = [{ ...message }, ...this.currentMessages];
     } else {
         return;
       }
   }
 
-  closeMessage(index: number): void {
-    this.currentMessages.splice(index, 1);
+  closeMessage(message: IMessage): void {
+    this.currentMessages = this.currentMessages.filter(m => m !== message);
   }
 
 }
