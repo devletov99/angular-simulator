@@ -9,6 +9,10 @@
   padding: 0px;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 [hidden] {
   display: none !important;
 }
@@ -23,12 +27,16 @@
   width: 1180px;
 }
 
-.fs-18 {
+.fs-14 {
   font-size: 14px;
 }
 
 .fs-18 {
   font-size: 18px;
+}
+
+.fs-20 {
+  font-size: 20px;
 }
 
 .fs-24 {
@@ -54,4 +62,14 @@
 
 .yellow {
   color: #F2BE22;
+}
+
+.section-title {
+  align-items: center;
+  text-align: center;
+}
+
+.between {
+  display: flex;
+  justify-content: space-between;
 }

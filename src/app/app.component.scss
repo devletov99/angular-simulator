@@ -340,3 +340,175 @@
     }
   }
 }
+
+.section-destination {
+  width: 100%;
+  padding: 80px 0 90px 0;
+  align-items: center;
+
+  .destination-container {
+    width: 100%;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    .destination-card {
+      position: relative;
+      color: var(--white-color);
+      width: 380px;
+      max-height: 500px;
+      border-radius: 32px;
+      display: flex;
+      align-items: flex-end;
+      text-align: center;
+      overflow: hidden;
+
+      .destination-info {
+        position:absolute;
+        backdrop-filter: blur(6px);
+        background: rgba(255, 255, 255, 0.20);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 32px;
+        width: 100%;
+        min-height: 90px;
+        height: auto;
+        bottom: 0;
+
+        .destination-text {
+          text-align: left;
+        }
+
+        span {
+          background: rgba(255, 255, 255, 0.30);
+          width: 86px;
+          height: 40px;
+          border-radius: 4px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      .rating-container {
+        position: absolute;
+        backdrop-filter: blur(4px);
+        background: rgba(255, 255, 255, 0.20);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        padding: 0 8px;
+        width: 65px;
+        height: 32px;
+        top: 54px;
+        right: 0;
+      }
+    }
+  }
+
+  button {
+    display: block;
+    width: 244px;
+    margin: 0 auto;
+  }
+}
+
+.blog-section {
+  background-color: var(--lite-color);
+  min-height: 1036px;
+  width: 100%;
+  padding: 85px 0 95px 0;
+  align-items: center;
+
+   .blog-container {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 648px;
+    gap: 20px;
+    margin: auto;
+    padding: 40px 0 50px 0;
+
+    .travel-card {
+      min-width: 580px;
+      min-height: 312px;
+      padding: 16px;
+      background-color: var(--white-color);
+      display: flex;
+      gap: 24px;
+
+      .blog-info {
+        width: 294px;
+        height: 280px;
+        padding: 16px 0;
+        display: flex;
+        flex-direction: column;
+
+
+        &.activ-info {
+          cursor: pointer;
+
+          h3 {
+            color: #1A3E3E;
+            text-decoration: underline;
+            font-weight: solid;
+          }
+        }
+
+        p {
+          font-weight: 400;
+          margin: 24px 0;
+        }
+
+        .blog-nav {
+          display: flex;
+          justify-content: space-between;
+          margin-top: auto;
+        }
+      }
+    }
+  }
+
+  button {
+    display: block;
+    margin: 0 auto;
+    width: 220px;
+  }
+}
+
+.message-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 350px;
+  min-height: 70px;
+  top: 20px;
+  z-index: 5;
+  right: 20px;
+}
+
+.message {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  width: 350px;
+  height: 70px;
+  padding: 15px;
+  color: var(--white-color);
+  backdrop-filter: blur(12px);
+  background: rgba(20, 20, 20, 0.75); 
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+
+  .img-closse {
+    position: absolute;
+    cursor: pointer;
+    top: 7px;
+    right: 7px;
+  }
+}
