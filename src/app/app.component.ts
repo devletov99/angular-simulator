@@ -179,12 +179,10 @@ export class AppComponent {
 
     this.localService.setValue('visit', visitNumber);
 
-
     setInterval(() => {
       this.currentDate = new Date();
     }, 1000);
     
-
     setTimeout(() => {
       this.isDownload = false;
     }, 2000);

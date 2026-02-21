@@ -5,7 +5,7 @@ import { Message } from './enums/Message';
 @Injectable()
 export class MessageService {
 
-  currentMessage: IMessage[] = [];
+  currentMessages: IMessage[] = [];
 
   private messages: IMessage[] = [
     {
@@ -32,19 +32,21 @@ export class MessageService {
 
   constructor() {
     setInterval(() => {
-      this.currentMessage.pop();
+      this.currentMessages.pop();
     }, 5000);
   }
   
   addMessage(type: Message): void {
-    const message = this.messages.find(message => message.type === type);
+    const message = this.messages.find((message: IMessage) => message.type === type);
     if (message) {
-      this.currentMessage.unshift(message);
-    }
+      this.currentMessages.unshift({ ...message });
+    } else {
+        return;
+      }
   }
 
   closeMessage(index: number): void {
-    this.currentMessage.splice(index, 1);
+    this.currentMessages.splice(index, 1);
   }
 
 }
