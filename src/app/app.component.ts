@@ -34,8 +34,8 @@ export class AppComponent {
   hoverServiceId!: number | null;
   selectedBlogInfoId: number = 2;
   messageService: MessageService = inject(MessageService);
-  Message = Message;
-  localService: LocalStorageService = inject(LocalStorageService);
+  message: typeof Message  = Message;
+  localStorageService: LocalStorageService = inject(LocalStorageService);
    
   services: IService[] = [
     {
@@ -170,14 +170,14 @@ export class AppComponent {
   ]
 
   constructor() {
-    this.localService.setValue('time', new Date());
-    this.localService.getValue('time');
-    this.localService.removeElement('time');
+    this.localStorageService.setValue('time', new Date());
+    this.localStorageService.getValue('time');
+    this.localStorageService.removeElement('time');
    
     const gatVisit: string | null = localStorage.getItem('visit');
     const visitNumber: number = Number(gatVisit || 0) + 1;
 
-    this.localService.setValue('visit', visitNumber);
+    this.localStorageService.setValue('visit', visitNumber);
 
     setInterval(() => {
       this.currentDate = new Date();

@@ -4,18 +4,18 @@ import { IMessage } from './app/assets/interfaces/IMessage';
 @Injectable()
 export class MessageService {
 
-  currentMessages: IMessage[] = [];
+  messages: IMessage[] = [];
   
   addMessage(currentMessage: IMessage): void {
-    this.currentMessages = [ currentMessage, ...this.currentMessages];
+    this.messages = [currentMessage, ...this.messages];
 
-    setTimeout((): void => {
+    setTimeout(() => {
       this.closeMessage(currentMessage);
     }, 5000);
   }
 
-  closeMessage(message: IMessage): void {
-    this.currentMessages = this.currentMessages.filter((object: IMessage) => object !== message);
+  closeMessage(currentMessage: IMessage): void {
+    this.messages = this.messages.filter((messageToRemove: IMessage) => messageToRemove !== currentMessage);
   }
 
 };

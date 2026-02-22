@@ -8,13 +8,9 @@ export class LocalStorageService {
   }
 
   getValue<T>(key: string): T | null {
-   const value = localStorage.getItem(key); 
+    const value = localStorage.getItem(key); 
    
-    if (value !== null) {
-      return JSON.parse(value) as T;
-    } else {
-      return null;
-    }
+    return value !== null ? JSON.parse(value) as T : null;
   }
 
   removeElement(key: string): void {
