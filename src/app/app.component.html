@@ -115,7 +115,7 @@
           <h1 class="fs-32 lh-120">Исследуйте все горные массивы мира вместе с нами</h1>
           <p class="fs-18 margin-40">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.</p>
           <button 
-            (click)="messageService.addMessage(Message.WARN)" 
+            (click)="messageService.addMessage({ type: Message.WARN, text: 'Программа не доступна'})" 
             id="btn-tour-program" class="primary-button">
             Программа тура
           </button>
@@ -140,7 +140,7 @@
             </div>
           } 
           <button 
-            (click)="messageService.addMessage(Message.INFO)" 
+            (click)="messageService.addMessage({ type:  Message.INFO, text: 'Стоимость отправлена на почту'})" 
             id="btn-services-price" 
             class="primary-button">
             Стоимость программ
@@ -164,7 +164,7 @@
           <div class="destination-card">
             <img [src]="'/images/destinations/' + destination.img + '.png'" width="380px" height="500px">
             <div class="rating-container">
-              <img [src]="'/images/destinations/' + destination.icon + '.svg'" width="17px" height="17">
+              <img [src]="'/images/destinations/' + destination.icon + '.svg'" width="17px" height="17px">
               <span>{{ destination.rating }}</span>
             </div>
             <div class="destination-info">
@@ -178,7 +178,7 @@
         }
       </div>
       <button 
-        (click)="messageService.addMessage(Message.SUCCESS)" 
+        (click)="messageService.addMessage({ type: Message.SUCCESS, text: 'Стоимость отправлена на почту'})" 
         id="rating-btn"
         class="primary-button">
         Рейтинг направлений
@@ -209,7 +209,7 @@
         }
       </div>
       <button 
-        (click)="messageService.addMessage(Message.ERROR)" 
+        (click)="messageService.addMessage({ type: Message.ERROR, text: 'Материалы недоступны' })" 
         id="materials-btn"
         class="primary-button">
         Другие материалы
@@ -219,8 +219,8 @@
       <ng-template #messages let-message="currentMessage">
         <div class="message">
           <img src="/images/icon-message.svg" width="40px" height="40px">
-          <h4>{{ message?.title }}</h4>
-          <p>{{ message?.message }}</p>
+          <h4>{{message.type}}</h4>
+          <p>{{ message.text }}</p>
           <img 
             (click)="messageService.closeMessage(message)" 
             class="img-closse" src="/images/closse-iccon.svg"

@@ -25,4 +25,4 @@ export class LocalStorageService {
     localStorage.clear();
   }
   
-}
+};
