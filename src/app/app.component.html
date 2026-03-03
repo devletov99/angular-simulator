@@ -1,9 +1,9 @@
-@if (isDownload) {
+<!-- @if (isDownload) {
   <div class="loading-container">
     <p class="loader" id="loader-indicator"></p>
   </div>
 }
-@if (!isDownload) {
+@if (!isDownload) { -->
   <div>
     <section class="banner">
       <div class="header-container">
@@ -215,11 +215,88 @@
         Другие материалы
       </button>   
     </section>
+
+    <section class="section-photoreport">
+      <div class="section-title">
+        <p class="yellow fs-24">фото-отчет</p>
+        <h2 class="bold fs-32">Делимся впечатлениями</h2>
+      </div>
+      <div class="photoreport-container container">
+        @for (photoreport of photoreports; track photoreport.id) {
+        <img [src]=" '/images/photoreports/' + photoreport.img + '.png'" >
+        }
+      </div>
+      <button class="primary-button">Наш pinterest</button>
+    </section>
+
+    <footer class="footer-container">
+
+      <div class="newsletter-container container">
+        <div class="newsletter-title">
+          <span class="yellow fs-18x">актуально</span>
+          <h2 class="fs-26">Получайте полезные рассылки о путешествиях</h2>
+        </div>
+        <form class="newsletter-form">          
+          <label class="fs-16">
+            Введите e-mail адрес
+            <input type="text" placeholder="name@domain.com" class="fs-14">
+          </label>
+          <button class="primary-button">Подписаться на новости</button>
+          <p class="fs-14">подписываясь на новости, вы автоматически соглашаетесь с 
+            <a href="">условиями обработки персональных данных и правилами рекламных рассылок</a>
+          </p>
+
+        </form>
+      </div>
+
+      <div class="footer-column">
+        <h4>Компания «РумТибет»</h4>
+        <p class="fs-14">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney.</p>
+        <nav class="footer-contacts">
+          <a class="fs-14">info@domain.com</a>
+          <a class="fs-14">+7 (123) 456-78-90</a>
+        </nav>
+        <nav class="messenger-nav">
+          <a><img src="/images/footer/telegram.svg" alt="telegram"></a>
+          <a><img src="/images/footer/vk.svg" alt="vk"></a>
+          <a><img src="/images/footer/pintereset.svg" alt="pintereset"></a>
+          <a><img src="/images/footer/skype.svg" alt="skype"></a>
+        </nav>
+      </div>
+      <div class="footer-services">
+        <p>Наши услуги</p>
+        <nav class="footer-services_nav">
+          <a>Прогулки в горы летом</a>
+          <a>Зимние походы в горы</a>
+          <a>Посещение исторических мест</a>
+          <a>Экстремальные виды туризма</a>
+          <a>Походы в джунглях Амазонии</a>
+          <a>Поездка в Африку</a>
+        </nav>
+      </div>
+      <div class="footer-info">
+        <p>Важно для путешествий</p>
+        <nav class="footer-info_nav">
+          <a>Как собрать в долгий поход?</a>
+          <a>Жизненно важные предметы для похода</a>
+          <a>Медицинская страховка, гарантии безопасности</a>
+          <a>Если вы врач - загляните сюда</a>
+        </nav>
+      </div>
+      
+      <div class="footer-legal">
+        <div class="legal-content container">
+          <p>ИП Константинопольский К.К., 2023</p>
+          <a>Политика обработки персональных данных</a>
+        </div>
+      </div>
+    </footer>
+
     <div>
       <ng-template #messages let-message="currentMessage">
         <div class="message">
           <img src="/images/message-icon.svg" width="40px" height="40px">
-          <h4>{{message.type}}</h4>
+          <h4>{{ message.type }}</h4>
           <p>{{ message.text }}</p>
           <img 
             (click)="messageService.closeMessage(message)" 
@@ -239,4 +316,4 @@
       }
     </div>
   </div>
-}
+<!-- } -->

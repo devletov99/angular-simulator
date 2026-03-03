@@ -12,6 +12,7 @@ import { MessageService } from '../message.service';
 import { Message } from '../enums/Message';
 import { NgTemplateOutlet } from '@angular/common';
 import { LocalStorageService } from '../local-storage.service';
+import { IPhotoreport } from './assets/interfaces/IPhotoreport';
 
 @Component({
   selector: 'app-root',
@@ -166,6 +167,33 @@ export class AppComponent {
       title: 'Индия ... летим?',
       description: 'Для современного мира базовый.',
       date: '01/04/2023',
+    },
+  ]
+
+  photoreports: IPhotoreport[] = [
+    {
+      id: 1,
+      img: 'cappadocia',
+    },
+    {
+      id: 2,
+      img: 'travel-planning',
+    },
+    {
+      id: 3,
+      img: 'skyline',
+    },
+    {
+      id: 4,
+      img: 'tropical-beach',
+    },
+    {
+      id: 5,
+      img: 'horseshoe-arizona',
+    },
+    {
+      id: 6,
+      img: 'vintage-travel',
     },
   ]
 
