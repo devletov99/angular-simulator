@@ -20,6 +20,7 @@
 :root {
   --white-color: #FDFDFD;
   --lite-color: #F3F5F4;
+  --black-color: #18121E;
 }
 
 .container {
@@ -43,9 +44,15 @@
   font-size: 24px;
 }
 
+.fs-26 {
+  font-size: 26px;
+}
+
 .fs-32 {
   font-size: 32px;
 }
+
+
 
 .margin-40 {
   margin: 40px 0;

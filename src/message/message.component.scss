@@ -1,0 +1,33 @@
+.message-container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 350px;
+  min-height: 70px;
+  top: 20px;
+  z-index: 5;
+  right: 20px;
+}
+
+.message {
+  position: relative;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  width: 350px;
+  height: 70px;
+  padding: 15px;
+  color: var(--white-color);
+  backdrop-filter: blur(12px);
+  background: rgba(20, 20, 20, 0.75); 
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+
+  .img-close {
+    position: absolute;
+    cursor: pointer;
+    top: 7px;
+    right: 7px;
+  }
+}
