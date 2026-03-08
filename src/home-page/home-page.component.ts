@@ -5,7 +5,7 @@ import { IService } from '../app/assets/interfaces/IService';
 import { IParticipant } from '../app/assets/interfaces/IParticipant';
 import { IDestination } from '../app/assets/interfaces/IDestination';
 import { IBlog } from '../app/assets/interfaces/IBlog';
-import { IPhotoreport } from '../app/assets/interfaces/IPhotoreport';
+import { IPhotoReport } from '../app/assets/interfaces/IPhotoReport';
 import { MessageService } from '../message.service';
 
 @Component({
@@ -16,7 +16,7 @@ import { MessageService } from '../message.service';
 })
 export class HomePageComponent {
 
-  messageService = inject(MessageService);
+  messageService: MessageService = inject(MessageService);
 
   selectedLocation!: boolean;
   selectedParticipant!: boolean;
@@ -157,7 +157,7 @@ export class HomePageComponent {
       },
     ]
 
-    photoreports: IPhotoreport[] = [
+    photoreports: IPhotoReport[] = [
       {
         id: 1,
         img: 'cappadocia',

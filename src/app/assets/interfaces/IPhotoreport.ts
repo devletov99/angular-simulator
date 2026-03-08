@@ -1,4 +1,4 @@
-export interface IPhotoreport {
+export interface IPhotoReport {
   id: number;
 	img: string;
 }

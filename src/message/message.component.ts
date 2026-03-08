@@ -10,5 +10,7 @@ import { NgTemplateOutlet } from '@angular/common';
   styleUrl: './message.component.scss',
 })
 export class MessageComponent {
-  messageService: MessageService = inject(MessageService)
-}
+
+  messageService: MessageService = inject(MessageService);
+
+};

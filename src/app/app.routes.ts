@@ -4,7 +4,7 @@ import { UserPageComponent } from '../user-page/user-page.component';
 import { NotFoundPageComponent } from '../not-found-page/not-found-page.component';
 
 export const routes: Routes = [
-  { path: '',  component: HomePageComponent},
-  { path: 'user-page',  component: UserPageComponent},
-  { path: '**',  component: NotFoundPageComponent},
+  { path: '', component: HomePageComponent },
+  { path: 'user-page', component: UserPageComponent },
+  { path: '**', component: NotFoundPageComponent },
 ];

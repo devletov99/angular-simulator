@@ -23,23 +23,19 @@ export class MessageService {
   }
 
   showWarn(text: string): void {
-    const messageWarn: IMessage = { type: Message.WARN, text };
-    this.addMessage(messageWarn);
+    this.addMessage({ type: Message.WARN, text });
   }
 
   showError(text: string): void {
-    const messageError: IMessage = { type: Message.ERROR, text };
-    this.addMessage(messageError);
+    this.addMessage({ type: Message.ERROR, text });
   }
 
   showSuccess(text: string): void {
-    const messageSuccess: IMessage = { type: Message.SUCCESS, text };
-    this.addMessage(messageSuccess);
+    this.addMessage({ type: Message.SUCCESS, text });
   }
 
   showInfo(text: string): void {
-    const messageInfo: IMessage = { type: Message.INFO,  text};
-    this.addMessage(messageInfo);
+    this.addMessage({ type: Message.INFO,  text });
   }
 
 };
