@@ -5,7 +5,7 @@ import { IService } from '../app/assets/interfaces/IService';
 import { IParticipant } from '../app/assets/interfaces/IParticipant';
 import { IDestination } from '../app/assets/interfaces/IDestination';
 import { IBlog } from '../app/assets/interfaces/IBlog';
-import { IPhotoReport } from '../app/assets/interfaces/IPhotoReport';
+import { IPhoto } from '../app/assets/interfaces/IPhoto';
 import { MessageService } from '../message.service';
 
 @Component({
@@ -157,7 +157,7 @@ export class HomePageComponent {
       },
     ]
 
-    photoreports: IPhotoReport[] = [
+    photoreports: IPhoto[] = [
       {
         id: 1,
         img: 'cappadocia',
