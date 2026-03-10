@@ -1,0 +1,90 @@
+.header-container {
+  width: 100%;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  background: rgba(24, 18, 30, 0.5);
+  height: 156px;
+  position: absolute;
+  top: 0;
+  z-index: 3;
+
+  .header {
+    color: var(--white-color);
+    height: 72px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    height: 72px;
+    padding-top: 16px;
+    z-index: 3;
+
+    .company-name {
+      text-transform: uppercase;
+      letter-spacing: 0.7em;
+      font-weight: 700;
+      font-size: 12px;
+      width: 130px;
+      height: 11px;
+      padding-left: 3px;
+    }
+
+    .container-logo {
+      width: 137px;
+      height: 72px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+    
+    .container-nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+
+      a {
+        color: var(--white-color);
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+
+    .btn-consultation {
+      width: 157px;
+      height: 44px;
+      margin-left: 42px;
+    }
+  }
+  
+  .widget {
+    display: flex;
+    justify-content: flex-end;
+    margin: auto;
+
+    .date {
+      width: 280px;
+      height: 58px;
+    }
+
+    .container-counter {
+      width: 280px;
+      height: 58px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+
+      p {
+        margin: 0;
+      }
+
+      button {
+        border: none;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.active-link {
+  color: blue !important;
+  text-decoration: underline !important;
+}

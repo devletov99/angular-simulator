@@ -1,0 +1,148 @@
+.footer {
+  position: relative;
+  width: 100%;
+  height: 587px;
+  background-color: #1A3E3E;
+  color: var(--lite-color);
+  padding-top: 178px;
+  display: flex;
+  justify-content: center;
+
+  .newsletter-footer {
+    position: absolute;
+    height: 196px;
+    top: -98px;
+    padding: 40px 100px 0 100px;
+    border-radius: 6px;
+    background-color: var(--white-color);
+    color: var(--black-color);
+    box-shadow: 0px 0px 15px 0px #18121E1F;
+    display: flex;
+
+    .newsletter--title {
+      width: 380px;
+    }
+
+    .subscribe-form {
+      position: relative;
+      width: 536px;
+      height: 72px;
+      display: flex;
+      gap: 16px;
+
+      label {
+        width: 280px;
+        
+
+        input {
+          width: 280px;
+          height: 44px;
+          border: none;
+          background: #F3F5F4;
+          border-radius: 4px;
+          padding: 12px 16px;
+        }
+      }
+
+      button {
+        width: 240px;
+        height: 44px;
+        margin-top: auto;
+      }
+
+    }
+
+  }
+
+
+  .policy-company {
+    position: absolute;
+    font-weight: 600;
+    max-width: 536px;
+    bottom: 40px;
+    right: 165px;
+
+    a {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+
+  .footer-about {
+    width: 480px;
+    
+    .footer-contacts {
+      margin: 80px 0 32px 0;
+      display: flex;
+      gap: 24px;
+    }
+
+    .messenger-nav {
+      display: flex;
+      gap: 20px;
+    }
+  }
+
+  .footer-services {
+    width: 280px;
+    min-height: 232px;
+    margin: 0 120px 0 20px;
+
+    p {
+      margin-bottom: 20px;
+      height: 24px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      a {
+        position: relative;
+        min-height: 18px;
+      }
+
+      a::before {
+        content: "";
+        position: absolute;
+        left: -20px;
+        top: 10px;
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid #FDFDFD;
+        border-bottom: 2px solid #FDFDFD;
+        transform: translateY(-50%) rotate(-45deg);
+      }
+    }
+  }
+
+  .travel-info {
+    width: 280px;
+    min-height: 200px;
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+
+      a {
+        position: relative;
+        min-height: 18px;
+      }
+
+      a::before {
+        content: "";
+        position: absolute;
+        left: -20px;
+        top: 10px;
+        width: 10px;
+        height: 10px;
+        border-right: 2px solid #FDFDFD;
+        border-bottom: 2px solid #FDFDFD;
+        transform: translateY(-50%) rotate(-45deg);
+      }
+    }
+  }
+}

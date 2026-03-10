@@ -1,12 +1,16 @@
 import { Injectable } from '@angular/core';
 import { IMessage } from './app/assets/interfaces/IMessage';
+import { Message } from './enums/Message';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class MessageService {
 
   messages: IMessage[] = [];
+
   
-  addMessage(currentMessage: IMessage): void {
+  private addMessage(currentMessage: IMessage): void {
     this.messages = [currentMessage, ...this.messages];
 
     setTimeout(() => {
@@ -16,6 +20,22 @@ export class MessageService {
 
   closeMessage(currentMessage: IMessage): void {
     this.messages = this.messages.filter((messageToRemove: IMessage) => messageToRemove !== currentMessage);
+  }
+
+  showWarn(text: string): void {
+    this.addMessage({ type: Message.WARN, text });
+  }
+
+  showError(text: string): void {
+    this.addMessage({ type: Message.ERROR, text });
+  }
+
+  showSuccess(text: string): void {
+    this.addMessage({ type: Message.SUCCESS, text });
+  }
+
+  showInfo(text: string): void {
+    this.addMessage({ type: Message.INFO,  text });
   }
 
 };

@@ -1,0 +1,42 @@
+<div class="header-container">
+	<header class="header container">
+		<div class="container-logo">
+			<img src="/images/logo-company.svg" alt="логотип компании">
+			<span class="company-name">{{ companyName }}</span>
+		</div>
+		<nav class="container-nav fs-18">
+			@for (navigation of navigations; track navigation.id) { 
+				<a 
+					[routerLinkActiveOptions]="{ exact: true }"
+					[routerLink]="navigation.link"
+					routerLinkActive="active-link">
+					{{ navigation.text }}
+				</a>
+			}
+		</nav>
+		<button id="btn-consultation" class="btn-consultation primary-button">Консультация</button>
+	</header>
+	<div class="widget container">
+		@if (!isCounterVisible) {
+			 <p class="date" id="current-date">{{ currentDate }}</p>
+		}
+		@if (isCounterVisible) {
+			<div class="container-counter">
+				<button id="btn-increase-counter" (click)="incrementCounter()">+</button>
+				<p>{{ counter }}</p>
+				<button 
+				id="btn-decrease-counter" 
+				[disabled]="counter <= 0" 
+				(click)="decreaseCounter()">
+				-
+				</button>
+			</div>
+		}
+		<button 
+			id="btn-toggle-counter" 
+			(click)="isCounterVisible = !isCounterVisible" 
+			class="primary-button">
+			{{ !isCounterVisible ? 'показать счётчик' : 'показвть дату' }}
+		</button>
+	</div>
+</div>
