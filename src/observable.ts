@@ -1,34 +1,27 @@
-import { filter, interval, map, Observable, of, take } from "rxjs";
+import { filter, interval, map, Observable, of, Subscriber, take } from "rxjs";
 
-export const obs$ = new Observable<string>(observer => {
+export const obs$ = new Observable<string>((observer: Subscriber<string>) => {
   observer.next('Hello');
 	observer.next('RxJS');
 	observer.complete();
-});
-
+})
 obs$.subscribe({
-	next: (value) => console.log(value),
-	complete: () => console.log('Поток завершён'),
+	next: (value: string) => console.log(value),
+	complete: (): void => console.log('Поток завершён'),
 });
 
-const num$ = of(1, 2, 3, 4, 5);
+const num$: Observable<number> = of(1, 2, 3, 4, 5);
 
 num$.pipe(
-	map(num => num * 10),
-);
-
-num$.subscribe(console.log);
+	map((num: number) => num * 10),
+).subscribe(console.log);
 
 const evenNumbers$: Observable<number> = of(1, 2, 3, 4, 5, 6, 7, 8);
 
 evenNumbers$.pipe(
-	filter(num => num % 2 === 0),
-);
+	filter((num: number) => num % 2 === 0),
+).subscribe(console.log);
 
-evenNumbers$.subscribe(console.log);
-
-const inter$: Observable<number> = interval(1000).pipe(
+interval(1000).pipe(
 	take(5),
-);
-
-inter$.subscribe(nuber$ => console.log(nuber$));
+).subscribe((value: number) => console.log(value));
