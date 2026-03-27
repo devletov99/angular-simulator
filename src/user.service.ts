@@ -19,8 +19,8 @@ export class UserService {
     this.users.next(user);
   }
 
-  getUsers(): Observable<IUser[]> {
-    return this.users$;
+  getUsers(): BehaviorSubject<IUser[]> {
+    return this.users;
   }
 
   loadUsers(): Observable<IUser[]> {
@@ -32,5 +32,5 @@ export class UserService {
       finalize(() => this.loader.loaderOff())
     );
   }
-  
+
 }
