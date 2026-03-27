@@ -14,26 +14,26 @@ let textFormat: 'uppercase' | 'lowercase' | 'capitalize'
 
 // 4.Создать интерфейс, который описывает юзера. Поля на ваш выбор. Одно поле должно быть опциональным.
 
-interface IUser {
-  name: string;
-  surname: string;
-  age?: number;
-};
+// interface IUser {
+//   name: string;
+//   surname: string;
+//   age?: number;
+// };
 
 // 5. Создать интерфейс, который расширяется интерфейсом User с задания №6 и имеет свои дополнительные поля 
 
-interface IStudent extends IUser {
-  studentID: number;
-  course: number;
-};
+// interface IStudent extends IUser {
+//   studentID: number;
+//   course: number;
+// };
 
-let student: IStudent = {
-  name: 'Иван',
-  surname: 'Иванов',
-  age: 19,
-  studentID: 1,
-  course: 2,
-};
+// let student: IStudent = {
+//   name: 'Иван',
+//   surname: 'Иванов',
+//   age: 19,
+//   studentID: 1,
+//   course: 2,
+// };
 
 // 6. Создать функцию, которая принимает строку и вариант.
 
@@ -56,28 +56,28 @@ function removeSymbol(text: string, symbol: string): string {
 
 // 8. Создать массив объектов на основе интерфейса с задания №6. Отфильтровать его по одному из параметров.
 
-const users: IUser[] = [
-  {
-  name: 'Саша', 
-  surname: 'Петров', 
-  age: 21 
-  },
+// const users: IUser[] = [
+//   {
+//   name: 'Саша', 
+//   surname: 'Петров', 
+//   age: 21 
+//   },
 
-  {
-  name: 'Евгений', 
-  surname: 'Петров', 
-  age: 33
-  },
+//   {
+//   name: 'Евгений', 
+//   surname: 'Петров', 
+//   age: 33
+//   },
 
-  {
-  name: 'Анатолий',
-  surname: 'Петров'
-  },
+//   {
+//   name: 'Анатолий',
+//   surname: 'Петров'
+//   },
 
-  {
-  name: 'Петр', 
-  surname: 'Петров'
-  }
-]
+//   {
+//   name: 'Петр', 
+//   surname: 'Петров'
+//   }
+// ]
 
-const getUser = users.filter(user => user.age);
+// const getUser = users.filter(user => user.age);

@@ -5,15 +5,16 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from "../footer/footer.component";
 import { MessageComponent } from '../message/message.component';
+import { LoaderComponent } from "../loader/loader.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, MessageComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, MessageComponent, LoaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [LocalStorageService],
 })
-export class AppComponent {
+export class AppComponent {    
 
   localStorageService: LocalStorageService = inject(LocalStorageService);
    
