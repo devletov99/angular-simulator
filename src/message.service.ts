@@ -10,8 +10,7 @@ export class MessageService {
 
 
   private messagesSubject: BehaviorSubject<IMessage[]> = new BehaviorSubject<IMessage[]>([]);
-  message$: Observable<IMessage[]> = this.messagesSubject.asObservable();
-
+  messages$: Observable<IMessage[]> = this.messagesSubject.asObservable();
   
   private addMessage(currentMessage: IMessage): void {
     this.messagesSubject.next([currentMessage, ...this.messagesSubject.getValue()]);
@@ -22,8 +21,8 @@ export class MessageService {
   }
 
   closeMessage(currentMessage: IMessage): void {
-    const messages = this.messagesSubject.value;
-    const message = messages.filter((messageToRemove: IMessage) => messageToRemove !== currentMessage);
+    const messages: IMessage[] = this.messagesSubject.value;
+    const message: IMessage[] = messages.filter((messageToRemove: IMessage) => messageToRemove !== currentMessage);
     this.messagesSubject.next(message);
   }
 

@@ -14,7 +14,7 @@ import { IMessage } from '../app/assets/interfaces/IMessage';
 export class MessageComponent {
 
   private messageService: MessageService = inject(MessageService);
-  messages$: Observable<IMessage[]> = this.messageService.message$;
+  messages$: Observable<IMessage[]> = this.messageService.messages$;
 
   closeMessage(message: IMessage): void {
     this.messageService.closeMessage(message);

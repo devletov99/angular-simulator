@@ -16,7 +16,8 @@ export class UserPageComponent {
   users$: Observable<IUser[]> = this.userService.users$;
 
   constructor() {
-    this.userService.loadUsers().subscribe();
+    this.userService.loadUsers()
+      .subscribe();
   }
 
 }

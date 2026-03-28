@@ -1,8 +1,9 @@
 import { inject, Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, delay, finalize, Observable, of, tap } from 'rxjs';
+import { BehaviorSubject, catchError, delay, finalize, map, Observable, of, tap } from 'rxjs';
 import { IUser } from './app/assets/interfaces/IUser';
 import { UserApiService } from './user-api.service';
 import { LoaderService } from './loader.service';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,26 +12,29 @@ export class UserService {
 
   userApi: UserApiService = inject(UserApiService);
   loader: LoaderService = inject(LoaderService);
+  messageService: MessageService = inject(MessageService);
   
-  private users: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
-  users$: Observable<IUser[]> = this.users.asObservable();
+  private usersSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
+  users$: Observable<IUser[]> = this.usersSubject.asObservable();
 
   setUsers(user: IUser[]): void {
-    this.users.next(user);
+    this.usersSubject.next(user);
   }
 
-  getUsers(): BehaviorSubject<IUser[]> {
-    return this.users;
+  getUsers(): IUser[] {
+    return this.usersSubject.getValue();
   }
 
   loadUsers(): Observable<IUser[]> {
     this.loader.loaderOn();
-
-    return this.userApi.getUser().pipe(
-      tap((user: IUser[]) => this.setUsers(user)),
-      catchError(() => of([])),
-      finalize(() => this.loader.loaderOff())
-    );
+    return this.userApi.getUser()
+      .pipe(
+        tap((user: IUser[]) => this.setUsers(user)),   
+        catchError(() => { this.messageService.showError('Пользователи не загружены'); 
+          return of([])
+        }),
+        finalize(() => this.loader.loaderOff()),
+      );
   }
 
 }

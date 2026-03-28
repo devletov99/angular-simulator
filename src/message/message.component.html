@@ -1,3 +1,11 @@
+<div class="message-container">
+	@for (message of messages$ | async; track $index) {
+		<ng-container 
+			[ngTemplateOutlet]="messages" 
+			[ngTemplateOutletContext]="{ currentMessage: message }">
+		</ng-container>
+	}
+</div>
 <div>
 	<ng-template #messages let-message="currentMessage">
 		<div class="message">
@@ -12,12 +20,4 @@
 			height="20px">
 		</div>
 	</ng-template>
-</div>
-<div class="message-container">
-	@for (message of messages$ | async; track $index) {
-		<ng-container 
-			[ngTemplateOutlet]="messages" 
-			[ngTemplateOutletContext]="{ currentMessage: message }">
-		</ng-container>
-	}
 </div>
