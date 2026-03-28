@@ -28,8 +28,7 @@ export class UserService {
   loadUsers(): Observable<IUser[]> {
     this.loader.loaderOn();
     return this.userApi.getUser()
-      .pipe(
-        tap((user: IUser[]) => this.setUsers(user)),   
+      .pipe(   
         catchError(() => { this.messageService.showError('Пользователи не загружены'); 
           return of([])
         }),
