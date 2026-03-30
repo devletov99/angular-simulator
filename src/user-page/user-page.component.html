@@ -1,4 +1,4 @@
-<div class="contsiner-users">
+<div class="container-users">
   <div class="users-list">
     @for (user of users$ | async; track user.id) {
       <div class="user-card">
@@ -69,7 +69,7 @@
         </div>
       </div>
     } @empty {
-        <p class="empty-message fs-26">Нет пользователей для отображения</p>
-      }
+      <p class="empty-message fs-26">Нет пользователей для отображения</p>
+    }
   </div>
 <div>
