@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { UserService } from '../user.service';
-import { Observable, tap } from 'rxjs';
+import { delay, Observable, tap } from 'rxjs';
 import { IUser } from '../app/assets/interfaces/IUser';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 
@@ -20,6 +20,6 @@ export class UserPageComponent {
       .pipe(
         tap((user: IUser[]) => this.userService.setUsers(user)),
       ).subscribe();
-  }
+  } 
 
 }
