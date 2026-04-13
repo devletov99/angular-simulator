@@ -1,80 +1,25 @@
 .container-users {
+  position: relative;
   min-height: 630px;
+  padding: 120px 0;
   background-color: var(--lite-color);
   display: flex;
   justify-content: center;
-  padding: 80px 0;
-
+  
   .users-list {
     width: 1460px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 50px 70px;
+  } 
 
-    .user-card {
-      background-color: var(--white-color);
-      border-top: 4px solid #D4A373;
-      width: 440px;
-      height: 630px;
-      border-radius: 4px;
-
-      .user-info { 
-        width: 440px;
-        height: 106px;
-        padding: 35px 30px 20px 30px;
-
-        p {
-          width: 380px;
-          height: 18px;
-          margin: 0;
-        }
-      }
-
-      .user-details {
-        padding: 0  30px 46px 30px;
-
-        .section-header {
-          display: flex;
-          align-items: center;
-          gap: 12px;
-
-          div {
-            border-top: 1px solid #E2E8F0;
-            width: 100%;                  
-            margin: 8px 0;   
-          }
-        }
-
-        .detail-row {
-          display: flex;
-          justify-content: space-between;
-
-          span {
-            color: #667C7C;
-            font-size: 14px;
-          }
-
-          p {
-            color: #1D3939;
-            font-weight: 700;
-          }
-
-          .geo-coords {
-            display: flex;
-            justify-content: space-between;
-            gap: 4px;
-
-            p {
-              background-color: #F4F7F5;
-              border: 1px solid #E2E8F0;
-              border-radius: 3px;
-              height: 20px;
-            }
-          }
-        }
-      }
-    }
+  .update-user {
+    position: fixed;
+    cursor: pointer;
+    bottom: 100px;
+    left: 20px;
+    z-index: 5;
   }
 
   .empty-message {

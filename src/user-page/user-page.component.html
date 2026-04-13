@@ -1,75 +1,18 @@
+<app-create-user></app-create-user>
+<app-users-filter (valueChanges)="onFilterUsers($event)" />
 <div class="container-users">
   <div class="users-list">
     @for (user of users$ | async; track user.id) {
-      <div class="user-card">
-        <div class="user-info">
-          <p>{{ user.name }}</p>
-          <p>{{ user.username }}</p>
-        </div>
-        <div class="user-details">
-          <div class="section-header">
-            <span>Контакты</span>
-            <div></div>
-          </div>
-          <div class="detail-row">
-            <span>Эл. почта:</span>
-            <p>{{ user.email }}</p>
-          </div>
-          <div class="detail-row"> 
-            <span>Телефон:</span>
-            <p>{{ user.phone }}</p>
-          </div>
-          <div class="detail-row"> 
-            <span>Веб-сайт:</span>
-            <p>{{ user.website }}</p>
-          </div>
-          <div class="section-header">
-            <p>Адрес Проживания</p>
-            <div></div>
-          </div>
-          <div class="detail-row"> 
-            <span>Город:</span>   
-            <p>{{ user.address.city }}</p>
-          </div>
-          <div class="detail-row">   
-            <span>Улица:</span> 
-            <p>{{ user.address.street }}</p>
-          </div>
-          <div class="detail-row">
-            <span>Офис:</span>
-            <p>{{ user.address.suite }}</p>
-          </div>
-          <div class="detail-row">
-            <span>Индекс:</span>
-            <p>{{ user.address.zipcode }}</p>
-          </div>
-          <div class="detail-row">
-            <span>Координаты:</span>
-            <div class="geo-coords">
-              <p>{{ user.address.geo.lat }}</p>
-              <p>{{ user.address.geo.lng }}</p>
-            </div>
-          </div>
-          <div class="section-header">
-            <p>Место работы</p>
-            <div></div>
-          </div>
-          <div class="detail-row">
-            <span>Компания:</span>
-            <p>{{ user.company.name }}</p>
-          </div>
-          <div class="detail-row">
-            <span>Миссия:</span>
-            <p>{{ user.company.catchPhrase }}</p>
-          </div>
-          <div class="detail-row">
-            <span>Специализация:</span>
-            <p>{{ user.company.bs }}</p>
-          </div>
-        </div>
-      </div>
+    <app-user 
+      [user]="user"
+      (deletUser)="userService.deleteUser($event)"
+    />
     } @empty {
       <p class="empty-message fs-26">Нет пользователей для отображения</p>
     }
   </div>
-<div>
+  <img 
+    (click)="updateUsers()" 
+    class="update-user" src="/images/service/update-icon.svg" 
+    alt="обновить пользователей">
+</div>
