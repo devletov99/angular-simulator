@@ -15,7 +15,7 @@ export class CreateUserComponent implements OnInit {
   userService: UserService = inject(UserService);
   private fb: FormBuilder = inject(FormBuilder);
 
-  userForm = this.fb.nonNullable.group({
+  userForm: FormGroup = this.fb.nonNullable.group({
     id: [{value: 0, disabled: true }, [Validators.required]],
     name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
     username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],

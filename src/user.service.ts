@@ -20,7 +20,7 @@ export class UserService {
   
   users$: Observable<IUser[]> = combineLatest([this.usersSubject, this.filterSubject])
     .pipe(
-      map(([users, filter]) => users.filter(user =>
+      map(([users, filter]) => users.filter((user: IUser) =>
         user.name.toLowerCase().includes(filter.toLowerCase())
       )),
   );
@@ -53,7 +53,7 @@ export class UserService {
   }
 
   deleteUser(user: IUser) {
-    const users: IUser[] = this.usersSubject.value.filter(userToRemove => userToRemove !== user);
+    const users: IUser[] = this.usersSubject.value.filter((userToRemove: IUser) => userToRemove !== user);
     this.usersSubject.next(users);
   }
 

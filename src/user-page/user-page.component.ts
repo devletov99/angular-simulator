@@ -18,7 +18,7 @@ import { UsersFilterComponent } from "../users-filter/users-filter.component";
 export class UserPageComponent {
 
   userService: UserService = inject(UserService);
-  destroyRef = inject(DestroyRef);
+  destroyRef: DestroyRef = inject(DestroyRef);
   users$: Observable<IUser[]> = this.userService.users$;
 
   ngOnInit(): void {
