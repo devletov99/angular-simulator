@@ -35,10 +35,10 @@ export class UserService {
   }
 
   loadUsers(): Observable<IUser[]> {
-    const value = localStorage.getItem('users');
+    const value: string | null = localStorage.getItem('users');
 
     if (value) {
-      const user = JSON.parse(value);
+      const user: IUser[] = JSON.parse(value);
       return of(user);
     } else {
       this.loader.loaderOn();
@@ -52,35 +52,22 @@ export class UserService {
     }
   }
 
-  deleteUser(user: IUser) {
-    const users: IUser[] = this.usersSubject.value.filter((userToRemove: IUser) => userToRemove !== user);
+  deleteUser(user: IUser): void {
+    const users: IUser[] = this.usersSubject.value.filter((userToRemove: IUser) => userToRemove.id !== user.id);
     this.usersSubject.next(users);
   }
 
   addUser(user: IUser): void {
-    this.usersSubject.next([...this.getUsers(), user]);
+    const newUser: IUser = {
+      ...user,
+      id: Date.now()
+    }
+
+    this.usersSubject.next([...this.getUsers(), newUser]);
     localStorage.setItem('users', JSON.stringify(this.getUsers()));
   }
 
-  updateId(form: FormGroup) {
-    form.patchValue({
-      id: Date.now(),
-    });
-  }
-  
-  setDefaultValues(group: FormGroup, defaultValue: string) {
-    for (const name in group.controls) {
-      const control: AbstractControl = group.controls[name];
-
-      if (control instanceof FormGroup) {
-        this.setDefaultValues(control, defaultValue);
-      } else if (!control.hasValidator(Validators.required)) {
-        control.patchValue(defaultValue);
-      }
-    }
-  }
-
-  filterUser(value: string) {
+  filterUser(value: string): void {
     this.filterSubject.next(value);
   }
 

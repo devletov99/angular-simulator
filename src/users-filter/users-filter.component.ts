@@ -13,7 +13,7 @@ export class UsersFilterComponent {
 
   @Output() valueChanges: EventEmitter<string> = new EventEmitter<string>();
 
-  onInput(newValue: string) {
+  onInput(newValue: string): void {
     this.value = newValue;
     this.valueChanges.emit(newValue);
   }

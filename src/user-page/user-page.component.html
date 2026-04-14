@@ -1,11 +1,11 @@
-<app-create-user></app-create-user>
-<app-users-filter (valueChanges)="onFilterUsers($event)" />
+<app-create-user (onSubmitForm)="onSubmit($event)"/>
+<app-users-filter (valueChanges)="onFilterUsers($event)"/>
 <div class="container-users">
   <div class="users-list">
     @for (user of users$ | async; track user.id) {
     <app-user 
       [user]="user"
-      (deletUser)="userService.deleteUser($event)"
+      (onDeleteUser)="userService.deleteUser(user)"
     />
     } @empty {
       <p class="empty-message fs-26">Нет пользователей для отображения</p>

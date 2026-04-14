@@ -1,51 +1,45 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { UserService } from '../user.service';
-import { UserFormComponent } from '../user-form/user-form.component';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IUser } from '../app/assets/interfaces/IUser';
 
 @Component({
   selector: 'app-create-user',
-  imports: [ReactiveFormsModule, UserFormComponent],
+  imports: [ReactiveFormsModule],
   templateUrl: './create-user.component.html',
   styleUrl: './create-user.component.scss',
 })
-export class CreateUserComponent implements OnInit {
+export class CreateUserComponent {
 
-  userService: UserService = inject(UserService);
+  @Output() onSubmitForm: EventEmitter<IUser> = new EventEmitter<IUser>();
+
   private fb: FormBuilder = inject(FormBuilder);
 
-  userForm: FormGroup = this.fb.nonNullable.group({
-    id: [{value: 0, disabled: true }, [Validators.required]],
+  userForm: FormGroup = this.fb.group({
+    id:[Date.now()],
     name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
     username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
     email: ['', [Validators.required, Validators.email, Validators.maxLength(100)]],
     phone: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(25)]],
     website: ['', [Validators.maxLength(100)]],
-    address: this.fb.nonNullable.group({
+    address: this.fb.group({
       city: ['', [Validators.required, Validators.maxLength(50)]],
       street: ['', [Validators.required, Validators.maxLength(100)]],
       suite: ['', [Validators.maxLength(50)]],
       zipcode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
-      geo: this.fb.nonNullable.group({
+      geo: this.fb.group({
         lat: ['', [Validators.required]],
         lng: ['', [Validators.required]],
       }),
     }),
-    company: this.fb.nonNullable.group({
+    company: this.fb.group({
       name: ['', [Validators.required, Validators.maxLength(100)]],
       catchPhrase: ['', [Validators.maxLength(200)]],
       bs: ['', [Validators.maxLength(100)]],
     }),
   });
 
-  ngOnInit() {
-    this.userService.setDefaultValues(this.userForm, 'Неизвестно');
-  }
-
-  onSubmit(user: IUser): void {
-    this.userService.updateId(this.userForm);
-    this.userService.addUser(user);
+  onSubmit(): void {
+    this.onSubmitForm.emit(this.userForm.value);
   }
 
 }

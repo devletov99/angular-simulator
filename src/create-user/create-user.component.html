@@ -1,1 +1,95 @@
-<app-user-form [userForm]="userForm" (submitForm)="onSubmit($event)"/>
+<div class="user-form">
+  <form [formGroup]="userForm">
+    <div>
+      <label>
+        Name
+        <input id="user-name" type="text" formControlName="name">
+      </label>
+    </div>
+    <div>
+      <label>
+        Username
+        <input id="username" type="text" formControlName="username">
+      </label>
+    </div>
+    <div>
+      <label>
+        Email
+        <input id="email" type="email" formControlName="email">
+      </label>
+    </div>
+    <div formGroupName="address">
+      <div>
+        <label>
+          Street
+          <input id="street" type="text" formControlName="street">
+        </label>
+      </div>
+      <div>
+        <label>
+          Suite
+          <input id="suite" type="text" formControlName="suite" placeholder="Неизвестно">
+        </label>
+      </div>
+      <div>
+        <label>
+          City
+          <input id="city" type="text" formControlName="city">
+        </label>
+      </div>
+      <div>
+        <label>
+          Zipcode
+          <input id="zipcode" type="text" formControlName="zipcode">
+        </label>
+      </div>
+      <div formGroupName="geo">
+        <div>
+          <label>
+            Lat
+            <input id="lat" type="text" formControlName="lat">
+          </label>
+        </div>
+        <div>
+          <label>
+            Lng
+            <input id="lng" type="text" formControlName="lng">
+          </label>
+        </div>
+      </div>
+    </div>
+    <div>
+      <label>
+        Phone
+        <input id="phone" type="tel" formControlName="phone">
+      </label>
+    </div>
+    <div>
+      <label>
+        Website
+        <input id="website" type="text" formControlName="website" placeholder="Неизвестно">
+      </label>
+    </div>
+    <div formGroupName="company">
+      <div>
+        <label>
+          Name
+          <input id="company-name" type="text" formControlName="name">
+        </label>
+      </div>
+      <div>
+        <label>
+          Catch Phrase
+          <input id="catch-phrase" type="text" formControlName="catchPhrase" placeholder="Неизвестно">
+        </label>
+      </div>
+      <div>
+        <label>
+          Bs
+          <input id="bs" type="text" formControlName="bs" placeholder="Неизвестно">
+        </label>
+      </div>
+    </div>
+  </form>
+  <button id="bttn-form" type="button" (click)="onSubmit()" [disabled]="">Зарегистрировать пользователя</button>
+</div>
