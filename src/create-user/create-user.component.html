@@ -28,7 +28,7 @@
       <div>
         <label>
           Suite
-          <input id="suite" type="text" formControlName="suite" placeholder="Неизвестно">
+          <input id="suite" type="text" formControlName="suite">
         </label>
       </div>
       <div>
@@ -67,7 +67,7 @@
     <div>
       <label>
         Website
-        <input id="website" type="text" formControlName="website" placeholder="Неизвестно">
+        <input id="website" type="text" formControlName="website">
       </label>
     </div>
     <div formGroupName="company">
@@ -80,16 +80,16 @@
       <div>
         <label>
           Catch Phrase
-          <input id="catch-phrase" type="text" formControlName="catchPhrase" placeholder="Неизвестно">
+          <input id="catch-phrase" type="text" formControlName="catchPhrase">
         </label>
       </div>
       <div>
         <label>
           Bs
-          <input id="bs" type="text" formControlName="bs" placeholder="Неизвестно">
+          <input id="bs" type="text" formControlName="bs">
         </label>
       </div>
     </div>
   </form>
-  <button id="bttn-form" type="button" (click)="onSubmit()" [disabled]="">Зарегистрировать пользователя</button>
+  <button id="bttn-form" type="button" (click)="onSubmit()" [disabled]="userForm.invalid">Зарегистрировать пользователя</button>
 </div>

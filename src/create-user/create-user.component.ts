@@ -40,6 +40,7 @@ export class CreateUserComponent {
 
   onSubmit(): void {
     this.onSubmitForm.emit(this.userForm.value);
+    this.userForm.reset();
   }
 
 }

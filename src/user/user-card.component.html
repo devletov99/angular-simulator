@@ -18,7 +18,7 @@
     </div>
     <div class="detail-row"> 
       <span>Веб-сайт:</span>
-      <p>{{ user.website }}</p>
+      <p>{{ user.website || 'Неизвестно' }}</p>
     </div>
     <div class="section-header">
       <p>Адрес Проживания</p>
@@ -34,7 +34,7 @@
     </div>
     <div class="detail-row">
       <span>Офис:</span>
-      <p>{{ user.address.suite }}</p>
+      <p>{{ user.address.suite || 'Неизвестно' }}</p>
     </div>
     <div class="detail-row">
       <span>Индекс:</span>
@@ -57,11 +57,11 @@
     </div>
     <div class="detail-row">
       <span>Миссия:</span>
-      <p>{{ user.company.catchPhrase }}</p>
+      <p>{{ user.company.catchPhrase || 'Неизвестно' }}</p>
     </div>
     <div class="detail-row">
       <span>Специализация:</span>
-      <p>{{ user.company.bs }}</p>
+      <p>{{ user.company.bs || 'Неизвестно' }}</p>
     </div>
   </div>
   <button (click)="onDeleteUser.emit(user)">Удалить пользователя</button>
