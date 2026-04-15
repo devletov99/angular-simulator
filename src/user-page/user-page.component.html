@@ -1,5 +1,5 @@
 <app-create-user (onSubmitForm)="onSubmit($event)"/>
-<app-users-filter (valueChanges)="onFilterUsers($event)"/>
+<app-users-filter (onFilter)="onFilterUsers($event)"/>
 <div class="container-users">
   <div class="users-list">
     @for (user of users$ | async; track user.id) {
@@ -11,8 +11,4 @@
       <p class="empty-message fs-26">Нет пользователей для отображения</p>
     }
   </div>
-  <img 
-    (click)="updateUsers()" 
-    class="update-user" src="/images/service/update-icon.svg" 
-    alt="обновить пользователей">
-</div>
+  <button class="primary-button update-users" (click)="updateUsers()">обовить пользователей</button>

@@ -64,5 +64,5 @@
       <p>{{ user.company.bs || 'Неизвестно' }}</p>
     </div>
   </div>
-  <button (click)="onDeleteUser.emit(user)">Удалить пользователя</button>
+  <button (click)="onDeleteUser.emit(user.id)">Удалить пользователя</button>
 </div>

@@ -1,6 +1,6 @@
-import { Component, DestroyRef, inject} from '@angular/core';
+import { Component, DestroyRef, inject, OnInit} from '@angular/core';
 import { UserService } from '../user.service';
-import { Observable, tap } from 'rxjs';
+import { map, Observable, pipe, tap } from 'rxjs';
 import { IUser } from '../app/assets/interfaces/IUser';
 import { AsyncPipe } from '@angular/common';
 import { UserCardComponent } from '../user/user-card.component';
@@ -15,10 +15,14 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './user-page.component.html',
   styleUrl: './user-page.component.scss',
 })
-export class UserPageComponent {
+export class UserPageComponent implements OnInit {
 
   userService: UserService = inject(UserService);
-  users$: Observable<IUser[]> = this.userService.users$;
+ 
+  users$: Observable<IUser[]> = this.userService.usersFilter$.pipe(
+    map(([users, filter]) => users.filter((user: IUser) => user.name.toLowerCase().includes(filter.toLowerCase()))),
+  )
+
 
   ngOnInit(): void {
     this.userService.loadUsers()
@@ -42,5 +46,5 @@ export class UserPageComponent {
   onSubmit(user: IUser): void {
     this.userService.addUser(user);
   }
-
+    
 }

@@ -1,21 +1,26 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { debounce } from '@angular/forms/signals';
+import { BehaviorSubject, debounceTime, delay, distinctUntilChanged, Subject, tap } from 'rxjs';
 
 @Component({
   selector: 'app-users-filter',
-  imports: [FormsModule],
+  imports: [ReactiveFormsModule],
   templateUrl: './users-filter.component.html',
   styleUrl: './users-filter.component.scss',
 })
 export class UsersFilterComponent {
 
-  value!: string;
+  inputValue: FormControl<string> = new FormControl<string>('', { nonNullable: true });
+  
+  @Output() onFilter: EventEmitter<string> = new EventEmitter<string>();
 
-  @Output() valueChanges: EventEmitter<string> = new EventEmitter<string>();
-
-  onInput(newValue: string): void {
-    this.value = newValue;
-    this.valueChanges.emit(newValue);
+  ngOnInit(): void {
+    this.inputValue.valueChanges.pipe(
+      debounceTime(200),
+      distinctUntilChanged(),
+      tap((value: string) => this.onFilter.emit(value))
+    ).subscribe();
   }
 
 }

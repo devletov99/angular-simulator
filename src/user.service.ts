@@ -17,13 +17,10 @@ export class UserService {
   
   private filterSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
   private usersSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
-  
-  users$: Observable<IUser[]> = combineLatest([this.usersSubject, this.filterSubject])
-    .pipe(
-      map(([users, filter]) => users.filter((user: IUser) =>
-        user.name.toLowerCase().includes(filter.toLowerCase())
-      )),
-  );
+
+  users$: Observable<IUser[]> = this.usersSubject.asObservable();
+  usersFilter$: Observable<[IUser[], string]> = combineLatest([this.usersSubject, this.filterSubject]);
+    
 
   setUsers(users: IUser[]): void {
     this.usersSubject.next(users);
@@ -67,7 +64,7 @@ export class UserService {
     localStorage.setItem('users', JSON.stringify(this.getUsers()));
   }
 
-  filterUser(value: string): void {
+  filterUser(value: string): void{
     this.filterSubject.next(value);
   }
 
