@@ -11,12 +11,12 @@ import { BehaviorSubject, debounceTime, delay, distinctUntilChanged, Subject, ta
 })
 export class UsersFilterComponent {
 
-  inputValue: FormControl<string> = new FormControl<string>('', { nonNullable: true });
+  formControl: FormControl<string> = new FormControl<string>('', { nonNullable: true });
   
   @Output() onFilter: EventEmitter<string> = new EventEmitter<string>();
 
   ngOnInit(): void {
-    this.inputValue.valueChanges.pipe(
+    this.formControl.valueChanges.pipe(
       debounceTime(200),
       distinctUntilChanged(),
       tap((value: string) => this.onFilter.emit(value))

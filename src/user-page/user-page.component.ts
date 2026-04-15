@@ -1,6 +1,6 @@
 import { Component, DestroyRef, inject, OnInit} from '@angular/core';
 import { UserService } from '../user.service';
-import { map, Observable, pipe, tap } from 'rxjs';
+import { combineLatest, map, Observable, pipe, tap } from 'rxjs';
 import { IUser } from '../app/assets/interfaces/IUser';
 import { AsyncPipe } from '@angular/common';
 import { UserCardComponent } from '../user/user-card.component';
@@ -18,8 +18,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class UserPageComponent implements OnInit {
 
   userService: UserService = inject(UserService);
- 
-  users$: Observable<IUser[]> = this.userService.usersFilter$.pipe(
+
+  filteredUsers$: Observable<[IUser[], string]> = combineLatest([this.userService.users$, this.userService.usersFilter$]);
+
+  users$: Observable<IUser[]> = this.filteredUsers$.pipe(
     map(([users, filter]) => users.filter((user: IUser) => user.name.toLowerCase().includes(filter.toLowerCase()))),
   )
 

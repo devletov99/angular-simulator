@@ -1,5 +1,4 @@
 export interface IUser {
-  toLowerCase(): string;
   id: number;
   name: string;
   username: string;
