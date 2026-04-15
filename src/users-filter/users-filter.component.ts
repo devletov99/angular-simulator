@@ -13,13 +13,13 @@ export class UsersFilterComponent {
 
   formControl: FormControl<string> = new FormControl<string>('', { nonNullable: true });
   
-  @Output() onFilter: EventEmitter<string> = new EventEmitter<string>();
+  @Output() filterUser: EventEmitter<string> = new EventEmitter<string>();
 
   ngOnInit(): void {
     this.formControl.valueChanges.pipe(
       debounceTime(200),
       distinctUntilChanged(),
-      tap((value: string) => this.onFilter.emit(value))
+      tap((value: string) => this.filterUser.emit(value))
     ).subscribe();
   }
 

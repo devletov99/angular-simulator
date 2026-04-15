@@ -10,7 +10,7 @@ import { IUser } from '../app/assets/interfaces/IUser';
 })
 export class CreateUserComponent {
 
-  @Output() onSubmitForm: EventEmitter<IUser> = new EventEmitter<IUser>();
+  @Output() userSubmitForm : EventEmitter<IUser> = new EventEmitter<IUser>();
 
   private fb: FormBuilder = inject(FormBuilder);
 
@@ -39,7 +39,7 @@ export class CreateUserComponent {
   });
 
   onSubmit(): void {
-    this.onSubmitForm.emit(this.userForm.value);
+    this.userSubmitForm.emit(this.userForm.value);
     this.userForm.reset();
   }
 

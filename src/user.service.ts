@@ -49,7 +49,7 @@ export class UserService {
     }
   }
 
-  deleteUser(user: IUser): void {
+  onDeleteUser(user: IUser): void {
     const users: IUser[] = this.usersSubject.value.filter((userToRemove: IUser) => userToRemove.id !== user.id);
     this.usersSubject.next(users);
   }

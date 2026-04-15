@@ -23,7 +23,7 @@ export class UserPageComponent implements OnInit {
 
   users$: Observable<IUser[]> = this.filteredUsers$.pipe(
     map(([users, filter]) => users.filter((user: IUser) => user.name.toLowerCase().includes(filter.toLowerCase()))),
-  )
+  );
 
 
   ngOnInit(): void {
@@ -45,7 +45,7 @@ export class UserPageComponent implements OnInit {
     this.userService.filterUser(value);
   }
 
-  onSubmit(user: IUser): void {
+  onSubmitForm(user: IUser): void {
     this.userService.addUser(user);
   }
     

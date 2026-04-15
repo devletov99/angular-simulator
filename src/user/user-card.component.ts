@@ -10,6 +10,6 @@ import { IUser } from '../app/assets/interfaces/IUser';
 export class UserCardComponent {
 
   @Input({ required: true }) user!: IUser;
-  @Output() onDeleteUser: EventEmitter<number> = new EventEmitter<number>();
+  @Output() deleteUser: EventEmitter<number> = new EventEmitter<number>();
 
 }
