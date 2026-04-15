@@ -19,7 +19,7 @@ export class UserService {
   private usersSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
 
   users$: Observable<IUser[]> = this.usersSubject.asObservable();
-  usersFilter$ = this.filterSubject.asObservable();
+  usersFilter$: Observable<string> = this.filterSubject.asObservable();
     
 
   setUsers(users: IUser[]): void {
