@@ -5,7 +5,7 @@
     @for (user of filteredUsers$ | async; track user.id) {
     <app-user 
       [user]="user"
-      (deleteUser)="userService.onDeleteUser(user)"
+      (deleteUser)="onDeleteUser(user)"
     />
     } @empty {
       <p class="empty-message fs-26">Нет пользователей для отображения</p>

@@ -30,10 +30,10 @@ export class UserService {
   }
 
   loadUsers(): Observable<IUser[]> {
-    const userStorage: IUser[] = this.localStorage.getValue<IUser[]>('users') ?? [];
+    const usersFromStorage: IUser[] = this.localStorage.getValue<IUser[]>('users') ?? [];
 
-    if (userStorage.length > 0) {
-      return of(userStorage);
+    if (usersFromStorage.length > 0) {
+      return of(usersFromStorage);
     } else {
       this.loader.showLoader();
       return this.userApi.getUsers()
@@ -47,7 +47,7 @@ export class UserService {
       }  
   }
 
-  onDeleteUser(user: IUser): void {
+  deleteUser(user: IUser): void {
     const users: IUser[] = this.getUsers().filter((userToRemove: IUser) => userToRemove.id !== user.id);
     this.setUsers(users);
   }

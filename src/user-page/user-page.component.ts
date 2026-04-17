@@ -50,5 +50,9 @@ export class UserPageComponent implements OnInit {
   onSubmitForm(user: IUser): void {
     this.userService.addUser(user);
   }
+
+  onDeleteUser(user: IUser) {
+    this.userService.deleteUser(user);
+  }
     
 }
