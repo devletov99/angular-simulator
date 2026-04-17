@@ -1,12 +1,13 @@
 import { Component, DestroyRef, inject, OnInit} from '@angular/core';
 import { UserService } from '../user.service';
-import { combineLatest, map, Observable, pipe, tap } from 'rxjs';
+import { BehaviorSubject, combineLatest, map, Observable, pipe, tap } from 'rxjs';
 import { IUser } from '../app/assets/interfaces/IUser';
 import { AsyncPipe } from '@angular/common';
 import { UserCardComponent } from '../user/user-card.component';
 import { CreateUserComponent } from "../create-user/create-user.component";
 import { UsersFilterComponent } from "../users-filter/users-filter.component";
 import { ReactiveFormsModule } from '@angular/forms';
+import { LocalStorageService } from '../local-storage.service';
 
 
 @Component({
@@ -18,13 +19,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class UserPageComponent implements OnInit {
 
   userService: UserService = inject(UserService);
+  localStorage: LocalStorageService = inject(LocalStorageService);
 
-  filteredUsers$: Observable<[IUser[], string]> = combineLatest([this.userService.users$, this.userService.usersFilter$]);
+  private filterSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
-  users$: Observable<IUser[]> = this.filteredUsers$.pipe(
-    map(([users, filter]) => users.filter((user: IUser) => user.name.toLowerCase().includes(filter.toLowerCase()))),
-  );
-
+  filteredUsers$: Observable<IUser[]> = combineLatest([this.userService.users$, this.filterSubject])
+    .pipe(
+      map(([users, filter]) => users.filter((user: IUser) => user.name.toLowerCase().includes(filter.toLowerCase()))),
+    );
 
   ngOnInit(): void {
     this.userService.loadUsers()
@@ -34,7 +36,7 @@ export class UserPageComponent implements OnInit {
   }
 
   updateUsers(): void {
-    localStorage.removeItem('users');
+    this.localStorage.removeElement('users');
     this.userService.loadUsers()
       .pipe(
         tap((users: IUser[]) => this.userService.setUsers(users)),
@@ -42,7 +44,7 @@ export class UserPageComponent implements OnInit {
   }
 
   onFilterUsers(value: string): void {
-    this.userService.filterUser(value);
+    this.filterSubject.next(value);
   }
 
   onSubmitForm(user: IUser): void {

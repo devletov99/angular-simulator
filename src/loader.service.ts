@@ -9,12 +9,12 @@ export class LoaderService {
   private isLoadingSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   loader$: Observable<boolean> = this.isLoadingSubject.asObservable();
 
-  loaderOn(): void {
+  showLoader(): void {
     this.isLoadingSubject.next(true);
     document.documentElement.style.overflow = 'hidden';
   }
 
-  loaderOff(): void {
+  hideLoader(): void {
     this.isLoadingSubject.next(false);
     document.documentElement.style.overflow = '';
   }
