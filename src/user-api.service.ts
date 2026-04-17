@@ -10,7 +10,7 @@ export class UserApiService {
 
   private http: HttpClient = inject(HttpClient);
 
-  getUser(): Observable<IUser[]> {
+  getUsers(): Observable<IUser[]> {
     return this.http.get<IUser[]>('https://jsonplaceholder.typicode.com/users');
   }
   
