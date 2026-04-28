@@ -81,6 +81,11 @@
     .messenger-nav {
       display: flex;
       gap: 20px;
+
+      fa-icon {
+        cursor: pointer;
+        font-size: 30px;
+      }
     }
   }
 

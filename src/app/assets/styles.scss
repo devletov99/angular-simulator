@@ -21,6 +21,20 @@
   --white-color: #FDFDFD;
   --lite-color: #F3F5F4;
   --black-color: #18121E;
+
+  --bg-color: #FDFDFD;
+  --text-color: #18121E;
+}
+
+html.dark {
+  --white-color: #1a1a1a;
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 .container {

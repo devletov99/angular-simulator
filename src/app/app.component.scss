@@ -11,3 +11,8 @@
 main {
 	flex: 1;
 }
+
+html.dark {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+}

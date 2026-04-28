@@ -7,10 +7,14 @@ import { IDestination } from '../app/assets/interfaces/IDestination';
 import { IBlog } from '../app/assets/interfaces/IBlog';
 import { IPhoto } from '../app/assets/interfaces/IPhoto';
 import { MessageService } from '../message.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faStar, faPersonWalking, faShield, faTag } from '@fortawesome/free-solid-svg-icons'
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { faCalendar, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-home-page',
-  imports: [FormsModule],
+  imports: [FormsModule, FontAwesomeModule],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
@@ -24,23 +28,31 @@ export class HomePageComponent {
   liveInput!: string;
   hoverServiceId!: number | null;
   selectedBlogInfoId: number = 2;
+  faStar: IconDefinition = faStar;
+  faCalendar: IconDefinition = faCalendar;
+  faChevronDown: IconDefinition = faChevronDown;
+
+   
+  isFormInValid(): boolean {
+    return this.selectedLocation && this.selectedDate && this.selectedParticipant;
+  }
 
   services: IService[] = [
     {
       id: 1,
-      img: 'leadership-icon',
+      icon: faPersonWalking,
       title: 'Опытный гид',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
     },
     {
       id: 2,
-      img: 'security-icon',
+      icon: faShield,
       title: 'Безопасный поход',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
     },
     {
       id: 3,
-      img: 'price-icon',
+      icon: faTag,
       title: 'Лояльные цены',
       description: 'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
     }
@@ -184,7 +196,4 @@ export class HomePageComponent {
       },
     ]
   
-    isFormInValid(): boolean {
-    return this.selectedLocation && this.selectedDate && this.selectedParticipant;
-  }
 }
