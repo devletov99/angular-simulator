@@ -3,7 +3,7 @@
 		<div class="container-logo">
 			<img src="/images/logo-company.svg" alt="логотип компании">
 			<span class="company-name">{{ companyName }}</span>
-			<p-toggleswitch (onChange)="onSubmitToggle($event.checked)" [ngModel]="themeService.mode$ | async"/>
+			<p-toggleswitch (onChange)="onToggleMode($event.checked)" [ngModel]="themeService.isDarkMode$ | async"/>
 		</div>
 		<nav class="container-nav fs-18">
 			@for (navigation of navigations; track navigation.id) { 
@@ -42,15 +42,12 @@
 	</div>
 </div>
 <div>
-		<ng-container [ngTemplateOutlet]="select"></ng-container>
-</div>
-<ng-template #select>
 	<p-selectbutton 
 		class="select-button" 
-		[options]="paymentOptions" 
+		[options]="presetOption" 
 		optionLabel="name" 
 		optionValue="value"
-		(onOptionClick)="onPaymentSelect($event)"
+		(onOptionClick)="onPresetSelect($event)"
 		[ngModel]="themeService.preset$ | async"
 	/>
-</ng-template>
+</div>

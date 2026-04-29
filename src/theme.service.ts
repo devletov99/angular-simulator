@@ -12,38 +12,38 @@ import Lara from "@primeuix/themes/lara";
 })
 export class ThemeService {
 
-  private localStorage: LocalStorageService = inject(LocalStorageService);
+  private localStorageService: LocalStorageService = inject(LocalStorageService);
   
-  private modeSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.localStorage.getValue('darkMode') ?? false);
-  mode$: Observable<boolean> = this.modeSubject.asObservable();
+  private isDarkModeSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.localStorageService.getValue('dark-mode') ?? false);
+  isDarkMode$: Observable<boolean> = this.isDarkModeSubject.asObservable();
 
-  private presetSubject: BehaviorSubject<Preset> = new BehaviorSubject<Preset>(this.localStorage.getValue<Preset>('preset') ?? Aura);
+  private presetSubject: BehaviorSubject<Preset> = new BehaviorSubject<Preset>(this.localStorageService.getValue<Preset>('preset') ?? Aura);
   preset$: Observable<Preset> = this.presetSubject.asObservable();
 
   setMode(value: boolean): void {
-    this.modeSubject.next(value)
-    this.localStorage.setValue('darkMode', value);
+    this.isDarkModeSubject.next(value);
+    this.localStorageService.setValue('dark-mode', value);
   }
 
-  getMode(): boolean {
-    return this.modeSubject.getValue();
+  getDarkMode(): boolean {
+    return this.isDarkModeSubject.getValue();
   }
 
   toggleMode(): void {
-    this.setMode(!this.getMode());
+    this.setMode(!this.getDarkMode());
   }
 
   setPreset(value: Preset): void {
     this.presetSubject.next(value);
-    this.localStorage.setValue('preset', value);
+    this.localStorageService.setValue('preset', value);
   }
 
   getPreset(): Preset {
-    return this.presetSubject.getValue()
+    return this.presetSubject.getValue();
   }
 
-  updatePrime(): void {
-    updatePreset(this.getPreset())
+  syncPreset(): void {
+    updatePreset(this.getPreset());
   }
 
 }

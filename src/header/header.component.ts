@@ -5,24 +5,22 @@ import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule, SelectButtonOptionClickEvent } from 'primeng/selectbutton';
 import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
-import { IPaymentOptions } from '../app/assets/interfaces/IPaymentOptions';
 import Nora from '@primeuix/themes/nora';
 import Lara from '@primeuix/themes/lara';
 import Aura from '@primeuix/themes/aura';
 import { ThemeService } from '../theme.service';
 import { tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { IPresetOption } from '../app/assets/interfaces/IPresetOption';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, ToggleSwitchModule, FormsModule, SelectButtonModule, NgTemplateOutlet, AsyncPipe],
+  imports: [RouterLink, RouterLinkActive, ToggleSwitchModule, FormsModule, SelectButtonModule, AsyncPipe],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
-
-  @Output() toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   destroyRef: DestroyRef = inject(DestroyRef);
   themeService: ThemeService = inject(ThemeService);
@@ -31,8 +29,6 @@ export class HeaderComponent implements OnInit {
   currentDate: Date = new Date();
   isCounterVisible!: boolean;
   counter: number = 0;
-  value!: number;
-  private element: HTMLElement = document.documentElement;
   
   constructor() {
     setInterval(() => {
@@ -41,20 +37,19 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.themeService.mode$.pipe(
-      tap((value: boolean) => this.element.classList.toggle('dark', value)),
+     this.themeService.isDarkMode$.pipe(
+      tap((value: boolean) => document.documentElement.classList.toggle('dark', value)),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe();
   }
 
-  onSubmitToggle(value: boolean): void {
+  onToggleMode(value: boolean): void {
     this.themeService.setMode(value);
   }
 
-  onPaymentSelect(event: SelectButtonOptionClickEvent): void {
+  onPresetSelect(event: SelectButtonOptionClickEvent): void {
     this.themeService.setPreset(event.option.value);
-    this.themeService.updatePrime();
-    console.log(this.themeService.getPreset())
+    this.themeService.syncPreset();
   }
 
   incrementCounter(): void {
@@ -74,22 +69,22 @@ export class HeaderComponent implements OnInit {
     {
       id: 2,
       text: 'Пользователи',
-      link: '/user-page'
+      link: '/user-page',
     },
   ]
 
-  paymentOptions: IPaymentOptions[] = [
+  presetOption: IPresetOption[] = [
     { 
       name: "Aura",  
-      value: Aura 
+      value: Aura,
     },
     { 
       name: "Lara",  
-      value: Lara 
+      value: Lara, 
     },
     { 
       name: "Nora",  
-      value: Nora 
+      value: Nora,
     }
   ]
 
