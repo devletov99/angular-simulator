@@ -44,7 +44,7 @@
 <div>
 	<p-selectbutton 
 		class="select-button" 
-		[options]="presetOption" 
+		[options]="themeService.presetOption" 
 		optionLabel="name" 
 		optionValue="value"
 		(onOptionClick)="onPresetSelect($event)"

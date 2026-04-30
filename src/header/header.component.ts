@@ -20,7 +20,7 @@ import { IPresetOption } from '../app/assets/interfaces/IPresetOption';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   destroyRef: DestroyRef = inject(DestroyRef);
   themeService: ThemeService = inject(ThemeService);
@@ -36,20 +36,12 @@ export class HeaderComponent implements OnInit {
     }, 1000);
   }
 
-  ngOnInit() {
-     this.themeService.isDarkMode$.pipe(
-      tap((value: boolean) => document.documentElement.classList.toggle('dark', value)),
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe();
-  }
-
   onToggleMode(value: boolean): void {
     this.themeService.setMode(value);
   }
 
   onPresetSelect(event: SelectButtonOptionClickEvent): void {
     this.themeService.setPreset(event.option.value);
-    this.themeService.syncPreset();
   }
 
   incrementCounter(): void {
@@ -71,21 +63,6 @@ export class HeaderComponent implements OnInit {
       text: 'Пользователи',
       link: '/user-page',
     },
-  ]
-
-  presetOption: IPresetOption[] = [
-    { 
-      name: "Aura",  
-      value: Aura,
-    },
-    { 
-      name: "Lara",  
-      value: Lara, 
-    },
-    { 
-      name: "Nora",  
-      value: Nora,
-    }
   ]
 
 }
