@@ -23,7 +23,7 @@
               placeholder="Дата похода" 
               name="date" 
               required>
-            <img class="calendar-icon" src="/images/calendar-icon.svg" alt="Дата">
+              <fa-icon class="calendar-icon" [icon]="faCalendar"/>
           </div>
           <span>укажите диапазон</span>
         </label>
@@ -52,7 +52,7 @@
       class="live-input" 
       type="text" 
       name="input-live">
-    <img src="/images/arrow-input-icon.svg" alt="стрелка">
+      <fa-icon [icon]="faChevronDown"/>
     <p>{{ liveInput }}</p>
   </div>
 </section>
@@ -83,7 +83,7 @@
           (mouseenter)="hoverServiceId = service.id"
           (mouseleave)="hoverServiceId = null"
           [class.active] = "hoverServiceId === service.id">
-          <img [src]="'/images/' + service.img + '.svg'">
+          <fa-icon [icon]="service.icon"/>
           <div>
             <h3 class="fs-18">{{ service.title }}</h3>
             <p>{{ service.description }}</p>
@@ -115,7 +115,7 @@
       <div class="destination-card">
         <img [src]="'/images/destinations/' + destination.img + '.png'" width="380px" height="500px">
         <div class="rating-container">
-          <img [src]="'/images/destinations/' + destination.icon + '.svg'" width="17px" height="17px">
+          <fa-icon [icon]="faStar" style="font-size: 20px"/>
           <span>{{ destination.rating }}</span>
         </div>
         <div class="destination-info">

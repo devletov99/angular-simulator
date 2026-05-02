@@ -1,15 +1,15 @@
 import { Component, inject } from '@angular/core';
-import { Color } from '../enums/Color';
 import { LocalStorageService } from '../local-storage.service';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from "../footer/footer.component";
 import { MessageComponent } from '../message/message.component';
 import { LoaderComponent } from "../loader/loader.component";
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, MessageComponent, LoaderComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, MessageComponent, LoaderComponent, FontAwesomeModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [LocalStorageService],
@@ -17,7 +17,7 @@ import { LoaderComponent } from "../loader/loader.component";
 export class AppComponent {    
 
   localStorageService: LocalStorageService = inject(LocalStorageService);
-   
+
   constructor() {
     this.localStorageService.setValue('time', new Date());
     this.localStorageService.getValue('time');
@@ -28,11 +28,6 @@ export class AppComponent {
 
     this.localStorageService.setValue('visit', visitNumber);
   }
-  
-  isMainColor(color: Color): boolean {
-    const rgbColors: Color[] = [Color.RED, Color.GREEN, Color.BLUE];
-    return rgbColors.includes(color);
-  }
 
   saveLastVisit(): void {
     const lastVisitTime: Date = new Date();
@@ -40,9 +35,9 @@ export class AppComponent {
   }
 
   saveQuantityVisit(): void {
-    const gatVisit: string | null = localStorage.getItem('visit');
+    const gatVisit: string | null = this.localStorageService.getValue('visit');
     const visitNumber: number = Number(gatVisit || 0) + 1;
-    localStorage.setItem('visit', String(visitNumber));
+    this.localStorageService.setValue('visit', visitNumber);
   }
   
-};
+}

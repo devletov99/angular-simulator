@@ -3,10 +3,12 @@
 		<div class="container-logo">
 			<img src="/images/logo-company.svg" alt="логотип компании">
 			<span class="company-name">{{ companyName }}</span>
+			<p-toggleswitch id="toogle-mode" (onChange)="onToggleMode($event.checked)" [ngModel]="themeService.isDarkMode$ | async"/>
 		</div>
 		<nav class="container-nav fs-18">
 			@for (navigation of navigations; track navigation.id) { 
 				<a 
+					id="navigator-id"
 					[routerLinkActiveOptions]="{ exact: true }"
 					[routerLink]="navigation.link"
 					routerLinkActive="active-link">
@@ -39,4 +41,15 @@
 			{{ !isCounterVisible ? 'показать счётчик' : 'показвть дату' }}
 		</button>
 	</div>
+</div>
+<div>
+	<p-selectbutton 
+		class="select-button" 
+		id="select-person"
+		[options]="themeService.presetOption" 
+		optionLabel="name" 
+		optionValue="value"
+		(onOptionClick)="onPresetSelect($event)"
+		[ngModel]="themeService.preset$ | async"
+	/>
 </div>

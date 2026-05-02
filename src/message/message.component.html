@@ -9,15 +9,15 @@
 <div>
 	<ng-template #messages let-message="currentMessage">
 		<div class="message">
-			<img src="/images/service/message-icon.svg" width="40px" height="40px">
+			<fa-icon [icon]="faMessage"/>
 			<h4>{{ message.type }}</h4>
 			<p>{{ message.text }}</p>
-			<img 
+			<fa-icon
+			[icon]="faXmark"
 			(click)="closeMessage(message)" 
-			class="img-close" src="../images/service/close-icon.svg"
+			class="img-close" 
 			id="clossse-message" 
-			width="20px" 
-			height="20px">
+			style="font-size: 20px"/>
 		</div>
 	</ng-template>
 </div>
