@@ -92,3 +92,11 @@ body {
   display: flex;
   justify-content: space-between;
 }
+
+.gradient-border {
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(90deg, #ff6b6b, #ffd93d, #6bcb77, #4d96ff) border-box;
+  background-size: 300% 300%;
+  animation: borderRotate 3s ease infinite;
+}

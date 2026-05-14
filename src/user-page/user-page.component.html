@@ -1,6 +1,7 @@
 <app-create-user (createUser)="onSubmitForm($event)"/>
 <app-users-filter (filterUser)="onFilterUsers($event)"/>
 <div class="container-users">
+  <p>{{ usersQuantity | pluralize }}</p>
   <div class="users-list">
     @for (user of filteredUsers$ | async; track user.id) {
     <app-user 
@@ -11,4 +12,5 @@
       <p class="empty-message fs-26">Нет пользователей для отображения</p>
     }
   </div>
-  <button id="update-users" class="primary-button update-users" (click)="updateUsers()">обовить пользователей</button>.  
+  <button appAddBold id="update-users" class="primary-button update-users" (click)="updateUsers()">обновить пользователей</button>.  
+</div>

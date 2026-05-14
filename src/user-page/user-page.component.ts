@@ -6,13 +6,14 @@ import { AsyncPipe } from '@angular/common';
 import { UserCardComponent } from '../user/user-card.component';
 import { CreateUserComponent } from "../create-user/create-user.component";
 import { UsersFilterComponent } from "../users-filter/users-filter.component";
-import { ReactiveFormsModule } from '@angular/forms';
 import { LocalStorageService } from '../local-storage.service';
-
+import { PluralizePipe } from '../pipes/pluralize.pipe';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { AddBoldDirective } from '../directive/add-bold.directive';
 
 @Component({
   selector: 'app-user-page',
-  imports: [AsyncPipe, UserCardComponent, CreateUserComponent, UsersFilterComponent, ReactiveFormsModule],
+  imports: [AsyncPipe, UserCardComponent, CreateUserComponent, UsersFilterComponent, PluralizePipe, AddBoldDirective],
   templateUrl: './user-page.component.html',
   styleUrl: './user-page.component.scss',
 })
@@ -20,6 +21,9 @@ export class UserPageComponent implements OnInit {
 
   userService: UserService = inject(UserService);
   localStorage: LocalStorageService = inject(LocalStorageService);
+  destroyRef: DestroyRef = inject(DestroyRef);
+
+  usersQuantity!: number;
 
   private filterSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
@@ -33,6 +37,13 @@ export class UserPageComponent implements OnInit {
       .pipe(
         tap((users: IUser[]) => this.userService.setUsers(users)),
       ).subscribe();
+
+    this.filteredUsers$.pipe(
+      map(users => users.length),
+      tap(users => this.usersQuantity = users),
+      takeUntilDestroyed(this.destroyRef)
+    ).subscribe()
+    
   }
 
   updateUsers(): void {
