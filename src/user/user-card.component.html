@@ -14,7 +14,7 @@
     </div>
     <div class="detail-row"> 
       <span>Телефон:</span>
-      <p>{{ user.phone | formatPhone: 'international' }}</p>
+      <p>{{ user.phone | formatPhone: phoneFormat.MASKED }}</p>
     </div>
     <div class="detail-row"> 
       <span>Веб-сайт:</span>

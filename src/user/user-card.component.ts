@@ -3,6 +3,7 @@ import { IUser } from '../app/assets/interfaces/IUser';
 import { LowerCasePipe } from '@angular/common';
 import { FormatPhonePipe } from '../pipes/format-phone.pipe';
 import { AnimatedGradientDirective } from '../directive/animated-gradient.directive';
+import { PhoneFormat } from '../enums/PhoneFormat';
 
 @Component({
   selector: 'app-user',
@@ -15,4 +16,5 @@ export class UserCardComponent {
   @Input({ required: true }) user!: IUser;
   @Output() deleteUser: EventEmitter<number> = new EventEmitter<number>();
 
+  phoneFormat: typeof PhoneFormat = PhoneFormat;
 }

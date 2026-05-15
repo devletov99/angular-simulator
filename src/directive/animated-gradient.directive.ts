@@ -5,11 +5,11 @@ import { Directive, HostBinding, HostListener, Input } from '@angular/core';
 })
 export class AnimatedGradientDirective {
 
-  @Input() gradientConfiguration: IGradient = {};
+  @Input() gradientConfiguration!: IAnimationConfig;
 
   private timer!: number;
 
-  ngOnInit() {
+  ngOnInit(): void {
     if (this.gradientConfiguration.colors) {
       this.background = `linear-gradient(white, white) padding-box, linear-gradient(90deg, ${ this.gradientConfiguration.colors.join(', ') }) border-box`;
     }
