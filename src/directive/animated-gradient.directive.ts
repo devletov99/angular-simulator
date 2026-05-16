@@ -5,7 +5,7 @@ import { Directive, HostBinding, HostListener, Input } from '@angular/core';
 })
 export class AnimatedGradientDirective {
 
-  @Input() gradientConfiguration!: IAnimationConfig;
+  @Input() gradientConfiguration!: IAnimatedGradientConfig;
 
   private timer!: number;
 

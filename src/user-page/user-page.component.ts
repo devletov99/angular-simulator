@@ -39,8 +39,7 @@ export class UserPageComponent implements OnInit {
       ).subscribe();
 
     this.filteredUsers$.pipe(
-      map(users => users.length),
-      tap(users => this.usersQuantity = users),
+      tap(users => this.usersQuantity = users.length),
       takeUntilDestroyed(this.destroyRef)
     ).subscribe()
     

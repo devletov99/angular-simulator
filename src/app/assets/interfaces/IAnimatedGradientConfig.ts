@@ -1,4 +1,4 @@
-interface IAnimationConfig {
+interface IAnimatedGradientConfig {
   delay?: number;
   colors?: string[];
   thickness?: number;
