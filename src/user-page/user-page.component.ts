@@ -29,8 +29,8 @@ export class UserPageComponent implements OnInit {
 
   filteredUsers$: Observable<IUser[]> = combineLatest([this.userService.users$, this.filterSubject])
     .pipe(
-      map(([users, filter]) => users.filter((user: IUser) => user.name.toLowerCase().includes(filter.toLowerCase()))),
-      tap(users => this.usersQuantity = users.length),
+      map(([users, filter]: [IUser[], string]) => users.filter((user: IUser) => user.name.toLowerCase().includes(filter.toLowerCase()))),
+      tap((users: IUser[]) => this.usersQuantity = users.length),
     );
 
   ngOnInit(): void {
