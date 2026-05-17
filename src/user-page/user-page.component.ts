@@ -30,6 +30,7 @@ export class UserPageComponent implements OnInit {
   filteredUsers$: Observable<IUser[]> = combineLatest([this.userService.users$, this.filterSubject])
     .pipe(
       map(([users, filter]) => users.filter((user: IUser) => user.name.toLowerCase().includes(filter.toLowerCase()))),
+      tap(users => this.usersQuantity = users.length),
     );
 
   ngOnInit(): void {
@@ -37,12 +38,6 @@ export class UserPageComponent implements OnInit {
       .pipe(
         tap((users: IUser[]) => this.userService.setUsers(users)),
       ).subscribe();
-
-    this.filteredUsers$.pipe(
-      tap(users => this.usersQuantity = users.length),
-      takeUntilDestroyed(this.destroyRef)
-    ).subscribe()
-    
   }
 
   updateUsers(): void {

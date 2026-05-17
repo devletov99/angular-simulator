@@ -12,18 +12,18 @@ export class PluralizePipe implements PipeTransform {
     const lastOne: number = number % 10;
 
     if (lastTwo >= 11 && lastTwo <= 19) {
-      return `${number} ${text[2]}`
+      return `${ number } ${ text[2] }`
     }
 
     switch (lastOne) {
       case 1:
-        return `${ value } ${text[0]}`;
+        return `${ value } ${ text[0]}`;
       case 2: 
       case 3: 
       case 4: 
-        return `${ value } ${text[1]}`;
+        return `${ value } ${ text[1] }`;
       default:
-        return `${ value } ${text[2]}`;
+        return `${ value } ${ text[2] }`;
     }
   }
 
