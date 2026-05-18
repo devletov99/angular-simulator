@@ -1,7 +1,9 @@
 <app-create-user (createUser)="onSubmitForm($event)"/>
 <app-users-filter (filterUser)="onFilterUsers($event)"/>
 <div class="container-users">
-  <p>{{ usersQuantity | pluralize: ['пользователь', 'пользователя', 'пользователей'] }}</p>
+  @if (filteredUsers$ | async; as users) {
+    <p>{{ users.length | pluralize: ['пользователь', 'пользователя', 'пользователей'] }}</p>
+  }
   <div class="users-list">
     @for (user of filteredUsers$ | async; track user.id) {
     <app-user 
