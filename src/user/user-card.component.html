@@ -1,6 +1,6 @@
-<div class="user-card">
+<div animatedGradient [gradientConfiguration]="({ delay: 10000 })" class="user-card">
   <div class="user-info">
-    <p>{{ user.name }}</p>
+    <p>{{ user.name | uppercase }}</p>
     <p>{{ user.username }}</p>
   </div>
   <div class="user-details">
@@ -14,7 +14,7 @@
     </div>
     <div class="detail-row"> 
       <span>Телефон:</span>
-      <p>{{ user.phone }}</p>
+      <p>{{ user.phone | formatPhone: phoneFormat.MASKED }}</p>
     </div>
     <div class="detail-row"> 
       <span>Веб-сайт:</span>
