@@ -10,7 +10,9 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req)
     .pipe(
       catchError((error: HttpErrorResponse) => {
-        messageService.showError(error.message);
+        if (error.status >= 500 && error.status < 600) {
+          messageService.showError(error.message);
+        }
         return throwError(() => error);
       })
     );
