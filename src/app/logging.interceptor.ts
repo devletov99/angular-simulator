@@ -10,21 +10,21 @@ export const loggingInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>,
   });
 
   const startTime: number = cloneReq.context.get(REQUEST_START_TIME);
-  const getDuration: number = Date.now() - startTime;
+  const duration: number = Date.now() - startTime;
 
   return next(cloneReq)
     .pipe(
       tap({
         next: (event: HttpEvent<unknown>): void => {
           if (event instanceof HttpResponse) {
-            console.log(`Метод: ${ cloneReq.method } Статус: ${ event.status } Запрос ${ cloneReq.url } выполнился за ${ getDuration }ms`);
+            console.log(`Метод: ${ cloneReq.method } Статус: ${ event.status } Запрос ${ cloneReq.url } выполнился за ${ duration }ms`);
           }
         },
 
         error: (error: HttpErrorResponse): void => {
           const statusInfo: string = `Статус ${ error.status }`;
 
-          console.error(`[HTTP ERROR] Метод: ${ cloneReq.method } URL: ${ cloneReq.url } ${ statusInfo } Время ${ getDuration }ms`);
+          console.error(`[HTTP ERROR] Метод: ${ cloneReq.method } URL: ${ cloneReq.url } ${ statusInfo } Время ${ duration }ms`);
         }
       })
     )
