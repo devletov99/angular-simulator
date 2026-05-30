@@ -4,8 +4,8 @@ import { routes } from './app.routes';
 import { providePrimeNG } from 'primeng/config';
 import Lara from "@primeuix/themes/lara";
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { loggingInterceptor } from './logging.interceptor';
-import { errorInterceptor } from './error.interceptor';
+import { loggingInterceptor } from './interceptors/logging.interceptor';
+import { errorInterceptor } from './interceptors/error.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [

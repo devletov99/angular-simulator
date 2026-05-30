@@ -1,7 +1,8 @@
 import { Component, EventEmitter, inject, Output, Pipe } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IUser } from '../app/assets/interfaces/IUser';
-import { AddBoldDirective } from '../directive/add-bold.directive';
+import { AddBoldDirective } from '../../directive/add-bold.directive';
+import { IUser } from '../../interfaces/IUser';
+
 
 @Component({
   selector: 'app-create-user',

@@ -1,17 +1,11 @@
 import { Component, DestroyRef, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
-import { INavigation } from '../app/assets/interfaces/INavigation';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule, SelectButtonOptionClickEvent } from 'primeng/selectbutton';
-import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
-import Nora from '@primeuix/themes/nora';
-import Lara from '@primeuix/themes/lara';
-import Aura from '@primeuix/themes/aura';
-import { ThemeService } from '../theme.service';
-import { tap } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { IPresetOption } from '../app/assets/interfaces/IPresetOption';
+import { AsyncPipe } from '@angular/common';
+import { INavigation } from '../../interfaces/INavigation';
+import { ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-header',

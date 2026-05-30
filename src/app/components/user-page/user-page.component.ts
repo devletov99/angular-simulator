@@ -1,15 +1,14 @@
 import { Component, DestroyRef, inject, OnInit} from '@angular/core';
-import { UserService } from '../user.service';
+import { UserService } from '../../services/user.service';
 import { BehaviorSubject, combineLatest, map, Observable, pipe, tap } from 'rxjs';
-import { IUser } from '../app/assets/interfaces/IUser';
 import { AsyncPipe } from '@angular/common';
-import { UserCardComponent } from '../user/user-card.component';
 import { CreateUserComponent } from "../create-user/create-user.component";
 import { UsersFilterComponent } from "../users-filter/users-filter.component";
-import { LocalStorageService } from '../local-storage.service';
-import { PluralizePipe } from '../pipes/pluralize.pipe';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { AddBoldDirective } from '../directive/add-bold.directive';
+import { LocalStorageService } from '../../services/local-storage.service';
+import { PluralizePipe } from '../../pipes/pluralize.pipe';
+import { AddBoldDirective } from '../../directive/add-bold.directive';
+import { IUser } from '../../interfaces/IUser';
+import { UserCardComponent } from '../user/user-card.component';
 
 @Component({
   selector: 'app-user-page',

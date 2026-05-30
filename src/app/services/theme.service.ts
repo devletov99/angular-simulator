@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { LocalStorageService } from './local-storage.service';
+import { LocalStorageService } from './app/services/local-storage.service';
 import { updatePreset } from '@primeuix/themes';
 import { Preset } from '@primeuix/themes/types';
 import Aura from "@primeuix/themes/aura";
