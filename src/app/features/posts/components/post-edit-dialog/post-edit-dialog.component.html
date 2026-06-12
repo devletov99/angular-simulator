@@ -1,1 +1,23 @@
-<p>post-edit-dialog works!</p>
+<div>
+  <form [formGroup]="formEdit">
+    <div>
+      <label>
+        title
+        <input type="text" formControlName="title">
+      </label>
+    </div>
+    <div>
+      <label>
+        body
+        <textarea name="" id="" formControlName="body"></textarea>
+      </label>
+    </div>
+    <div>
+      <label>
+        tags
+        <input type="text" formControlName="tags">
+      </label>
+    </div>
+  </form>
+  <button (click)="save()">Сохранить</button>
+</div>

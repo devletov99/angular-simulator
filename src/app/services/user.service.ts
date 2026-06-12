@@ -1,10 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, finalize, Observable, of } from 'rxjs';
-import { IUser } from '../assets/interfaces/IUser';
-import { UserApiService } from '../../user-api.service';
 import { LoaderService } from './loader.service';
 import { MessageService } from './message.service';
 import { LocalStorageService } from './local-storage.service';
+import { IUser } from '../interfaces/IUser';
+import { UserApiService } from './user-api.service';
 
 @Injectable({
   providedIn: 'root',

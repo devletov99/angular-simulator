@@ -1,1 +1,26 @@
-<p>post-detail works!</p>
+@if (postService.post$ | async; as post) {
+  <div>
+    <p-table [value]="[post]">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>title</th>
+          <th>body</th>
+          <th>tags</th>
+          <th>likes</th>
+          <th>dislikes</th>
+          <th>views</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-post>
+        <tr>
+          <td>{{ post.title }}</td>
+          <td>{{ post.body }}</td>
+          <td>{{ post.tags }}</td>
+          <td>{{ post.reactions?.likes }}</td>
+          <td>{{ post.reactions?.dislikes }}</td>
+          <td>{{ post.views }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+}

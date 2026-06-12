@@ -1,16 +1,16 @@
 import {Component, inject} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ILocation } from '../app/assets/interfaces/ILocation'; 
-import { IService } from '../app/assets/interfaces/IService';
-import { IParticipant } from '../app/assets/interfaces/IParticipant';
-import { IDestination } from '../app/assets/interfaces/IDestination';
-import { IBlog } from '../app/assets/interfaces/IBlog';
-import { IPhoto } from '../app/assets/interfaces/IPhoto';
-import { MessageService } from '../message.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faStar, faPersonWalking, faShield, faTag } from '@fortawesome/free-solid-svg-icons'
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faCalendar, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { IBlog } from '../../interfaces/IBlog';
+import { IDestination } from '../../interfaces/IDestination';
+import { ILocation } from '../../interfaces/ILocation';
+import { IParticipant } from '../../interfaces/IParticipant';
+import { IPhoto } from '../../interfaces/IPhoto';
+import { IService } from '../../interfaces/IService';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-home-page',

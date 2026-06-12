@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { LocalStorageService } from './services/local-storage.service';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from '../header/header.component';
-import { FooterComponent } from "./components/footer/footer.component";
-import { MessageComponent } from '../message/message.component';
-import { LoaderComponent } from "../loader/loader.component";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { MessageComponent } from './components/message/message.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @Component({
   selector: 'app-root',

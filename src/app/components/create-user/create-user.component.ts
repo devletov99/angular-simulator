@@ -12,7 +12,7 @@ import { IUser } from '../../interfaces/IUser';
 })
 export class CreateUserComponent {
 
-  @Output() createUser : EventEmitter<IUser> = new EventEmitter<IUser>();
+  @Output() createUser: EventEmitter<IUser> = new EventEmitter<IUser>();
 
   private fb: FormBuilder = inject(FormBuilder);
 
