@@ -1,9 +1,9 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IPost } from '../../interfaces/IPost';
-import { IPostCreate } from '../../interfaces/IPostCreate';
-import { IPostsResponse } from '../../interfaces/IPostResponse';
+import { IPost } from '../interfaces/IPost';
+import { IPostCreate } from '../interfaces/IPostCreate';
+import { IPostsResponse } from '../interfaces/IPostResponse';
 
 @Injectable({
   providedIn: 'root',

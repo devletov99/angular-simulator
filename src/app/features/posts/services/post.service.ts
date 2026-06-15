@@ -2,9 +2,9 @@ import { DestroyRef, inject, Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, filter, finalize, map, Observable, of, ReplaySubject, switchMap, tap } from 'rxjs';
 import { PostApiService } from './post-api.service';
 import { MessageService } from '../../../services/message.service';
-import { IPost } from '../../interfaces/IPost';
-import { IPostCreate } from '../../interfaces/IPostCreate';
-import { IPostsResponse } from '../../interfaces/IPostResponse';
+import { IPost } from '../interfaces/IPost';
+import { IPostCreate } from '../interfaces/IPostCreate';
+import { IPostsResponse } from '../interfaces/IPostResponse';
 
 @Injectable({
   providedIn: 'root',

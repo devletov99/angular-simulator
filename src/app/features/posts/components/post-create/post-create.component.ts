@@ -1,10 +1,10 @@
 import { Component, DestroyRef, EventEmitter, inject, Output } from '@angular/core';
 import { Form, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IPost } from '../../../interfaces/IPost';
+import { IPost } from '../../interfaces/IPost';
 import { PostService } from '../../services/post.service';
 import { finalize, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { IPostCreate } from '../../../interfaces/IPostCreate';
+import { IPostCreate } from '../../interfaces/IPostCreate';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { postResolver } from './features/posts/post.resolver';
+import { postResolver } from './features/posts/resolvers/post.resolver';
 
 export const routes: Routes = [
   { 
