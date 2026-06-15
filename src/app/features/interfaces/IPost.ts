@@ -3,18 +3,10 @@ export interface IPost {
   title: string;
   body: string;
   tags: string[];
-  reactions?: {
+  reactions: {
     likes: number;
     dislikes: number;
   };
-  views?: number;
-  userId?: number;
-  isSkeleton?: boolean;
-}
-
-export interface IPostsResponse {
-  posts: IPost[];
-  total: number;
-  skip: number;
-  limit: number;
+  views: number;
+  userId: number;
 }

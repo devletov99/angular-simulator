@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DialogService, DynamicDialogConfig, DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
@@ -15,19 +15,24 @@ export class PostEditDialogComponent implements OnInit {
   dialogConfig: DynamicDialogConfig = inject(DynamicDialogConfig);
   fb: FormBuilder = inject(FormBuilder);
 
-  formEdit = this.fb.nonNullable.group({
+  editForm: FormGroup = this.fb.nonNullable.group({
     title: ['', Validators.required],
     body: ['', Validators.required],
     tags: ['', Validators.required],
   });
 
   ngOnInit(): void {
-    this.formEdit.patchValue(this.dialogConfig.data.post);
+    this.editForm.patchValue(this.dialogConfig.data.post);
   }
 
   save(): void {
-    this.dynamicDialogRef.close(this.formEdit.getRawValue());
+    this.dynamicDialogRef.close(this.editForm.getRawValue());
   }
+
+  close(): void {
+    this.dynamicDialogRef.close()
+  }
+
 
 }
  

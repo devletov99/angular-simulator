@@ -18,7 +18,6 @@ export class PostDetailComponent implements OnInit {
 
   ngOnInit(): void {
     const post: IPost = this.route.snapshot.data['post'];
-
     this.postService.setDetailPost(post);
   }
 

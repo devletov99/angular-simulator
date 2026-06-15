@@ -1,5 +1,5 @@
 <div class="center container-create wraper">
-  <form [formGroup]="formPostCreate">
+  <form [formGroup]="postCreateForm">
     <div>
       <label>
         title
@@ -20,7 +20,12 @@
     </div>
   </form>
   <div class="form-actions between">
-    <button (click)="onSubmitForm()" id="btn-submit" class="primary-button">Опубликовать пост</button>
-    <button id="btn-closse" class="primary-button">Отмена</button>
+    <button 
+      (click)="onSubmitForm()" 
+      id="btn-submit" 
+      class="primary-button">
+      Опубликовать пост
+    </button>
+    <button (click)="goBack()" id="btn-close" class="primary-button">Отмена</button>
   </div>
 </div>

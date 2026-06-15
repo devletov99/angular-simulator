@@ -5,14 +5,14 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { PostService } from '../../services/post.service';
 import { AsyncPipe } from '@angular/common';
 import { EMPTY, switchMap, tap } from 'rxjs';
-import { IPost, IPostsResponse } from '../../../interfaces/IPost';
+import { IPost } from '../../../interfaces/IPost';
 import { MenuItem } from 'primeng/api';
 import { ContextMenu } from '../../../enums/Menu';
 import { Router } from '@angular/router';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostEditDialogComponent } from '../post-edit-dialog/post-edit-dialog.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { PostCreateComponent } from "../post-create/post-create.component";
+import { IPostsResponse } from '../../../interfaces/IPostResponse';
 
 @Component({
   selector: 'app-posts',
@@ -32,6 +32,7 @@ export class PostsComponent implements OnInit {
   itemsMenu: MenuItem[] = [];
   selectedPost: IPost | null = null;
   dialogRef: DynamicDialogRef | null = null;
+  isLoading: boolean = true;
  
   ngOnInit(): void {
     this.loadPosts(0);
@@ -62,6 +63,7 @@ export class PostsComponent implements OnInit {
       tap((response: IPostsResponse) => { 
         this.postService.setPost(response.posts);
         this.postService.setTotal(response.total);
+        this.isLoading = false;
       }),
     ).subscribe();
   }

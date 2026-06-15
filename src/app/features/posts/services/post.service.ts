@@ -2,9 +2,9 @@ import { DestroyRef, inject, Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, filter, finalize, map, Observable, of, ReplaySubject, switchMap, tap } from 'rxjs';
 import { PostApiService } from './post-api.service';
 import { MessageService } from '../../../services/message.service';
-import { IPost, IPostsResponse } from '../../interfaces/IPost';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { IPost } from '../../interfaces/IPost';
 import { IPostCreate } from '../../interfaces/IPostCreate';
+import { IPostsResponse } from '../../interfaces/IPostResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -14,10 +14,8 @@ export class PostService {
   postApiService: PostApiService = inject(PostApiService);
   messageService: MessageService = inject(MessageService);
   destroyRef: DestroyRef = inject(DestroyRef);
-
-  skeleton: IPost[] = Array.from({ length: 5 }).map(() => ({ isSkeleton: true } as IPost));
  
-  private postsSubject: BehaviorSubject<IPost[]> = new BehaviorSubject <IPost[]>(this.skeleton);
+  private postsSubject: BehaviorSubject<IPost[]> = new BehaviorSubject <IPost[]>([]);
   posts$: Observable<IPost[]> = this.postsSubject.asObservable();
 
   private postSubject: ReplaySubject<IPost> = new ReplaySubject<IPost>(1)
@@ -43,7 +41,6 @@ export class PostService {
   }
 
   loadPost(limit: number, skip: number): Observable<IPostsResponse> {
-    this.postsSubject.next(this.skeleton)
     return this.postApiService.getPosts(limit, skip)
      .pipe(
       tap(),
