@@ -4,14 +4,13 @@ import { ContextMenuModule } from 'primeng/contextmenu';
 import { SkeletonModule } from 'primeng/skeleton';
 import { PostService } from '../../services/post.service';
 import { AsyncPipe } from '@angular/common';
-import { EMPTY, switchMap, tap } from 'rxjs';
+import { EMPTY, switchMap, take, tap } from 'rxjs';
 import { IPost } from '../../interfaces/IPost';
 import { MenuItem } from 'primeng/api';
-import { ContextMenu } from '../../enums/Menu';
+import { ContextMenu } from '../../enums/ContextMenu';
 import { Router } from '@angular/router';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostEditDialogComponent } from '../post-edit-dialog/post-edit-dialog.component';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { IPostsResponse } from '../../interfaces/IPostResponse';
 
 @Component({
@@ -26,7 +25,6 @@ export class PostsComponent implements OnInit {
   postService: PostService = inject(PostService);
   private router: Router = inject(Router);
   private dialogService: DialogService = inject(DialogService);
-  destroyRef: DestroyRef = inject(DestroyRef);
 
   rows: number = 5;
   itemsMenu: MenuItem[] = [];
@@ -45,7 +43,7 @@ export class PostsComponent implements OnInit {
       
       { label: ContextMenu.EDIT, icon: 'pi pi-eye', command: () => { 
         if (this.selectedPost) {
-          this.openModalEdit(this.selectedPost);
+          this.openEditModal(this.selectedPost);
         }
       }},
 
@@ -81,7 +79,7 @@ export class PostsComponent implements OnInit {
     this.router.navigate(['/posts', id]);
   }
 
-  openModalEdit(post: IPost): void {
+  openEditModal(post: IPost): void {
     this.postService.getPost(post.id)
       .pipe(
         switchMap((fullPost: IPost) => {
@@ -95,10 +93,9 @@ export class PostsComponent implements OnInit {
           if (updatedPost) {
             const postWithId: IPost = { ...updatedPost, id: post.id }
             this.postService.updatePost(postWithId);
-            console.log(postWithId)
           }
         }),
-        takeUntilDestroyed(this.destroyRef),
+        take(1),
       ).subscribe();
   }
   

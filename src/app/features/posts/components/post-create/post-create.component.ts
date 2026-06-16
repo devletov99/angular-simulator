@@ -29,7 +29,7 @@ export class PostCreateComponent {
   })
 
   onSubmitForm(): void {
-    this.postService.publishPost(this.postCreateForm.value)
+    this.postService.postCreate(this.postCreateForm.value)
       .pipe(
         tap((post: IPost) => { 
           this.postService.setPost([post, ...this.postService.getPosts()]);

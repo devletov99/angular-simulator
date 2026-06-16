@@ -7,18 +7,18 @@ import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-post-detail',
-  imports: [TableModule, AsyncPipe],
+  imports: [TableModule],
   templateUrl: './post-detail.component.html',
   styleUrl: './post-detail.component.scss',
 })
 export class PostDetailComponent implements OnInit {
 
   private route: ActivatedRoute = inject(ActivatedRoute);
-  postService: PostService = inject(PostService);
+
+  post!: IPost;
 
   ngOnInit(): void {
-    const post: IPost = this.route.snapshot.data['post'];
-    this.postService.setDetailPost(post);
+    this.post = this.route.snapshot.data['post'];
   }
 
 }

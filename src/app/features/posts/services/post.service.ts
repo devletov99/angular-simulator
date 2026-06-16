@@ -18,18 +18,11 @@ export class PostService {
   private postsSubject: BehaviorSubject<IPost[]> = new BehaviorSubject <IPost[]>([]);
   posts$: Observable<IPost[]> = this.postsSubject.asObservable();
 
-  private postSubject: ReplaySubject<IPost> = new ReplaySubject<IPost>(1)
-  post$: Observable<IPost> = this.postSubject.asObservable()
-
-  private totalRecord: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  total$: Observable<number> = this.totalRecord.asObservable();
+  private totalSubject: BehaviorSubject<number> = new BehaviorSubject<number>(0);
+  total$: Observable<number> = this.totalSubject.asObservable();
 
   setPost(post: IPost[]): void {
     this.postsSubject.next(post);
-  }
-
-  setDetailPost(post: IPost): void {
-    this.postSubject.next(post)
   }
 
   getPosts(): IPost[] {
@@ -43,16 +36,15 @@ export class PostService {
   loadPost(limit: number, skip: number): Observable<IPostsResponse> {
     return this.postApiService.getPosts(limit, skip)
      .pipe(
-      tap(),
-      catchError(() => {
-        this.messageService.showError('Посты не загружены');
-        return of({ posts: [], total: 0, skip: 0, limit });
-      }),
+        catchError(() => {
+          this.messageService.showError('Посты не загружены');
+          return of({ posts: [], total: 0, skip: 0, limit });
+        }),
      );
   }
 
-  publishPost(post: IPostCreate): Observable<IPost> {
-    return this.postApiService.publishPost(post)
+  postCreate(post: IPostCreate): Observable<IPost> {
+    return this.postApiService.postCreate(post)
       .pipe(
         catchError(() => { 
           this.messageService.showError('Не удалось опубликовать.');
@@ -61,13 +53,10 @@ export class PostService {
       );
   }
 
-  updatePost(updatedPost: IPost) {
+  updatePost(updatedPost: IPost): void {
     const updated: IPost[] = this.getPosts()
-      .map(post => {
-        if (post.id === updatedPost.id) {
-          return { ...post, ...updatedPost }
-        }
-        return post;
+      .map((post: IPost) => {
+        return post.id === updatedPost.id ? { ...post, ...updatedPost } : post
       });
     this.setPost(updated);
   }
@@ -76,7 +65,7 @@ export class PostService {
     this.postApiService.deletePost(id)
       .pipe(
         tap(() => {
-          const updatePosts: IPost[] = this.getPosts().filter(post => post.id !== id);
+          const updatePosts: IPost[] = this.getPosts().filter((post: IPost) => post.id !== id);
           this.setPost(updatePosts);
         }),
         catchError(() => {
@@ -86,8 +75,8 @@ export class PostService {
       ).subscribe();
   }
 
-  setTotal(total: number) {
-    this.totalRecord.next(total);
+  setTotal(total: number): void {
+    this.totalSubject.next(total);
   }
   
 }

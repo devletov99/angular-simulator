@@ -30,7 +30,7 @@ export class PostApiService {
     return this.httpClient.delete<IPost>(`${this.apiUrl}/${id}`)
   }
 
-  publishPost(post: IPostCreate) {
+  postCreate(post: IPostCreate) {
     return this.httpClient.post<IPost>(`${this.apiUrl}/add`, post)
   }
 
