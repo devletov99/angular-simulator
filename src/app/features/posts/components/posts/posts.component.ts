@@ -29,7 +29,7 @@ export class PostsComponent implements OnInit {
   rows: number = 5;
   itemsMenu: MenuItem[] = [];
   selectedPost: IPost | null = null;
-  dialogRef: DynamicDialogRef | null = null;
+  private dialogRef: DynamicDialogRef | null = null;
   isLoading: boolean = true;
  
   ngOnInit(): void {

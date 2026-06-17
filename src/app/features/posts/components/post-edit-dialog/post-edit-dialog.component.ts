@@ -11,9 +11,9 @@ import { DialogService, DynamicDialogConfig, DynamicDialogModule, DynamicDialogR
 })
 export class PostEditDialogComponent implements OnInit {
   
-  dynamicDialogRef: DynamicDialogRef = inject(DynamicDialogRef);
-  dialogConfig: DynamicDialogConfig = inject(DynamicDialogConfig);
-  fb: FormBuilder = inject(FormBuilder);
+  private dynamicDialogRef: DynamicDialogRef = inject(DynamicDialogRef);
+  private dialogConfig: DynamicDialogConfig = inject(DynamicDialogConfig);
+  private fb: FormBuilder = inject(FormBuilder);
 
   editForm: FormGroup = this.fb.nonNullable.group({
     title: ['', Validators.required],

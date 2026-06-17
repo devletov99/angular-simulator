@@ -17,10 +17,9 @@ export class PostCreateComponent {
 
   @Output() createPost: EventEmitter<IPostCreate> = new EventEmitter<IPostCreate>()
 
-  fb: FormBuilder = inject(FormBuilder);
+  private fb: FormBuilder = inject(FormBuilder);
   postService: PostService = inject(PostService);
-  destroyRef: DestroyRef = inject(DestroyRef);
-  router: Router = inject(Router);
+  private router: Router = inject(Router);
 
   postCreateForm: FormGroup = this.fb.nonNullable.group({
     title: ['', Validators.required],
@@ -29,7 +28,7 @@ export class PostCreateComponent {
   })
 
   onSubmitForm(): void {
-    this.postService.postCreate(this.postCreateForm.value)
+    this.postService.createPost(this.postCreateForm.value)
       .pipe(
         tap((post: IPost) => { 
           this.postService.setPost([post, ...this.postService.getPosts()]);
