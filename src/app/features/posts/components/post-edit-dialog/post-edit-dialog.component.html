@@ -3,22 +3,22 @@
     <div>
       <label>
         title
-        <input type="text" formControlName="title">
+        <input id="title" type="text" formControlName="title">
       </label>
     </div>
     <div>
       <label>
         body
-        <textarea name="" id="" formControlName="body"></textarea>
+        <textarea id="body" formControlName="body"></textarea>
       </label>
     </div>
     <div>
       <label>
         tags
-        <input type="text" formControlName="tags">
+        <input id="tags" type="text" formControlName="tags">
       </label>
     </div>
   </form>
-  <button (click)="save()">Сохранить</button>
-  <button (click)="close()">Отмена</button>
+  <button id="btn-save" (click)="save()">Сохранить</button>
+  <button id="btn-close" (click)="close()">Отмена</button>
 </div>

@@ -30,7 +30,7 @@ export class PostEditDialogComponent implements OnInit {
   }
 
   close(): void {
-    this.dynamicDialogRef.close()
+    this.dynamicDialogRef.close();
   }
 
 

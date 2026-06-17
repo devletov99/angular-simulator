@@ -23,15 +23,19 @@ export class PostApiService {
   }
 
   getPostById(id: number): Observable<IPost> {
-    return this.httpClient.get<IPost>(`${this.apiUrl}/${id}`);
+    return this.httpClient.get<IPost>(`${ this.apiUrl }/${ id }`);
+  }
+
+  createPost(post: IPostCreate): Observable<IPost> {
+    return this.httpClient.post<IPost>(`${ this.apiUrl }/add`, post)
+  }
+
+  updatePost(postChanges: Partial<IPost>): Observable<IPost> {
+    return this.httpClient.patch<IPost>(`${ this.apiUrl }/${ postChanges.id }`, postChanges);
   }
 
   deletePost(id: number): Observable<IPost> {
-    return this.httpClient.delete<IPost>(`${this.apiUrl}/${id}`)
-  }
-
-  postCreate(post: IPostCreate) {
-    return this.httpClient.post<IPost>(`${this.apiUrl}/add`, post)
+    return this.httpClient.delete<IPost>(`${ this.apiUrl }/${ id }`)
   }
 
 }

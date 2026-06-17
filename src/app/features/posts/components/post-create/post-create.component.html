@@ -3,19 +3,19 @@
     <div>
       <label>
         title
-        <input type="text" formControlName="title">
+        <input id="title" type="text" formControlName="title">
       </label>
     </div>
     <div>
       <label>
         body
-        <textarea id="" formControlName="body"></textarea>
+        <textarea id="body" formControlName="body"></textarea>
       </label>
     </div>
     <div>
       <label>
         tags
-        <input type="text" formControlName="tags">
+        <input id="tags" type="text" formControlName="tags">
       </label>
     </div>
   </form>
@@ -26,6 +26,11 @@
       class="primary-button">
       Опубликовать пост
     </button>
-    <button (click)="goBack()" id="btn-close" class="primary-button">Отмена</button>
+    <button 
+      (click)="goBack()" 
+      id="btn-close" 
+      class="primary-button">
+      Отмена
+    </button>
   </div>
 </div>

@@ -13,7 +13,6 @@ export class PostService {
 
   postApiService: PostApiService = inject(PostApiService);
   messageService: MessageService = inject(MessageService);
-  destroyRef: DestroyRef = inject(DestroyRef);
  
   private postsSubject: BehaviorSubject<IPost[]> = new BehaviorSubject <IPost[]>([]);
   posts$: Observable<IPost[]> = this.postsSubject.asObservable();
@@ -43,8 +42,8 @@ export class PostService {
      );
   }
 
-  postCreate(post: IPostCreate): Observable<IPost> {
-    return this.postApiService.postCreate(post)
+  createPost(post: IPostCreate): Observable<IPost> {
+    return this.postApiService.createPost(post)
       .pipe(
         catchError(() => { 
           this.messageService.showError('Не удалось опубликовать.');
@@ -54,11 +53,13 @@ export class PostService {
   }
 
   updatePost(updatedPost: IPost): void {
-    const updated: IPost[] = this.getPosts()
-      .map((post: IPost) => {
-        return post.id === updatedPost.id ? { ...post, ...updatedPost } : post
-      });
-    this.setPost(updated);
+  this.postApiService.updatePost(updatedPost)
+    .pipe(
+     tap(() => {
+      const posts: IPost[] = this.getPosts().map((post: IPost) => post.id === updatedPost.id ? updatedPost : post);
+      this.setPost(posts);
+     })
+    )
   }
 
   deletePost(id: number): void {

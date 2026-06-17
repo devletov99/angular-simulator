@@ -36,34 +36,39 @@ export class PostsComponent implements OnInit {
     this.loadPosts(0);
 
     this.itemsMenu = [
-      { label: ContextMenu.DETAILED, icon: 'pi pi-eye', command: () => { 
-        if (this.selectedPost) {
-          this.openPost(this.selectedPost.id) }
-        }},
-      
-      { label: ContextMenu.EDIT, icon: 'pi pi-eye', command: () => { 
-        if (this.selectedPost) {
-          this.openEditModal(this.selectedPost);
+      { 
+        label: ContextMenu.DETAILED, icon: 'pi pi-eye', command: () => { 
+          if (this.selectedPost) {
+            this.openPost(this.selectedPost.id) 
+          }
         }
-      }},
-
-      { label: ContextMenu.DELETED, icon: 'pi pi-fw pi-times', command: () => { 
-        if (this.selectedPost) { 
-          this.postService.deletePost(this.selectedPost.id);
+      },
+      { 
+        label: ContextMenu.EDIT, icon: 'pi pi-eye', command: () => { 
+          if (this.selectedPost) {
+            this.openEditModal(this.selectedPost);
+          }
         }
-      }},
+      },
+      { 
+        label: ContextMenu.DELETED, icon: 'pi pi-fw pi-times', command: () => { 
+          if (this.selectedPost) { 
+            this.postService.deletePost(this.selectedPost.id);
+          }
+        }
+      },
     ]
   }
 
   private loadPosts(skip: number): void {
     this.postService.loadPost(this.rows, skip)
-    .pipe(
-      tap((response: IPostsResponse) => { 
-        this.postService.setPost(response.posts);
-        this.postService.setTotal(response.total);
-        this.isLoading = false;
-      }),
-    ).subscribe();
+      .pipe(
+        tap((response: IPostsResponse) => { 
+          this.postService.setPost(response.posts);
+          this.postService.setTotal(response.total);
+          this.isLoading = false;
+        }),
+      ).subscribe();
   }
 
   onPageChange(event: TablePageEvent): void {
