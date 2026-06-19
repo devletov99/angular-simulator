@@ -1,12 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { LocalStorageService } from './app/services/local-storage.service';
 import { updatePreset } from '@primeuix/themes';
 import { Preset } from '@primeuix/themes/types';
 import Aura from "@primeuix/themes/aura";
 import Nora from "@primeuix/themes/nora";
 import Lara from "@primeuix/themes/lara";
-import { IPresetOption } from './app/assets/interfaces/IPresetOption';
+import { IPresetOption } from '../interfaces/IPresetOption';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root',

@@ -1,1 +1,36 @@
-<p>post-create works!</p>
+<div class="center container-create wraper">
+  <form [formGroup]="postCreateForm">
+    <div>
+      <label>
+        title
+        <input id="title" type="text" formControlName="title">
+      </label>
+    </div>
+    <div>
+      <label>
+        body
+        <textarea id="body" formControlName="body"></textarea>
+      </label>
+    </div>
+    <div>
+      <label>
+        tags
+        <input id="tags" type="text" formControlName="tags">
+      </label>
+    </div>
+  </form>
+  <div class="form-actions between">
+    <button 
+      (click)="onSubmitForm()" 
+      id="btn-submit" 
+      class="primary-button">
+      Опубликовать пост
+    </button>
+    <button 
+      (click)="goBack()" 
+      id="btn-close" 
+      class="primary-button">
+      Отмена
+    </button>
+  </div>
+</div>

@@ -1,1 +1,50 @@
-<p>posts works!</p>
+<div class="container margin-auto container-posts">
+  <p-contextmenu
+    #cm
+    [model]="itemsMenu"
+    (onHide)="selectedPost = null"/>
+      @if (isLoading) {
+        <p-table [value]="[1, 2, 3]">
+          <ng-template pTemplate="body">
+            <tr>
+              <td><p-skeleton/></td>
+              <td><p-skeleton/></td>
+              <td><p-skeleton/></td>
+            </tr>
+          </ng-template>
+        </p-table>
+      } @else {
+        <p-table 
+          [value]="(postService.posts$ | async) || []"
+          selectionMode="single"
+          [lazy]="true"
+          [paginator]="true"
+          [rows]="rows"
+          [totalRecords]="(postService.total$ | async) ?? 0"
+          [rowsPerPageOptions]="[5, 10, 20, 50]"
+          (onPage)="onPageChange($event)"
+          [contextMenu]="cm"
+          [(contextMenuSelection)]="selectedPost"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th>title</th>
+              <th>tags</th>
+              <th>views</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-post let-rowIndex="rowIndex">
+            <tr 
+              [pSelectableRow]="post"
+              [pSelectableRowIndex]="rowIndex"
+              (dblclick)="onRowDoubleClick(post)"
+              [pContextMenuRow]="post"
+              (contextmenu)="selectedPost = post">
+              <td>{{ post.title }}</td>
+              <td>{{ post.tags }}</td>
+              <td>{{ post.views }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
+      }
+</div>

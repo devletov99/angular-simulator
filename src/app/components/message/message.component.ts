@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { MessageService } from '../message.service';
-import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
+  import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
 import { Observable } from 'rxjs';
-import { IMessage } from '../app/assets/interfaces/IMessage';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faMessage } from '@fortawesome/free-regular-svg-icons'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { MessageService } from '../../services/message.service';
+import { IMessage } from '../../interfaces/IMessage';
 
 @Component({
   selector: 'app-message',

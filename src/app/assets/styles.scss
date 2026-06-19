@@ -70,6 +70,10 @@ body {
   margin: 40px 0;
 }
 
+.margin-auto {
+  margin: auto;
+}
+
 .wrap {
   display: flex;
   flex-wrap: wrap;
@@ -91,6 +95,11 @@ body {
 .between {
   display: flex;
   justify-content: space-between;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
 }
 
 .gradient-border {

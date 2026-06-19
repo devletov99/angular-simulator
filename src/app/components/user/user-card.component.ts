@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IUser } from '../app/assets/interfaces/IUser'; 
-import { LowerCasePipe, UpperCasePipe } from '@angular/common';
+import { UpperCasePipe } from '@angular/common';
 import { FormatPhonePipe } from '../../pipes/format-phone.pipe';
-import { AnimatedGradientDirective } from '../app/directive/animated-gradient.directive';
 import { PhoneFormat } from '../../enums/PhoneFormat';
+import { AnimatedGradientDirective } from '../../directive/animated-gradient.directive';
+import { IUser } from '../../interfaces/IUser';
 
 @Component({
   selector: 'app-user',
