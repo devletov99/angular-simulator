@@ -4,7 +4,7 @@ import { PostApiService } from './post-api.service';
 import { MessageService } from '../../../services/message.service';
 import { IPost } from '../interfaces/IPost';
 import { IPostCreate } from '../interfaces/IPostCreate';
-import { IPostsResponse } from '../interfaces/IPostResponse';
+import { IPostResponse } from '../interfaces/IPostResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -24,6 +24,10 @@ export class PostService {
     this.postsSubject.next(post);
   }
 
+  setTotal(total: number): void {
+    this.totalSubject.next(total);
+  }
+
   getPosts(): IPost[] {
     return this.postsSubject.getValue();
   }
@@ -32,11 +36,10 @@ export class PostService {
    return this.postApiService.getPostById(id);
   }
 
-  loadPost(limit: number, skip: number): Observable<IPostsResponse> {
+  loadPost(limit: number, skip: number): Observable<IPostResponse> {
     return this.postApiService.getPosts(limit, skip)
      .pipe(
         catchError(() => {
-          this.messageService.showError('Посты не загружены');
           return of({ posts: [], total: 0, skip: 0, limit });
         }),
      );
@@ -44,40 +47,29 @@ export class PostService {
 
   createPost(post: IPostCreate): Observable<IPost> {
     return this.postApiService.createPost(post)
+    .pipe(
+      tap((post: IPost) => this.setPost([...this.getPosts(), post]))
+    );
+  }
+
+  updatePost(updatedPost: IPost): Observable<IPost> {
+    return this.postApiService.updatePost(updatedPost)
       .pipe(
-        catchError(() => { 
-          this.messageService.showError('Не удалось опубликовать.');
-          return of();
+        tap(() => {
+          const posts: IPost[] = this.getPosts().map((post: IPost) => post.id === updatedPost.id ? updatedPost : post);
+          this.setPost(posts);
         })
       );
   }
 
-  updatePost(updatedPost: IPost): void {
-  this.postApiService.updatePost(updatedPost)
-    .pipe(
-     tap(() => {
-      const posts: IPost[] = this.getPosts().map((post: IPost) => post.id === updatedPost.id ? updatedPost : post);
-      this.setPost(posts);
-     })
-    )
-  }
-
-  deletePost(id: number): void {
-    this.postApiService.deletePost(id)
+  deletePost(id: number): Observable<IPost> {
+    return this.postApiService.deletePost(id)
       .pipe(
         tap(() => {
           const updatePosts: IPost[] = this.getPosts().filter((post: IPost) => post.id !== id);
           this.setPost(updatePosts);
         }),
-        catchError(() => {
-          this.messageService.showError('Не удалось удалить пост');
-          return of(null);
-      }),
-      ).subscribe();
+      );
   }
 
-  setTotal(total: number): void {
-    this.totalSubject.next(total);
-  }
-  
 }

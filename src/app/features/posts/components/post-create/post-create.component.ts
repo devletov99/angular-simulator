@@ -2,10 +2,11 @@ import { Component, DestroyRef, EventEmitter, inject, Output } from '@angular/co
 import { Form, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IPost } from '../../interfaces/IPost';
 import { PostService } from '../../services/post.service';
-import { finalize, tap } from 'rxjs';
+import { catchError, EMPTY, finalize, of, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { IPostCreate } from '../../interfaces/IPostCreate';
 import { Router } from '@angular/router';
+import { MessageService } from '../../../../services/message.service';
 
 @Component({
   selector: 'app-post-create',
@@ -15,11 +16,10 @@ import { Router } from '@angular/router';
 })
 export class PostCreateComponent {
 
-  @Output() createPost: EventEmitter<IPostCreate> = new EventEmitter<IPostCreate>()
-
   private fb: FormBuilder = inject(FormBuilder);
   postService: PostService = inject(PostService);
   private router: Router = inject(Router);
+  private messageService: MessageService = inject(MessageService)
 
   postCreateForm: FormGroup = this.fb.nonNullable.group({
     title: ['', Validators.required],
@@ -30,10 +30,11 @@ export class PostCreateComponent {
   onSubmitForm(): void {
     this.postService.createPost(this.postCreateForm.value)
       .pipe(
-        tap((post: IPost) => { 
-          this.postService.setPost([post, ...this.postService.getPosts()]);
-          this.router.navigate(['/posts']);
-        }),
+        tap(() => this.router.navigate(['/posts'])),
+        catchError(() => {
+          this.messageService.showError('Не удалось создатать пост');
+          return EMPTY;
+        })
       ).subscribe();
   }
 

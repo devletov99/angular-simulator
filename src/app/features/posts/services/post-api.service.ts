@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IPost } from '../interfaces/IPost';
 import { IPostCreate } from '../interfaces/IPostCreate';
-import { IPostsResponse } from '../interfaces/IPostResponse';
+import { IPostResponse } from '../interfaces/IPostResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -13,13 +13,13 @@ export class PostApiService {
   httpClient: HttpClient = inject(HttpClient);
   private apiUrl: string = 'https://dummyjson.com/posts';
 
-  getPosts(limit: number, skip: number): Observable<IPostsResponse> {
+  getPosts(limit: number, skip: number): Observable<IPostResponse> {
     const params: HttpParams = new HttpParams()
       .set('limit', limit.toString())
       .set('skip', skip.toString())
       .set('select', 'title,tags,views');
 
-    return this.httpClient.get<IPostsResponse>(this.apiUrl, { params });
+    return this.httpClient.get<IPostResponse>(this.apiUrl, { params });
   }
 
   getPostById(id: number): Observable<IPost> {

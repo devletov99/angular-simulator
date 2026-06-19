@@ -4,14 +4,15 @@ import { ContextMenuModule } from 'primeng/contextmenu';
 import { SkeletonModule } from 'primeng/skeleton';
 import { PostService } from '../../services/post.service';
 import { AsyncPipe } from '@angular/common';
-import { EMPTY, switchMap, take, tap } from 'rxjs';
+import { catchError, EMPTY, of, switchMap, take, tap } from 'rxjs';
 import { IPost } from '../../interfaces/IPost';
 import { MenuItem } from 'primeng/api';
 import { ContextMenu } from '../../enums/ContextMenu';
 import { Router } from '@angular/router';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostEditDialogComponent } from '../post-edit-dialog/post-edit-dialog.component';
-import { IPostsResponse } from '../../interfaces/IPostResponse';
+import { IPostResponse } from '../../interfaces/IPostResponse';
+import { MessageService } from '../../../../services/message.service';
 
 @Component({
   selector: 'app-posts',
@@ -25,6 +26,7 @@ export class PostsComponent implements OnInit {
   postService: PostService = inject(PostService);
   private router: Router = inject(Router);
   private dialogService: DialogService = inject(DialogService);
+  private messageService: MessageService = inject(MessageService)
 
   rows: number = 5;
   itemsMenu: MenuItem[] = [];
@@ -33,55 +35,56 @@ export class PostsComponent implements OnInit {
   isLoading: boolean = true;
  
   ngOnInit(): void {
-    this.loadPosts(0);
+    this.loadPosts(0, this.rows);
 
     this.itemsMenu = [
       { 
         label: ContextMenu.DETAILED, icon: 'pi pi-eye', command: () => { 
-          if (this.selectedPost) {
-            this.openPost(this.selectedPost.id) 
-          }
+          this.router.navigate(['/posts', this.selectedPost!.id]);
         }
       },
       { 
         label: ContextMenu.EDIT, icon: 'pi pi-eye', command: () => { 
-          if (this.selectedPost) {
-            this.openEditModal(this.selectedPost);
-          }
+          this.openEditModal(this.selectedPost!);
         }
       },
       { 
         label: ContextMenu.DELETED, icon: 'pi pi-fw pi-times', command: () => { 
-          if (this.selectedPost) { 
-            this.postService.deletePost(this.selectedPost.id);
-          }
+          this.postService.deletePost(this.selectedPost!.id)
+            .pipe(
+              catchError(() => {
+                this.messageService.showError('Не удалось удалить пост');
+                return of(null);
+              }),
+            ).subscribe();
         }
       },
     ]
   }
 
-  private loadPosts(skip: number): void {
-    this.postService.loadPost(this.rows, skip)
+  private loadPosts(skip: number, rows: number): void {
+    this.postService.loadPost(skip, rows)
       .pipe(
-        tap((response: IPostsResponse) => { 
+        tap((response: IPostResponse) => { 
           this.postService.setPost(response.posts);
           this.postService.setTotal(response.total);
           this.isLoading = false;
         }),
+        catchError(() => {
+          this.messageService.showError('');
+          this.isLoading = false;
+          return of();
+        })
       ).subscribe();
   }
 
   onPageChange(event: TablePageEvent): void {
     this.rows = event.rows;
-    this.loadPosts(event.first);
+    this.loadPosts(event.first, this.rows);
   }
   
   onRowDoubleClick(post: IPost): void {
-    this.openPost(post.id);
-  }
-
-  openPost(id: number): void {
-    this.router.navigate(['/posts', id]);
+    this.router.navigate(['/posts', post.id]);  
   }
 
   openEditModal(post: IPost): void {

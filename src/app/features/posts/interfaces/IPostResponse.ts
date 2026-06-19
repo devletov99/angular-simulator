@@ -1,6 +1,6 @@
 import { IPost } from "./IPost";
 
-export interface IPostsResponse {
+export interface IPostResponse {
   posts: IPost[];
   total: number;
   skip: number;
