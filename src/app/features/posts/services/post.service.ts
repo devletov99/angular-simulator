@@ -47,9 +47,9 @@ export class PostService {
 
   createPost(post: IPostCreate): Observable<IPost> {
     return this.postApiService.createPost(post)
-    .pipe(
-      tap((post: IPost) => this.setPost([...this.getPosts(), post]))
-    );
+      .pipe(
+        tap((post: IPost) => this.setPost([...this.getPosts(), post]))
+      );
   }
 
   updatePost(updatedPost: IPost): Observable<IPost> {

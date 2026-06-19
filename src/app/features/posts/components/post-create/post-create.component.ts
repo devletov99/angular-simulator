@@ -32,7 +32,7 @@ export class PostCreateComponent {
       .pipe(
         tap(() => this.router.navigate(['/posts'])),
         catchError(() => {
-          this.messageService.showError('Не удалось создатать пост');
+          this.messageService.showError('Не удалось создать пост');
           return EMPTY;
         })
       ).subscribe();
