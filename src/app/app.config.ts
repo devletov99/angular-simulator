@@ -6,6 +6,7 @@ import Lara from "@primeuix/themes/lara";
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { loggingInterceptor } from './interceptors/logging.interceptor';
 import { errorInterceptor } from './interceptors/error.interceptor';
+import { authInterceptor } from './features/auth/interceptor/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,7 +22,7 @@ export const appConfig: ApplicationConfig = {
       }
     }),
     provideHttpClient(
-      withInterceptors([loggingInterceptor, errorInterceptor])
+      withInterceptors([loggingInterceptor, errorInterceptor, authInterceptor])
     )
   ]
 };

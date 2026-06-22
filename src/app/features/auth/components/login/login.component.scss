@@ -1,0 +1,61 @@
+.auth-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 320px;
+  background: #eaf3ef;
+  border-radius: 14px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+    .auth-error {
+      font-size: 13px;
+      color: #b3492f;
+      margin: 4px 0 0;
+    }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px 14px;
+      font-size: 14px;
+      color: #1f2a28;
+      background: #fff;
+      border: 1px solid #e3e1de;
+      border-radius: 10px;
+      outline: none;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    &::placeholder {
+      color: #8a948f;
+    }
+
+    &:focus {
+      border-color: #d6a756;
+      box-shadow: 0 0 0 3px rgba(214, 167, 86, 0.18);
+    }
+  }
+
+  button {
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background: #16302c;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+}
