@@ -3,7 +3,7 @@ import { postResolver } from './features/posts/resolvers/post.resolver';
 import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { authGuard } from './features/auth/guards/auth.guard';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
-import { guestGuard } from './features/auth/guards/guest.guard';
+import { unauthGuard } from './features/auth/guards/unauthGuard';
 
 export const routes: Routes = [
  
@@ -43,7 +43,7 @@ export const routes: Routes = [
   {
     path: '',
     component: AuthLayoutComponent,
-    canActivate: [guestGuard],
+    canActivate: [unauthGuard],
     children: [
       {
         path: 'login',

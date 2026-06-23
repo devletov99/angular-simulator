@@ -1,5 +1,5 @@
 import { Component,inject } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule, SelectButtonOptionClickEvent } from 'primeng/selectbutton';
@@ -19,6 +19,7 @@ export class HeaderComponent {
 
   themeService: ThemeService = inject(ThemeService);
   authService: AuthService = inject(AuthService);
+  private router: Router = inject(Router);
 
   companyName: string = 'румтибет';
   currentDate: Date = new Date();
@@ -47,8 +48,9 @@ export class HeaderComponent {
     this.counter--;
   }
 
-  logout() {
+  logout(): void {
     this.authService.logout();
+    this.router.navigate(['/login'])
   }
 
   navigations: INavigation[] = [

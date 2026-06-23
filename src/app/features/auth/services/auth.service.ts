@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, EMPTY, Observable, tap } from 'rxjs';
 import { ILogin } from '../interfaces/ILogin';
 import { LocalStorageService } from '../../../services/local-storage.service';
 import { IAuthResponse } from '../interfaces/IAuthResponse';
@@ -14,9 +14,10 @@ export class AuthService {
 
   private httpClient: HttpClient = inject(HttpClient);
   private localStorageService: LocalStorageService = inject(LocalStorageService);
+  private apiUrl: string = 'https://dummyjson.com/auth';
 
   private currentUserSubject: BehaviorSubject<IAuthUser | null> = new BehaviorSubject<IAuthUser | null>(null);
-  user$: Observable<IAuthUser | null> = this.currentUserSubject.asObservable();
+  currentUser$: Observable<IAuthUser | null> = this.currentUserSubject.asObservable();
 
   setUser(user: IAuthUser): void {
     this.currentUserSubject.next(user);
@@ -35,7 +36,7 @@ export class AuthService {
   }
 
   login(credentials: ILogin): Observable<IAuthResponse> {
-    return this.httpClient.post<IAuthResponse>('https://dummyjson.com/auth/login', credentials)
+    return this.httpClient.post<IAuthResponse>(`${this.apiUrl}/login`, credentials)
       .pipe(
         tap((response: IAuthResponse) => {
           this.setUser(response);
@@ -47,9 +48,23 @@ export class AuthService {
       )
   }
 
+  restoreSession(): Observable<IAuthUser> {
+    if (this.getTokens()) {
+      return this.httpClient.get<IAuthUser>(`${this.apiUrl}/me`, {
+        headers: { 
+          Authorization: `Bearer ${this.getTokens()?.accessToken}` 
+        }
+      })
+        .pipe(
+          tap((user: IAuthUser) => this.setUser(user))
+        )
+    }
+    return EMPTY;
+  }
+
   refresh(): Observable<IAuthResponse> {
     const tokens: IToken | null = this.getTokens();
-    return this.httpClient.post<IAuthResponse>('https://dummyjson.com/auth/refresh', { refreshToken: tokens?.refreshToken })
+    return this.httpClient.post<IAuthResponse>(`${this.apiUrl}/refresh`, { refreshToken: tokens?.refreshToken })
       .pipe(
         tap((response: IAuthResponse) => this.setTokens({
           accessToken: response.accessToken,
@@ -64,7 +79,7 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    return this.getUser() !== null;
+    return !!this.getUser();
   }
   
 }
