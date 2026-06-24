@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   login(credentials: ILogin): Observable<IAuthResponse> {
-    return this.httpClient.post<IAuthResponse>(`${this.apiUrl}/login`, credentials)
+    return this.httpClient.post<IAuthResponse>(`${ this.apiUrl }/login`, credentials)
       .pipe(
         tap((response: IAuthResponse) => {
           this.setUser(response);
@@ -48,11 +48,11 @@ export class AuthService {
       )
   }
 
-  restoreSession(): Observable<IAuthUser> {
+  getCurrentUser(): Observable<IAuthUser> {
     if (this.getTokens()) {
-      return this.httpClient.get<IAuthUser>(`${this.apiUrl}/me`, {
+      return this.httpClient.get<IAuthUser>(`${ this.apiUrl }/me`, {
         headers: { 
-          Authorization: `Bearer ${this.getTokens()?.accessToken}` 
+          Authorization: `Bearer ${ this.getTokens()?.accessToken }` 
         }
       })
         .pipe(
@@ -64,7 +64,7 @@ export class AuthService {
 
   refresh(): Observable<IAuthResponse> {
     const tokens: IToken | null = this.getTokens();
-    return this.httpClient.post<IAuthResponse>(`${this.apiUrl}/refresh`, { refreshToken: tokens?.refreshToken })
+    return this.httpClient.post<IAuthResponse>(`${ this.apiUrl }/refresh`, { refreshToken: tokens?.refreshToken })
       .pipe(
         tap((response: IAuthResponse) => this.setTokens({
           accessToken: response.accessToken,
