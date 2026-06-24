@@ -1,10 +1,11 @@
-import { Component, DestroyRef, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { Component,inject } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule, SelectButtonOptionClickEvent } from 'primeng/selectbutton';
 import { AsyncPipe } from '@angular/common';
 import { INavigation } from '../../interfaces/INavigation';
+import { AuthService } from '../../features/auth/services/auth.service';
 import { ThemeService } from '../../services/theme.service';
 
 @Component({
@@ -16,8 +17,9 @@ import { ThemeService } from '../../services/theme.service';
 })
 export class HeaderComponent {
 
-  destroyRef: DestroyRef = inject(DestroyRef);
   themeService: ThemeService = inject(ThemeService);
+  authService: AuthService = inject(AuthService);
+  private router: Router = inject(Router);
 
   companyName: string = 'румтибет';
   currentDate: Date = new Date();
@@ -44,6 +46,11 @@ export class HeaderComponent {
 
   decreaseCounter(): void {
     this.counter--;
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login'])
   }
 
   navigations: INavigation[] = [

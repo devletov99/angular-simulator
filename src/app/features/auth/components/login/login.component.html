@@ -1,0 +1,14 @@
+<div class="auth-card">
+  <form [formGroup]="authForm">
+    <label>
+      <input type="text" placeholder="Email или имя пользователя" autocomplete="username" formControlName="username">
+    </label>
+    <label>
+      <input type="password" placeholder="Пароль" autocomplete="current-password" formControlName="password">
+    </label>
+  </form>
+  @if (errMessage) {
+    <p class="auth-error">{{ errMessage }}</p>
+  }
+  <button class="primary-button" id="btn-auth" (click)="auth()">Авторизоваться</button>
+</div>
