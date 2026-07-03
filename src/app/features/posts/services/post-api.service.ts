@@ -27,7 +27,7 @@ export class PostApiService {
   }
 
   createPost(post: IPostCreate): Observable<IPost> {
-    return this.httpClient.post<IPost>(`${ this.apiUrl }/add`, post)
+    return this.httpClient.post<IPost>(`${ this.apiUrl }/add`, post);
   }
 
   updatePost(postChanges: Partial<IPost>): Observable<IPost> {
@@ -35,7 +35,7 @@ export class PostApiService {
   }
 
   deletePost(id: number): Observable<IPost> {
-    return this.httpClient.delete<IPost>(`${ this.apiUrl }/${ id }`)
+    return this.httpClient.delete<IPost>(`${ this.apiUrl }/${ id }`);
   }
 
 }
