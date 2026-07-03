@@ -56,8 +56,8 @@ export class AuthService {
         }
       })
         .pipe(
-          tap((user: IAuthUser) => this.setUser(user))
-        )
+          tap((user: IAuthUser) => this.setUser(user)),
+        );
     }
     return EMPTY;
   }
