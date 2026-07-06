@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { LocalStorageService } from './services/local-storage.service';
 import { RouterOutlet } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MessageComponent } from './components/message/message.component';
 import { LoaderComponent } from './loader/loader.component';
 
@@ -12,7 +12,7 @@ import { LoaderComponent } from './loader/loader.component';
   styleUrl: './app.component.scss',
   providers: [LocalStorageService],
 })
-export class AppComponent {    
+export class AppComponent {
 
   localStorageService: LocalStorageService = inject(LocalStorageService);
 
@@ -20,7 +20,7 @@ export class AppComponent {
     this.localStorageService.setValue('time', new Date());
     this.localStorageService.getValue('time');
     this.localStorageService.removeElement('time');
-   
+
     const gatVisit: string | null = localStorage.getItem('visit');
     const visitNumber: number = Number(gatVisit || 0) + 1;
 
@@ -37,5 +37,5 @@ export class AppComponent {
     const visitNumber: number = Number(gatVisit || 0) + 1;
     this.localStorageService.setValue('visit', visitNumber);
   }
-  
+
 }

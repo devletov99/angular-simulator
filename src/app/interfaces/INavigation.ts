@@ -1,5 +1,5 @@
 export interface INavigation {
   id: number;
-	text: string;
+  text: string;
   link: string;
 }

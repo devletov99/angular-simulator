@@ -2,9 +2,9 @@ import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { updatePreset } from '@primeuix/themes';
 import { Preset } from '@primeuix/themes/types';
-import Aura from "@primeuix/themes/aura";
-import Nora from "@primeuix/themes/nora";
-import Lara from "@primeuix/themes/lara";
+import Aura from '@primeuix/themes/aura';
+import Nora from '@primeuix/themes/nora';
+import Lara from '@primeuix/themes/lara';
 import { IPresetOption } from '../interfaces/IPresetOption';
 import { LocalStorageService } from './local-storage.service';
 
@@ -17,23 +17,29 @@ export class ThemeService {
 
   presetOption: IPresetOption[] = [
     {
-      name: "Aura",  
+      name: 'Aura',
       value: Aura,
     },
-    { 
-      name: "Lara",  
-      value: Lara, 
+    {
+      name: 'Lara',
+      value: Lara,
     },
     {
-      name: "Nora",  
+      name: 'Nora',
       value: Nora,
-    }
-  ]
-  
-  private isDarkModeSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.localStorageService.getValue('dark-mode') ?? false);
+    },
+  ];
+
+  private isDarkModeSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    this.localStorageService.getValue('dark-mode') ?? false,
+  );
+
   isDarkMode$: Observable<boolean> = this.isDarkModeSubject.asObservable();
 
-  private presetSubject: BehaviorSubject<Preset> = new BehaviorSubject<Preset>(this.localStorageService.getValue<Preset>('preset') ?? {});
+  private presetSubject: BehaviorSubject<Preset> = new BehaviorSubject<Preset>(
+    this.localStorageService.getValue<Preset>('preset') ?? {},
+  );
+
   preset$: Observable<Preset> = this.presetSubject.asObservable();
 
   constructor() {
@@ -44,7 +50,7 @@ export class ThemeService {
   setMode(value: boolean): void {
     this.isDarkModeSubject.next(value);
     this.localStorageService.setValue('dark-mode', value);
-    document.documentElement.classList.toggle('dark', value)
+    document.documentElement.classList.toggle('dark', value);
   }
 
   getDarkMode(): boolean {
@@ -54,7 +60,7 @@ export class ThemeService {
   setPreset(value: Preset): void {
     this.presetSubject.next(value);
     this.localStorageService.setValue('preset', value);
-    updatePreset(this.getPreset())
+    updatePreset(this.getPreset());
   }
 
   getPreset(): Preset {

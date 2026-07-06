@@ -1,4 +1,4 @@
-import { Component,inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +11,14 @@ import { ThemeService } from '../../services/theme.service';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, RouterLinkActive, ToggleSwitchModule, FormsModule, SelectButtonModule, AsyncPipe],
+  imports: [
+    RouterLink,
+    RouterLinkActive,
+    ToggleSwitchModule,
+    FormsModule,
+    SelectButtonModule,
+    AsyncPipe,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -25,7 +32,7 @@ export class HeaderComponent {
   currentDate: Date = new Date();
   isCounterVisible!: boolean;
   counter: number = 0;
-  
+
   constructor() {
     setInterval(() => {
       this.currentDate = new Date();
@@ -50,7 +57,7 @@ export class HeaderComponent {
 
   logout(): void {
     this.authService.logout();
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
 
   navigations: INavigation[] = [
@@ -64,6 +71,6 @@ export class HeaderComponent {
       text: 'Пользователи',
       link: '/user-page',
     },
-  ]
+  ];
 
 }

@@ -5,4 +5,4 @@ export interface IService {
   icon: IconDefinition;
   title: string;
   description: string;
-} 
+}

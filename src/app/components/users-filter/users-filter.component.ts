@@ -14,16 +14,18 @@ export class UsersFilterComponent implements OnInit {
   destroyRef: DestroyRef = inject(DestroyRef);
 
   formControl: FormControl<string> = new FormControl<string>('', { nonNullable: true });
-  
+
   @Output() filterUser: EventEmitter<string> = new EventEmitter<string>();
 
   ngOnInit(): void {
-    this.formControl.valueChanges.pipe(
-      debounceTime(200),
-      distinctUntilChanged(),
-      tap((value: string) => this.filterUser.emit(value)),
-      takeUntilDestroyed(this.destroyRef),
-    ).subscribe();
+    this.formControl.valueChanges
+      .pipe(
+        debounceTime(200),
+        distinctUntilChanged(),
+        tap((value: string) => this.filterUser.emit(value)),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe();
   }
 
 }

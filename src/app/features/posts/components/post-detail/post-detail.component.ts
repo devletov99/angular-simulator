@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TableModule } from "primeng/table";
+import { TableModule } from 'primeng/table';
 import { IPost } from '../../interfaces/IPost';
 import { PostService } from '../../services/post.service';
 import { AsyncPipe } from '@angular/common';

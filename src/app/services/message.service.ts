@@ -4,14 +4,13 @@ import { Message } from '../enums/Message';
 import { IMessage } from '../interfaces/IMessage';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MessageService {
 
-
   private messagesSubject: BehaviorSubject<IMessage[]> = new BehaviorSubject<IMessage[]>([]);
   messages$: Observable<IMessage[]> = this.messagesSubject.asObservable();
-  
+
   private addMessage(currentMessage: IMessage): void {
     this.messagesSubject.next([currentMessage, ...this.messagesSubject.getValue()]);
 
@@ -22,7 +21,9 @@ export class MessageService {
 
   closeMessage(currentMessage: IMessage): void {
     const messages: IMessage[] = this.messagesSubject.value;
-    const message: IMessage[] = messages.filter((messageToRemove: IMessage) => messageToRemove !== currentMessage);
+    const message: IMessage[] = messages.filter(
+      (messageToRemove: IMessage) => messageToRemove !== currentMessage,
+    );
     this.messagesSubject.next(message);
   }
 
@@ -39,7 +40,7 @@ export class MessageService {
   }
 
   showInfo(text: string): void {
-    this.addMessage({ type: Message.INFO,  text });
+    this.addMessage({ type: Message.INFO, text });
   }
 
-};
+}

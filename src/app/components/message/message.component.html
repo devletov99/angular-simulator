@@ -2,8 +2,7 @@
 	@for (message of messages$ | async; track $index) {
 		<ng-container 
 			[ngTemplateOutlet]="messages" 
-			[ngTemplateOutletContext]="{ currentMessage: message }">
-		</ng-container>
+			[ngTemplateOutletContext]="{ currentMessage: message }" />
 	}
 </div>
 <div>

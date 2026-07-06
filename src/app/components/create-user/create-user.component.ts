@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AddBoldDirective } from '../../directive/add-bold.directive';
 import { IUser } from '../../interfaces/IUser';
 
-
 @Component({
   selector: 'app-create-user',
   imports: [ReactiveFormsModule, AddBoldDirective],

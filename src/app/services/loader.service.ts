@@ -5,7 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LoaderService {
-  
+
   private isLoadingSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   loader$: Observable<boolean> = this.isLoadingSubject.asObservable();
 
@@ -19,4 +19,4 @@ export class LoaderService {
     document.documentElement.style.overflow = '';
   }
 
-};
+}

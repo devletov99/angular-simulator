@@ -1,32 +1,32 @@
 class Collection<T> {
 
   collection: T[] = [];
-	
+
   constructor(collection: T[]) {
-		this.collection = collection;
-	}
+    this.collection = collection;
+  }
 
-	getAll(): T[] {
-	  return this.collection;
-	}
+  getAll(): T[] {
+    return this.collection;
+  }
 
-	getElement(index: number): T {
-		return this.collection[index];
-	}
+  getElement(index: number): T {
+    return this.collection[index];
+  }
 
-	clearCollection(): void {
-    	this.collection = [];
-	}
+  clearCollection(): void {
+    this.collection = [];
+  }
 
-	removeElement(index: number): void {
-		this.collection.splice(index, 1);
-	}
+  removeElement(index: number): void {
+    this.collection.splice(index, 1);
+  }
 
-	replaceElement(index: number, newElement: T): void {
+  replaceElement(index: number, newElement: T): void {
     this.collection.splice(index, 1, newElement);
-	}
-	
-};
+  }
+
+}
 
 const products: string[] = ['яблоки', 'банана', 'груши', 'мандарин'];
 const number: number[] = [1, 2, 3, 4, 5];

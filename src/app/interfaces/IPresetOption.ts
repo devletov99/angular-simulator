@@ -1,4 +1,4 @@
-import { Preset } from "@primeuix/themes/types";
+import { Preset } from '@primeuix/themes/types';
 
 export interface IPresetOption {
   name: string;

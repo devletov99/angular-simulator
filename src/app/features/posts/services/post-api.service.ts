@@ -9,8 +9,9 @@ import { IPostResponse } from '../interfaces/IPostResponse';
   providedIn: 'root',
 })
 export class PostApiService {
+
   httpClient: HttpClient = inject(HttpClient);
-  private apiUrl: string = 'https://dummyjson.com/posts'
+  private apiUrl: string = 'https://dummyjson.com/posts';
 
   getPosts(limit: number, skip: number): Observable<IPostResponse> {
     const params: HttpParams = new HttpParams()
@@ -22,7 +23,7 @@ export class PostApiService {
   }
 
   getPostById(id: number): Observable<IPost> {
-    return this.httpClient.get<IPost>(`${ this.apiUrl }/${ id }`)
+    return this.httpClient.get<IPost>(`${ this.apiUrl }/${ id }`);
   }
 
   createPost(post: IPostCreate): Observable<IPost> {

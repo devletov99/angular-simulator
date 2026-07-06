@@ -8,7 +8,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 export default defineConfig([
   {
     files: ['**/*.ts'],
-      plugins: {
+    plugins: {
       '@typescript-eslint': plugin,
       '@angular-eslint': tsPlugin,
       'prettier': eslintPluginPrettier,
@@ -21,7 +21,6 @@ export default defineConfig([
       },
     },
     rules: {
-      
       'no-console': [
         'warn',
         {
@@ -97,7 +96,7 @@ export default defineConfig([
         {
           tabWidth: 2,
           singleQuote: true,
-          semi: true
+          semi: true,
         },
       ],
     },
