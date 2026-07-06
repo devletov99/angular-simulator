@@ -10,12 +10,11 @@ import { UserApiService } from './user-api.service';
   providedIn: 'root',
 })
 export class UserService {
-
   userApi: UserApiService = inject(UserApiService);
   loader: LoaderService = inject(LoaderService);
   messageService: MessageService = inject(MessageService);
   localStorage: LocalStorageService = inject(LocalStorageService);
-  
+
   private usersSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
 
   users$: Observable<IUser[]> = this.usersSubject.asObservable();
@@ -55,5 +54,4 @@ export class UserService {
   addUser(user: IUser): void {
     this.setUsers([...this.getUsers(), user]);
   }
-
 }

@@ -16,7 +16,7 @@ export class ThemeService {
   private localStorageService: LocalStorageService = inject(LocalStorageService);
 
   presetOption: IPresetOption[] = [
-    { 
+    {
       name: "Aura",  
       value: Aura,
     },
@@ -24,7 +24,7 @@ export class ThemeService {
       name: "Lara",  
       value: Lara, 
     },
-    { 
+    {
       name: "Nora",  
       value: Nora,
     }
@@ -60,5 +60,5 @@ export class ThemeService {
   getPreset(): Preset {
     return this.presetSubject.getValue();
   }
- 
+
 }
