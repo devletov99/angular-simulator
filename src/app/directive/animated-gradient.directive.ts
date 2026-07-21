@@ -18,22 +18,22 @@ export class AnimatedGradientDirective {
       this.border = `${ this.gradientConfiguration.thickness }px solid transparent`;
     }
   }
-  
+
   @HostBinding('class.gradient-border') isActive: boolean = false;
   @HostBinding('style.background') background!: string;
   @HostBinding('style.border') border!: string;
 
-  @HostListener('mouseenter') 
-    onEvent() {
-      this.timer = setTimeout(() => {
-        this.isActive = true;
-      }, this.gradientConfiguration.delay || 1000);
-    }
+  @HostListener('mouseenter')
+  onEvent() {
+    this.timer = setTimeout(() => {
+      this.isActive = true;
+    }, this.gradientConfiguration.delay || 1000);
+  }
 
-  @HostListener('mouseleave') 
-    onLeave() {
-      clearTimeout(this.timer);
-      this.isActive = false;
-    }
+  @HostListener('mouseleave')
+  onLeave() {
+    clearTimeout(this.timer);
+    this.isActive = false;
+  }
 
-} 
+}

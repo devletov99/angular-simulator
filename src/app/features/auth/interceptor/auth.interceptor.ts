@@ -1,10 +1,18 @@
-import { HttpErrorResponse, HttpHandlerFn, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpHandlerFn,
+  HttpInterceptorFn,
+  HttpRequest,
+} from '@angular/common/http';
 import { inject } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { catchError, exhaustMap, throwError } from 'rxjs';
 import { IToken } from '../interfaces/IToken';
 
-export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, next: HttpHandlerFn) => {
+export const authInterceptor: HttpInterceptorFn = (
+  req: HttpRequest<unknown>,
+  next: HttpHandlerFn,
+) => {
   const authService: AuthService = inject(AuthService);
 
   const token: IToken | null = authService.getTokens();
@@ -14,30 +22,29 @@ export const authInterceptor: HttpInterceptorFn = (req: HttpRequest<unknown>, ne
   }
 
   const authReq: HttpRequest<unknown> = addToken(req, token.accessToken);
-  
-  return next(authReq)
-    .pipe(
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
-          return authService.refresh()
-            .pipe(
-              exhaustMap(() => {
-                const newToken: string | undefined = authService.getTokens()?.accessToken;
 
-                if (!newToken) {
-                  authService.logout();
-                  return throwError(() => error)  
-                }
-                  const retryReq: HttpRequest<unknown> = addToken(req, newToken);
-                  return next(retryReq);
-              }),
-            )
-        }
-        return throwError(() => error);
-      })
-    );
+  return next(authReq).pipe(
+    catchError((error: HttpErrorResponse) => {
+      if (error.status === 401) {
+        return authService.refresh().pipe(
+          exhaustMap(() => {
+            const newToken: string | undefined = authService.getTokens()?.accessToken;
+
+            if (!newToken) {
+              authService.logout();
+              return throwError(() => error);
+            }
+            const retryReq: HttpRequest<unknown> = addToken(req, newToken);
+            return next(retryReq);
+          }),
+        );
+      }
+      return throwError(() => error);
+    }),
+  );
 };
 
-const addToken = (req: HttpRequest<unknown>, token: string | undefined): HttpRequest<unknown> => req.clone({
-  headers: req.headers.set('Authorization', `Bearer ${ token }`)
-});
+const addToken = (req: HttpRequest<unknown>, token: string | undefined): HttpRequest<unknown> =>
+  req.clone({
+    headers: req.headers.set('Authorization', `Bearer ${ token }`),
+  });

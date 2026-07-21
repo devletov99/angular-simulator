@@ -21,23 +21,28 @@ export class LoginComponent {
   private authService: AuthService = inject(AuthService);
   private loaderService: LoaderService = inject(LoaderService);
   errMessage: string | null = null;
-  
+
   authForm: FormGroup = this.fb.nonNullable.group({
     username: ['', [Validators.required, Validators.minLength(4)]],
     password: ['', [Validators.required, Validators.minLength(6)]],
-  })
+  });
 
   auth(): void {
     this.loaderService.showLoader();
-    this.authService.login(this.authForm.value)
+    this.authService
+      .login(this.authForm.value)
       .pipe(
         tap(() => this.router.navigate(['/'])),
         catchError((err: HttpErrorResponse) => {
-          this.errMessage = err.status === 400 ? 'Неверный email или пароль.' : 'Не удалось войти. Попрбуйте позже.';
+          this.errMessage =
+            err.status === 400
+              ? 'Неверный email или пароль.'
+              : 'Не удалось войти. Попрбуйте позже.';
           return EMPTY;
         }),
         finalize(() => this.loaderService.hideLoader()),
-      ).subscribe();
+      )
+      .subscribe();
   }
 
 }

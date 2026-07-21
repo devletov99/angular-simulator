@@ -17,4 +17,5 @@ export class UserCardComponent {
   @Output() deleteUser: EventEmitter<number> = new EventEmitter<number>();
 
   phoneFormat: typeof PhoneFormat = PhoneFormat;
+
 }

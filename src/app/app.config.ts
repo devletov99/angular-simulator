@@ -1,8 +1,14 @@
-import { ApplicationConfig, inject, provideAppInitializer, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
+import {
+  ApplicationConfig,
+  inject,
+  provideAppInitializer,
+  provideBrowserGlobalErrorListeners,
+  provideZoneChangeDetection,
+} from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { providePrimeNG } from 'primeng/config';
-import Lara from "@primeuix/themes/lara";
+import Lara from '@primeuix/themes/lara';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { loggingInterceptor } from './interceptors/logging.interceptor';
 import { errorInterceptor } from './interceptors/error.interceptor';
@@ -16,18 +22,16 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection(),
     providePrimeNG({
       theme: {
-        preset: Lara, 
-        options: { 
-          darkModeSelector: '.dark'
-        }
-      }
+        preset: Lara,
+        options: {
+          darkModeSelector: '.dark',
+        },
+      },
     }),
-    provideHttpClient(
-      withInterceptors([loggingInterceptor, errorInterceptor, authInterceptor])
-    ),
+    provideHttpClient(withInterceptors([loggingInterceptor, errorInterceptor, authInterceptor])),
     provideAppInitializer(() => {
       const authService: AuthService = inject(AuthService);
       return authService.getCurrentUser();
     }),
-  ]
+  ],
 };

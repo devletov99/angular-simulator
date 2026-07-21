@@ -10,7 +10,7 @@ import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dy
   providers: [DialogService],
 })
 export class PostEditDialogComponent implements OnInit {
-  
+
   private dynamicDialogRef: DynamicDialogRef = inject(DynamicDialogRef);
   private dialogConfig: DynamicDialogConfig = inject(DynamicDialogConfig);
   private fb: FormBuilder = inject(FormBuilder);
@@ -33,6 +33,4 @@ export class PostEditDialogComponent implements OnInit {
     this.dynamicDialogRef.close();
   }
 
-
 }
- 

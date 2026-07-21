@@ -15,7 +15,7 @@ export class UserService {
   loader: LoaderService = inject(LoaderService);
   messageService: MessageService = inject(MessageService);
   localStorage: LocalStorageService = inject(LocalStorageService);
-  
+
   private usersSubject: BehaviorSubject<IUser[]> = new BehaviorSubject<IUser[]>([]);
 
   users$: Observable<IUser[]> = this.usersSubject.asObservable();
@@ -36,19 +36,20 @@ export class UserService {
       return of(usersFromStorage);
     } else {
       this.loader.showLoader();
-      return this.userApi.getUsers()
-        .pipe(  
-          catchError(() => { 
-            this.messageService.showError('Пользователи не загружены'); 
-            return of([]);
-          }),
-          finalize(() => this.loader.hideLoader()),
-        );
-      }  
+      return this.userApi.getUsers().pipe(
+        catchError(() => {
+          this.messageService.showError('Пользователи не загружены');
+          return of([]);
+        }),
+        finalize(() => this.loader.hideLoader()),
+      );
+    }
   }
 
   deleteUser(user: IUser): void {
-    const users: IUser[] = this.getUsers().filter((userToRemove: IUser) => userToRemove.id !== user.id);
+    const users: IUser[] = this.getUsers().filter(
+      (userToRemove: IUser) => userToRemove.id !== user.id,
+    );
     this.setUsers(users);
   }
 
