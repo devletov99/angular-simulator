@@ -7,6 +7,8 @@ import Nora from '@primeuix/themes/nora';
 import Lara from '@primeuix/themes/lara';
 import { IPresetOption } from '../interfaces/IPresetOption';
 import { LocalStorageService } from './local-storage.service';
+import { APP_CONFIG } from '../app.token';
+import { IAppConfig } from '../interfaces/IAppConfig';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +16,7 @@ import { LocalStorageService } from './local-storage.service';
 export class ThemeService {
 
   private localStorageService: LocalStorageService = inject(LocalStorageService);
+  private appConfig: IAppConfig = inject(APP_CONFIG);
 
   presetOption: IPresetOption[] = [
     {
@@ -48,6 +51,10 @@ export class ThemeService {
   }
 
   setMode(value: boolean): void {
+    if (!this.appConfig.enableTheming) {
+     return;
+    }
+
     this.isDarkModeSubject.next(value);
     this.localStorageService.setValue('dark-mode', value);
     document.documentElement.classList.toggle('dark', value);
@@ -58,6 +65,10 @@ export class ThemeService {
   }
 
   setPreset(value: Preset): void {
+    if (!this.appConfig.enableTheming) {
+     return;
+    }
+
     this.presetSubject.next(value);
     this.localStorageService.setValue('preset', value);
     updatePreset(this.getPreset());

@@ -20,8 +20,9 @@
 	</header>
 	<div class="widget container">
 		@if (!isCounterVisible) {
-			 <p class="date" id="current-date">{{ currentDate }}</p>
+			 <p class="date" id="current-date">{{ currentDate | date}}</p>
 		}
+		<p>{{ loginDate | date }}</p>
 		@if (isCounterVisible) {
 			<div class="container-counter">
 				<button id="btn-increase-counter" (click)="incrementCounter()">+</button>

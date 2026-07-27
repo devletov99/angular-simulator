@@ -14,6 +14,8 @@ import { loggingInterceptor } from './interceptors/logging.interceptor';
 import { errorInterceptor } from './interceptors/error.interceptor';
 import { authInterceptor } from './features/auth/interceptor/auth.interceptor';
 import { AuthService } from './features/auth/services/auth.service';
+import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
+import { APP_CONFIG } from './app.token';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -33,5 +35,22 @@ export const appConfig: ApplicationConfig = {
       const authService: AuthService = inject(AuthService);
       return authService.getCurrentUser();
     }),
+    {
+      provide: DATE_PIPE_DEFAULT_OPTIONS,
+      useValue: {
+        dateFormat: 'dd.MM.yyyy HH:mm',
+      }
+    },
+    {
+      provide: APP_CONFIG,
+      useValue: {
+        companyName: 'Румтибет',
+        enableLogs: true,
+        enableNotifications: true,
+        enableTheming: false,
+        sessionTimeout: 3600,
+      }
+
+    }
   ],
 };
