@@ -8,6 +8,9 @@ import {
   HttpResponse,
 } from '@angular/common/http';
 import { tap } from 'rxjs';
+import { APP_CONFIG } from '../app.token';
+import { inject } from '@angular/core';
+import { IAppConfig } from '../interfaces/IAppConfig';
 
 const REQUEST_START_TIME: HttpContextToken<number> = new HttpContextToken(() => 0);
 
@@ -18,6 +21,12 @@ export const loggingInterceptor: HttpInterceptorFn = (
   const cloneReq: HttpRequest<unknown> = req.clone({
     context: req.context.set(REQUEST_START_TIME, Date.now()),
   });
+
+  const appConfig: IAppConfig = inject(APP_CONFIG);
+
+  if (!appConfig.enableLogs) {
+    return next(req);
+  }
 
   const startTime: number = cloneReq.context.get(REQUEST_START_TIME);
   const duration: number = Date.now() - startTime;

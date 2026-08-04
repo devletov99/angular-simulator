@@ -1,12 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { FormsModule } from '@angular/forms';
 import { SelectButtonModule, SelectButtonOptionClickEvent } from 'primeng/selectbutton';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 import { INavigation } from '../../interfaces/INavigation';
 import { AuthService } from '../../features/auth/services/auth.service';
 import { ThemeService } from '../../services/theme.service';
+import { APP_CONFIG } from '../../app.token';
 
 @Component({
   selector: 'app-header',
@@ -18,20 +19,23 @@ import { ThemeService } from '../../services/theme.service';
     FormsModule,
     SelectButtonModule,
     AsyncPipe,
+    DatePipe
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
 
-  themeService: ThemeService = inject(ThemeService);
-  authService: AuthService = inject(AuthService);
+  private authService: AuthService = inject(AuthService);
   private router: Router = inject(Router);
+  private config = inject(APP_CONFIG);
+  themeService: ThemeService = inject(ThemeService);
 
-  companyName: string = 'румтибет';
+  companyName: string = this.config.companyName;
   currentDate: Date = new Date();
   isCounterVisible!: boolean;
   counter: number = 0;
+  loginDate = this.authService.getLoginTime();
 
   constructor() {
     setInterval(() => {

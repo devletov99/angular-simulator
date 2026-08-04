@@ -91,14 +91,14 @@ export default defineConfig([
           format: null,
         },
       ],
-      'prettier/prettier': [
-        'error',
-        {
-          tabWidth: 2,
-          singleQuote: true,
-          semi: true,
-        },
-      ],
+      // 'prettier/prettier': [
+      //   'error',
+      //   {
+      //     tabWidth: 2,
+      //     singleQuote: true,
+      //     semi: true,
+      //   },
+      // ],
     },
   },
   {

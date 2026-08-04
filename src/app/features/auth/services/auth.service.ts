@@ -45,6 +45,7 @@ export class AuthService {
           accessToken: response.accessToken,
           refreshToken: response.refreshToken,
         });
+        this.localStorageService.setValue('loginTime', new Date());
       }),
     );
   }
@@ -76,8 +77,17 @@ export class AuthService {
       );
   }
 
+  getLoginTime(): string | null  {
+    const loginTime = this.localStorageService.getItem('loginTime');
+    if (loginTime) {
+      return JSON.parse(loginTime);
+    }
+    return null;
+  }
+
   logout(): void {
     this.localStorageService.removeElement('tokens');
+    this.localStorageService.removeElement('loginTime');
     this.currentUserSubject.next(null);
   }
 
