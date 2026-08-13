@@ -1,23 +1,20 @@
 import { Component, DestroyRef, EventEmitter, inject, Output } from '@angular/core';
 import {
-  Form,
   FormBuilder,
-  FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
-} from '@angular/forms';
-import { IPost } from '../../interfaces/IPost';
+} 
+from '@angular/forms';
 import { PostService } from '../../services/post.service';
 import { catchError, EMPTY, finalize, of, tap } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { IPostCreate } from '../../interfaces/IPostCreate';
 import { Router } from '@angular/router';
 import { MessageService } from '../../../../services/message.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-post-create',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslatePipe],
   templateUrl: './post-create.component.html',
   styleUrl: './post-create.component.scss',
 })

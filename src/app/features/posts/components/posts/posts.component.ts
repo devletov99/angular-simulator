@@ -13,10 +13,16 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostEditDialogComponent } from '../post-edit-dialog/post-edit-dialog.component';
 import { IPostResponse } from '../../interfaces/IPostResponse';
 import { MessageService } from '../../../../services/message.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-posts',
-  imports: [TableModule, SkeletonModule, ContextMenuModule, AsyncPipe],
+  imports: [
+    TableModule, 
+    SkeletonModule, 
+    ContextMenuModule, 
+    AsyncPipe,
+    TranslatePipe],
   providers: [DialogService],
   templateUrl: './posts.component.html',
   styleUrl: './posts.component.scss',

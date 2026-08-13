@@ -21,12 +21,12 @@ export default defineConfig([
       },
     },
     rules: {
-      'no-console': [
-        'warn',
-        {
-          allow: ['warn', 'error']
-        }
-      ],
+      // 'no-console': [
+      //   'warn',
+      //   {
+      //     allow: ['warn', 'error']
+      //   }
+      // ],
       'padded-blocks': [
         'error',
         {

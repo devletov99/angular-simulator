@@ -2,23 +2,27 @@
   <form [formGroup]="editForm">
     <div>
       <label>
-        title
+        {{ 'POST_FORM.TITLE' | translate }}
         <input id="title" type="text" formControlName="title">
       </label>
     </div>
     <div>
       <label>
-        body
+        {{ 'POST_FORM.BODY' | translate }}
         <textarea id="body" formControlName="body"></textarea>
       </label>
     </div>
     <div>
       <label>
-        tags
+        {{ 'POST_FORM.TAGS' | translate }}
         <input id="tags" type="text" formControlName="tags">
       </label>
     </div>
   </form>
-  <button id="btn-save" (click)="save()">Сохранить</button>
-  <button id="btn-close" (click)="close()">Отмена</button>
+  <button id="btn-save" (click)="save()">
+    {{ 'COMMON.SAVE' | translate }}
+  </button>
+  <button id="btn-close" (click)="close()">
+    {{ 'COMMON.CANCEL' | translate }}
+  </button>
 </div>

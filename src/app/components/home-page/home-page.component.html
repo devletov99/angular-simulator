@@ -1,18 +1,18 @@
 <section class="banner">
   <div class="intro-text-wrapper">
-    <p class="container">Насладись прогулкой в горах <br> с командой единомышленников</p>
+    <p class="container"> {{ 'BANNER.TITLE' | translate }}</p>
   </div>
-  <div class= "contaner-panel">
+  <div class="contaner-panel">
     <div class="container contaner-panel-signup">
       <form class="form-container" name="form">
         <label>
           <select id="select-location" [(ngModel)]="selectedLocation" name="location" required>
-            <option value="" selected>Локация для тура</option>
+            <option value="" selected>{{ 'BANNER.FORM.LOCATION_PLACEHOLDER' | translate }}</option>
             @for (location of locations; track location.id) {
               <option>{{ location.name }}</option>
             }
           </select>
-          <span>выберите из списка</span>
+          <span>{{ 'BANNER.FORM.SELECT_FROM_LIST' | translate }}</span>
         </label>
         <label>
           <div class="input-wrapper">
@@ -20,27 +20,27 @@
               id="input-date" 
               [(ngModel)]="selectedDate" 
               type="text" 
-              placeholder="Дата похода" 
+              [placeholder]="'BANNER.FORM.DATE_PLACEHOLDER' | translate" 
               name="date" 
               required>
               <fa-icon class="calendar-icon" [icon]="faCalendar"/>
           </div>
-          <span>укажите диапазон</span>
+          <span>{{ 'BANNER.FORM.SELECT_RANGE' | translate }}</span>
         </label>
         <label>
           <select id="select-participant" [(ngModel)]="selectedParticipant" name="participant" required>
-            <option value="" selected>Участники</option>
+            <option value="" selected>{{ 'BANNER.FORM.PARTICIPANTS_PLACEHOLDER' | translate }}</option>
             @for (participant of participants; track participant.id) {
               <option>{{ participant.quantity }}</option>
             }
           </select>
-          <span>выберите из списка</span>
+          <span>{{ 'BANNER.FORM.SELECT_FROM_LIST' | translate }}</span>
         </label>
         <button 
           id="btn-submit-search" 
           [disabled]="!isFormInValid()" 
           class="primary-button">
-          Найти программу
+          {{ 'BANNER.FORM.SUBMIT_BTN' | translate }}
         </button>
       </form>
     </div>
@@ -62,31 +62,31 @@
     <img class="img-1" src="/images/mountain-meadow.png">
   </div>
   <div class="text-container">
-    <span class="fs-24 yellow">о нашем походе</span>
-    <h1 class="fs-32 lh-120">Исследуйте все горные массивы мира вместе с нами</h1>
-    <p class="fs-18 margin-40">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа Hampden-Sydney, штат Вирджиния, взял одно из самых странных слов в Lorem Ipsum, "consectetur"и занялся его поисками в классической латинской литературе.</p>
+    <span class="fs-24 yellow">{{ 'TOUR_INFO.SUBTITLE' | translate }}</span>
+    <h1 class="fs-32 lh-120">{{ 'TOUR_INFO.TITLE' | translate }}</h1>
+    <p class="fs-18 margin-40">{{ 'TOUR_INFO.DESCRIPTION' | translate }}</p>
     <button 
       (click)="messageService.showWarn('Ошибка')" 
       id="btn-tour-program" class="primary-button">
-      Программа тура
+      {{ 'TOUR_INFO.BTN' | translate }}
     </button>
   </div>
 </section>
 <section class="services-section">
   <div class="container container-services">
     <div class="info-container">
-      <span class="fs-24 fw-400 yellow">наше предложение</span>
-      <h2 class="fs-32 lh-120">Лучшие программы для тебя</h2>
-      <p class="fs-18 margin-40">Его корни уходят в один фрагмент классической латыни 45 года н.э., то есть более двух тысячелетий назад. Ричард МакКлинток, профессор латыни из колледжа.</p>
+      <span class="fs-24 fw-400 yellow">{{ 'SERVICES.SUBTITLE' | translate }}</span>
+      <h2 class="fs-32 lh-120">{{ 'SERVICES.TITLE' | translate }}</h2>
+      <p class="fs-18 margin-40">{{ 'SERVICES.DESCRIPTION' | translate }}</p>
       @for (service of services; track service.id) {
         <div class="service" 
           (mouseenter)="hoverServiceId = service.id"
           (mouseleave)="hoverServiceId = null"
-          [class.active] = "hoverServiceId === service.id">
+          [class.active]="hoverServiceId === service.id">
           <fa-icon [icon]="service.icon"/>
           <div>
-            <h3 class="fs-18">{{ service.title }}</h3>
-            <p>{{ service.description }}</p>
+            <h3 class="fs-18">{{ service.title | translate }}</h3>
+            <p>{{ service.description | translate }}</p>
           </div>
         </div>
       } 
@@ -94,7 +94,7 @@
         (click)="messageService.showInfo('Стоимость отправлена на почту')" 
         id="btn-services-price" 
         class="primary-button">
-        Стоимость программ
+        {{ 'SERVICES.BTN' | translate }}
       </button>
     </div>
     <div class="container-img">
@@ -107,8 +107,8 @@
 </section>
 <section class="section-destination">
   <div class="section-title">
-    <p class="yellow fs-24">по версии отдыхающих</p>
-    <h2 class="fs-32">Популярные направления</h2>
+    <p class="yellow fs-24">{{ 'DESTINATIONS.SUBTITLE' | translate }}</p>
+    <h2 class="fs-32">{{ 'DESTINATIONS.TITLE' | translate }}</h2>
   </div>
   <div class="destination-container">
     @for (destination of destinations; track destination.id) {
@@ -120,8 +120,8 @@
         </div>
         <div class="destination-info">
           <div class="destination-text">
-            <h3 class="fs-24">{{ destination.title }}</h3>
-            <p class="fs-14">{{ destination.subtitle }}</p>
+            <h3 class="fs-24">{{ destination.title | translate }}</h3>
+            <p class="fs-14">{{ destination.subtitle | translate }}</p>
           </div>
           <span class="fs-20 bold">{{ destination.price }} &#36;</span>
         </div>
@@ -132,13 +132,13 @@
     (click)="messageService.showSuccess('Стоимость отправлена на почту')" 
     id="rating-btn"
     class="primary-button">
-    Рейтинг направлений
+    {{ 'DESTINATIONS.BTN' | translate }}
   </button>
 </section>
 <section class="blog-section">
   <div class="section-title">
-    <p class="yellow fs-24">делимся впечатлениями</p>
-    <h2 class="fs-32">Блог о путешествиях</h2>
+    <p class="yellow fs-24">{{ 'BLOG.SUBTITLE' | translate }}</p>
+    <h2 class="fs-32">{{ 'BLOG.TITLE' | translate }}</h2>
   </div>
   <div class="blog-container container"> 
     @for (travel of travels; track travel.id) {
@@ -149,11 +149,11 @@
           [id]="'travel' + travel.id" 
           [class.activ-info]="travel.id === selectedBlogInfoId"
           (mouseenter)="selectedBlogInfoId = travel.id">
-          <h3 class="fs-24 bold">{{ travel.title }}</h3>
-          <p class="fs-14">{{ travel.description }}</p>
+          <h3 class="fs-24 bold">{{ travel.title | translate}}</h3>
+          <p class="fs-14">{{ travel.description | translate }}</p>
           <nav class="blog-nav"> 
             <span class="yellow">{{ travel.date }}</span>
-            <a class="bold fs-14">читать статью</a>
+            <a class="bold fs-14">{{ 'BLOG.READ_MORE' | translate }}</a>
           </nav>
         </div>
       </div>
@@ -163,22 +163,23 @@
     (click)="messageService.showError('Материалы недоступны')" 
     id="materials-btn"
     class="primary-button">
-    Другие материалы
+    {{ 'BLOG.BTN' | translate }}
   </button>   
 </section>
 <section class="photoreport-section">
   <div class="section-title">
-    <p class="yellow fs-24">фото-отчет</p>
-    <h2 class="fs-32">Делимся впечатлениями</h2>
+    <p class="yellow fs-24">{{ 'PHOTOREPORT.SUBTITLE' | translate }}</p>
+    <h2 class="fs-32">{{ 'PHOTOREPORT.TITLE' | translate }}</h2>
   </div>
   <div class="photoreport-container container">
     @for (photoreport of photoreports; track photoreport.id) {
-      <img [src]=" '/images/photoreport/' + photoreport.img + '.png' " >
+      <img [src]="'/images/photoreport/' + photoreport.img + '.png'">
     }
   </div>
   <button 
     (click)="messageService.showSuccess('Наш pinterest')" 
     class="primary-button"
     id="id-pinterest">
-    Наш pinterest</button>
+    {{ 'PHOTOREPORT.BTN' | translate }}
+  </button>
 </section>

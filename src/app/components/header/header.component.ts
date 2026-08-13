@@ -8,6 +8,8 @@ import { INavigation } from '../../interfaces/INavigation';
 import { AuthService } from '../../features/auth/services/auth.service';
 import { ThemeService } from '../../services/theme.service';
 import { APP_CONFIG } from '../../app.token';
+import { TranslatePipe } from '@ngx-translate/core';
+import { LangugeService } from '../../core/services/languge.service';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +21,8 @@ import { APP_CONFIG } from '../../app.token';
     FormsModule,
     SelectButtonModule,
     AsyncPipe,
-    DatePipe
+    DatePipe,
+    TranslatePipe
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -30,6 +33,7 @@ export class HeaderComponent {
   private router: Router = inject(Router);
   private config = inject(APP_CONFIG);
   themeService: ThemeService = inject(ThemeService);
+  langugeService = inject(LangugeService);
 
   companyName: string = this.config.companyName;
   currentDate: Date = new Date();
@@ -64,15 +68,19 @@ export class HeaderComponent {
     this.router.navigate(['/login']);
   }
 
+  onLangSelect(event: SelectButtonOptionClickEvent): void {
+    this.langugeService.changeLanguge(event.option.value);
+  }
+
   navigations: INavigation[] = [
     {
       id: 1,
-      text: 'Главная',
+      text: 'NAV.MAIN',
       link: '/',
     },
     {
       id: 2,
-      text: 'Пользователи',
+      text: 'NAV.USERS',
       link: '/user-page',
     },
   ];

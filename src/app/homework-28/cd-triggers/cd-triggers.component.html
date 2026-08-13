@@ -1,0 +1,29 @@
+<div class="center-wrapper">
+  <div class="counter-card">
+    <span class="count-display">{{ count }}</span>
+    <div class="scene-item">
+      <p>первый сцен.</p>
+      <button (click)="incrementCount()">+</button>
+    </div>
+    <div class="scene-item">
+      <p>второй сцен.</p>
+      <button (click)="countUpdateTimeout()">timeout</button>
+    </div>
+    <div class="scene-item">
+      <p>третий сцен.</p>
+      <button (click)="updateCountPromise()">promise</button>
+    </div>
+    <div class="scene-item">
+      <p>четвёртый сцен.</p>
+      <button (click)="httpIncrement()">http запрос</button>
+    </div>
+    <div class="scene-item">
+      <p>пятый сцен.</p>
+      <button (click)="updateCountInterval()">interval</button>
+    </div>
+    <div class="scene-item">
+      <p>шестой сцен.</p>
+      <button (click)="combinedUpdate()">комбинированный</button>
+    </div>
+  </div>
+</div>

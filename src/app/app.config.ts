@@ -16,6 +16,8 @@ import { authInterceptor } from './features/auth/interceptor/auth.interceptor';
 import { AuthService } from './features/auth/services/auth.service';
 import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 import { APP_CONFIG } from './app.token';
+import { provideTranslateService } from '@ngx-translate/core';
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -44,13 +46,22 @@ export const appConfig: ApplicationConfig = {
     {
       provide: APP_CONFIG,
       useValue: {
-        companyName: 'Румтибет',
+        companyName: 'HEADER.LOGO_COMPANY',
         enableLogs: true,
         enableNotifications: true,
         enableTheming: false,
         sessionTimeout: 3600,
       }
 
-    }
+    },
+    provideHttpClient(),
+    provideTranslateService({
+      loader: provideTranslateHttpLoader({
+        prefix: '/i18n/',
+        suffix: '.json'
+      }),
+      fallbackLang: 'en',
+      lang: 'en'
+    })
   ],
 };

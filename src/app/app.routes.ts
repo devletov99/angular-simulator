@@ -21,31 +21,34 @@ export const routes: Routes = [
         path: 'posts',
         loadComponent: () =>
           import('./features/posts/components/posts/posts.component').then((m) => m.PostsComponent),
-        canActivate: [adminGuard],
       },
       {
         path: 'posts/create',
         loadComponent: () =>
-          import('./features/posts/components/post-create/post-create.component').then(
-            (m) => m.PostCreateComponent,
-          ),
-        canActivate: [adminGuard],
+          import('./features/posts/components/post-create/post-create.component').then((m) => m.PostCreateComponent),
       },
       {
         path: 'posts/:id',
         loadComponent: () =>
-          import('./features/posts/components/post-detail/post-detail.component').then(
-            (m) => m.PostDetailComponent,
-          ),
+          import('./features/posts/components/post-detail/post-detail.component').then((m) => m.PostDetailComponent),
         resolve: { post: postResolver },
-        canActivate: [adminGuard],
       },
       {
         path: 'user-page',
         loadComponent: () =>
           import('./components/user-page/user-page.component').then((m) => m.UserPageComponent),
-        canActivate: [adminGuard],
+        canActivate: [],
       },
+      {
+        path: 'cd-triggers',
+        loadComponent: () => 
+          import('./homework-28/cd-triggers/cd-triggers.component').then((m) => m.CdTriggersComponent),
+      },
+      {
+        path: 'cd-onPush',
+        loadComponent: () => 
+          import('./homework-28/cd-triggers-on-push/cd-triggers-on-push.component').then((m) => m.CdTriggersOnPushComponent),
+      }
     ],
   },
   {
@@ -63,8 +66,6 @@ export const routes: Routes = [
   {
     path: '**',
     loadComponent: () =>
-      import('./components/not-found-page/not-found-page.component').then(
-        (m) => m.NotFoundPageComponent,
-      ),
+      import('./components/not-found-page/not-found-page.component').then((m) => m.NotFoundPageComponent),
   },
 ];

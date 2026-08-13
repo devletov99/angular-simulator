@@ -2,19 +2,19 @@
   <form [formGroup]="postCreateForm">
     <div>
       <label>
-        title
+        {{ 'POST_FORM.TITLE' | translate }}
         <input id="title" type="text" formControlName="title">
       </label>
     </div>
     <div>
       <label>
-        body
+        {{ 'POST_FORM.BODY' | translate }}
         <textarea id="body" formControlName="body"></textarea>
       </label>
     </div>
     <div>
       <label>
-        tags
+        {{ 'POST_FORM.TAGS' | translate }}
         <input id="tags" type="text" formControlName="tags">
       </label>
     </div>
@@ -24,13 +24,13 @@
       (click)="onSubmitForm()" 
       id="btn-submit" 
       class="primary-button">
-      Опубликовать пост
+      {{ 'POST_FORM.PUBLISH_BTN' | translate }}
     </button>
     <button 
       (click)="goBack()" 
       id="btn-close" 
       class="primary-button">
-      Отмена
+      {{ 'COMMON.CANCEL' | translate }}
     </button>
   </div>
 </div>

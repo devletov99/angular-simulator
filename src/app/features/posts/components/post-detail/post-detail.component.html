@@ -1,14 +1,14 @@
   <div>
     <p-table [value]="[post]">
       <ng-template pTemplate="header">
-        <tr>
-          <th>title</th>
-          <th>body</th>
-          <th>tags</th>
-          <th>likes</th>
-          <th>dislikes</th>
-          <th>views</th>
-        </tr>
+      <tr>
+        <th>{{ 'POST_TABLE.TITLE' | translate }}</th>
+        <th>{{ 'POST_TABLE.BODY' | translate }}</th>
+        <th>{{ 'POST_TABLE.TAGS' | translate }}</th>
+        <th>{{ 'POST_TABLE.LIKES' | translate }}</th>
+        <th>{{ 'POST_TABLE.DISLIKES' | translate }}</th>
+        <th>{{ 'POST_TABLE.VIEWS' | translate }}</th>
+      </tr>
       </ng-template>
       <ng-template pTemplate="body" let-post>
         <tr>

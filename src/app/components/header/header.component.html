@@ -2,7 +2,7 @@
 	<header class="header container">
 		<div class="container-logo">
 			<img src="/images/logo-company.svg" alt="логотип компании">
-			<span class="company-name">{{ companyName }}</span>
+			<span class="company-name">{{ companyName | translate}}</span>
 			<p-toggleswitch id="toogle-mode" (onChange)="onToggleMode($event.checked)" [ngModel]="themeService.isDarkMode$ | async"/>
 		</div>
 		<nav class="container-nav fs-18">
@@ -12,15 +12,15 @@
 					[routerLinkActiveOptions]="{ exact: true }"
 					[routerLink]="navigation.link"
 					routerLinkActive="active-link">
-					{{ navigation.text }}
+					{{ navigation.text | translate }}
 				</a>
 			}
 		</nav>
-		<button id="btn-consultation" class="btn-consultation primary-button">Консультация</button>
+		<button id="btn-consultation" class="btn-consultation primary-button">{{ 'HEADER.CONSULTATION_BTN' | translate }}</button>
 	</header>
 	<div class="widget container">
 		@if (!isCounterVisible) {
-			 <p class="date" id="current-date">{{ currentDate | date}}</p>
+			 <p class="date" id="current-date">{{ currentDate | date }}</p>
 		}
 		<p>{{ loginDate | date }}</p>
 		@if (isCounterVisible) {
@@ -39,7 +39,7 @@
 			id="btn-toggle-counter" 
 			(click)="isCounterVisible = !isCounterVisible" 
 			class="primary-button">
-			{{ !isCounterVisible ? 'показать счётчик' : 'показвть дату' }}
+			{{ (!isCounterVisible ? 'HEADER.SHOW_COUNTER' : 'HEADER.SHOW_DATE') | translate}}
 		</button>
 	</div>
 	<button class="primary-button" (click)="logout()">выйти</button>
@@ -53,5 +53,15 @@
 		optionValue="value"
 		(onOptionClick)="onPresetSelect($event)"
 		[ngModel]="themeService.preset$ | async"
+	/>
+</div>
+<div>
+	<p-selectbutton 
+		class="select-button" 
+		id="select-person"
+		[options]="langugeService.languages" 
+		optionLabel="lang" 
+		optionValue="value"
+		(onOptionClick)="onLangSelect($event)"
 	/>
 </div>

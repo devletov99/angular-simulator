@@ -1,0 +1,196 @@
+{
+  "AUTH": {
+    "USERNAME_PLACEHOLDER": "Email или имя пользователя",
+    "PASSWORD_PLACEHOLDER": "Пароль",
+    "SUBMIT_BTN": "Авторизоваться"
+  },
+  "NAV": {
+    "MAIN": "Home",
+    "USERS": "Users"
+  },
+  "COMMON": {
+    "UNKNOWN": "Unknown",
+    "SAVE": "Save",
+    "CANCEL": "Cancel"
+  },
+  "HEADER": {
+    "LOGO_COMPANY": "RUMTIBET",
+    "CONSULTATION_BTN": "Consultation",
+    "SHOW_COUNTER": "show counter",
+    "SHOW_DATE": "show date",
+    "LOGOUT_BTN": "log out"
+  },
+  "BANNER": {
+    "TITLE": "Enjoy a walk in the mountains with a team of like-minded people",
+    "FORM": {
+      "LOCATION_PLACEHOLDER": "Tour location",
+      "SELECT_FROM_LIST": "select from list",
+      "DATE_PLACEHOLDER": "Hike date",
+      "SELECT_RANGE": "specify range",
+      "PARTICIPANTS_PLACEHOLDER": "Participants",
+      "SUBMIT_BTN": "Find program"
+    }
+  },
+  "TOUR_INFO": {
+    "SUBTITLE": "about our hike",
+    "TITLE": "Explore all the mountain ranges of the world with us",
+    "DESCRIPTION": "Its roots date back to a piece of classical Latin literature from 45 BC, making it over two millennia old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, \"consectetur\".",
+    "BTN": "Tour program"
+  },
+  "SERVICES": {
+    "SUBTITLE": "our offer",
+    "TITLE": "Best programs for you",
+    "DESCRIPTION": "Its roots date back to a piece of classical Latin literature from 45 BC, making it over two millennia old.",
+    "BTN": "Program costs",
+    "items": {
+      "WALKING": {
+        "TITLE": "Experienced Guide",
+        "DESCRIPTION": "For the modern world, the basic vector of development implies independent ways of implementing the relevant conditions for activation."
+      },
+      "SHEILD": {
+        "TITLE": "Safe Hiking",
+        "DESCRIPTION": "For the modern world, the basic vector of development implies independent ways of implementing the relevant conditions for activation."
+      },
+      "TAG": {
+        "TITLE": "Fair Prices",
+        "DESCRIPTION": "For the modern world, the basic vector of development implies independent ways of implementing the relevant conditions for activation."
+      }
+    }
+  },
+  "DESTINATIONS": {
+    "SUBTITLE": "according to travelers",
+    "TITLE": "Popular destinations",
+    "BTN": "Destination rating",
+    "ITEMS": {
+      "LAKE": {
+        "TITLE": "Lake near mountains",
+        "SUBTITLE": "romantic adventure"
+      },
+      "NIGHT": {
+        "TITLE": "Night in the mountains",
+        "SUBTITLE": "with friends"
+      },
+      "SPORT": {
+        "TITLE": "Sports in the mountains",
+        "SUBTITLE": "for those who care about themselves"
+      }
+    }
+  },
+  "BLOG": {
+    "SUBTITLE": "sharing experiences",
+    "TITLE": "Travel blog",
+    "READ_MORE": "read article",
+    "BTN": "Other materials",
+    "ITEMS": {
+      "ITALY": {
+        "TITLE": "Beautiful Italy, what is it really like?",
+        "DESCRIPTION": "For the modern world, the basic vector of development assumes independent ways of implementing appropriate activation conditions."
+      },
+      "DOUBTS": {
+        "TITLE": "Away with doubts! The whole world is open to you!",
+        "DESCRIPTION": "For the modern world, the basic vector of development assumes independent ways of implementing appropriate activation conditions ... independent ways of implementing appropriate..."
+      },
+      "SOLO": {
+        "TITLE": "How to prepare for solo travel?",
+        "DESCRIPTION": "For the modern world, the basic vector of development assumes."
+      },
+      "INDIA": {
+        "TITLE": "India ... shall we fly?",
+        "DESCRIPTION": "For the modern world, the basic."
+      }
+    }
+  },
+  "PHOTOREPORT": {
+    "SUBTITLE": "photo report",
+    "TITLE": "Sharing experiences",
+    "BTN": "Our Pinterest"
+  },
+  "FOOTER": {
+    "NEWSLETTER": {
+      "SUBTITLE": "relevant",
+      "TITLE": "Get useful travel newsletters",
+      "LABEL": "Enter e-mail address",
+      "PLACEHOLDER": "name@domain.com",
+      "SUBMIT_BTN": "Subscribe to news",
+      "POLICY_TEXT": "by subscribing to news, you automatically agree with",
+      "POLICY_LINK": "personal data processing terms",
+      "AND": "and",
+      "TERMS_LINK": "advertising mailing rules"
+    },
+    "ABOUT": {
+      "TITLE": "Company «RoomTibet»",
+      "DESCRIPTION": "Its roots date back to a piece of classical Latin literature from 45 BC, making it over two millennia old. Richard McClintock, a Latin professor at Hampden-Sydney College."
+    },
+    "SERVICES": {
+      "TITLE": "Our services",
+      "SUMMER_HIKES": "Mountain walks in summer",
+      "WINTER_HIKES": "Winter mountain hikes",
+      "TEMPLE_TOURS": "Visiting mountain temples",
+      "EXTREME": "Extreme tourism types",
+      "JUNGLE": "Amazon jungle hikes",
+      "AFRICA": "Trip to Africa"
+    },
+    "INFO": {
+      "TITLE": "Important for travel",
+      "PACKING": "How to pack for a long hike?",
+      "ESSENTIALS": "Vital items for hiking",
+      "INSURANCE": "Medical insurance, safety guarantees",
+      "DOCTORS": "If you are a doctor - check here"
+    }
+  },
+  "USER_CARD": {
+    "CONTACTS": "Contacts",
+    "EMAIL": "Email",
+    "PHONE": "Phone",
+    "WEBSITE": "Website",
+    "ADDRESS_HEADER": "Residential Address",
+    "CITY": "City",
+    "STREET": "Street",
+    "SUITE": "Suite",
+    "ZIPCODE": "Zipcode",
+    "COORDS": "Coordinates",
+    "WORK_HEADER": "Workplace",
+    "COMPANY": "Company",
+    "CATCH_PHRASE": "Mission",
+    "SPECIALIZATION": "Specialization",
+    "DELETE_USER": "Delete user"
+  },
+  "USERS_LIST": {
+    "EMPTY": "No users to display",
+    "REFRESH_BTN": "refresh users"
+  },
+  "USER_FORM": {
+    "NAME": "Name",
+    "USERNAME": "Username",
+    "EMAIL": "Email",
+    "STREET": "Street",
+    "SUITE": "Suite / Apt",
+    "CITY": "City",
+    "ZIPCODE": "Zipcode",
+    "LAT": "Latitude",
+    "LNG": "Longitude",
+    "PHONE": "Phone",
+    "WEBSITE": "Website",
+    "COMPANY_NAME": "Company name",
+    "CATCH_PHRASE": "Catch phrase",
+    "BS": "Specialization",
+    "SUBMIT_BTN": "Register user"
+  },
+  "POST_FORM": {
+    "TITLE": "Title",
+    "BODY": "Body",
+    "TAGS": "Tags",
+    "PUBLISH_BTN": "Publish post"
+  },
+  "POST_TABLE": {
+    "TITLE": "Title",
+    "BODY": "Content",
+    "TAGS": "Tags",
+    "LIKES": "Likes",
+    "DISLIKES": "Dislikes",
+    "VIEWS": "Views"
+  },
+  "NOT_FOUND_PAGE": {
+    "WORKS": "not-found-page works!"
+  }
+}

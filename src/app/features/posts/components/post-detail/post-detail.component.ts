@@ -4,10 +4,11 @@ import { TableModule } from 'primeng/table';
 import { IPost } from '../../interfaces/IPost';
 import { PostService } from '../../services/post.service';
 import { AsyncPipe } from '@angular/common';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-post-detail',
-  imports: [TableModule],
+  imports: [TableModule, TranslatePipe],
   templateUrl: './post-detail.component.html',
   styleUrl: './post-detail.component.scss',
 })
