@@ -58,10 +58,12 @@
 <div>
 	<p-selectbutton 
 		class="select-button" 
-		id="select-person"
-		[options]="langugeService.languages" 
-		optionLabel="lang" 
-		optionValue="value"
-		(onOptionClick)="onLangSelect($event)"
+		id="select-lung"
+		[options]="languageService.languages" 
+		optionLabel="label" 
+		optionValue="lang"
+		(onChange)="onLangSelect($event)"
+		[ngModel]="languageService.currentLang"
 	/>
 </div>
+ 

@@ -16,14 +16,15 @@
         </label>
         <label>
           <div class="input-wrapper">
-            <input 
-              id="input-date" 
-              [(ngModel)]="selectedDate" 
-              type="text" 
-              [placeholder]="'BANNER.FORM.DATE_PLACEHOLDER' | translate" 
-              name="date" 
-              required>
-              <fa-icon class="calendar-icon" [icon]="faCalendar"/>
+            <p-datepicker 
+              class="date"
+              [(ngModel)]="date" 
+              name="date"
+              [iconDisplay]="'input'" 
+              [showIcon]="true" 
+              inputId="icondisplay"
+              appendTo="body"    
+            />
           </div>
           <span>{{ 'BANNER.FORM.SELECT_RANGE' | translate }}</span>
         </label>

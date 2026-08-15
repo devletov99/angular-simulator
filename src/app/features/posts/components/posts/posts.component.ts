@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { TableModule, TablePageEvent } from 'primeng/table';
 import { ContextMenuModule } from 'primeng/contextmenu';
 import { SkeletonModule } from 'primeng/skeleton';
@@ -22,7 +22,8 @@ import { TranslatePipe } from '@ngx-translate/core';
     SkeletonModule, 
     ContextMenuModule, 
     AsyncPipe,
-    TranslatePipe],
+    TranslatePipe,
+  ],
   providers: [DialogService],
   templateUrl: './posts.component.html',
   styleUrl: './posts.component.scss',

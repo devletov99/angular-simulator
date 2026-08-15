@@ -11,17 +11,21 @@ import { IParticipant } from '../../interfaces/IParticipant';
 import { IPhoto } from '../../interfaces/IPhoto';
 import { IService } from '../../interfaces/IService';
 import { MessageService } from '../../services/message.service';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { DatePickerModule } from 'primeng/datepicker';
+import { FluidModule } from 'primeng/fluid';
+
 
 @Component({
   selector: 'app-home-page',
-  imports: [FormsModule, FontAwesomeModule, TranslatePipe],
+  imports: [FormsModule, FontAwesomeModule, TranslatePipe, DatePickerModule, FluidModule,],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent {
 
   messageService: MessageService = inject(MessageService);
+  translateService: TranslateService = inject(TranslateService);
 
   selectedLocation!: boolean;
   selectedParticipant!: boolean;
@@ -32,6 +36,7 @@ export class HomePageComponent {
   faStar: IconDefinition = faStar;
   faCalendar: IconDefinition = faCalendar;
   faChevronDown: IconDefinition = faChevronDown;
+  date: Date | undefined;
 
   isFormInValid(): boolean {
     return this.selectedLocation && this.selectedDate && this.selectedParticipant;

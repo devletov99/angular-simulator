@@ -2,14 +2,14 @@ import { Component, inject, Input } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { FormsModule } from '@angular/forms';
-import { SelectButtonModule, SelectButtonOptionClickEvent } from 'primeng/selectbutton';
+import { SelectButtonChangeEvent, SelectButtonModule, SelectButtonOptionClickEvent } from 'primeng/selectbutton';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { INavigation } from '../../interfaces/INavigation';
 import { AuthService } from '../../features/auth/services/auth.service';
 import { ThemeService } from '../../services/theme.service';
 import { APP_CONFIG } from '../../app.token';
 import { TranslatePipe } from '@ngx-translate/core';
-import { LangugeService } from '../../core/services/languge.service';
+import { LanguageService } from '../../core/services/language.service';
 
 @Component({
   selector: 'app-header',
@@ -33,7 +33,7 @@ export class HeaderComponent {
   private router: Router = inject(Router);
   private config = inject(APP_CONFIG);
   themeService: ThemeService = inject(ThemeService);
-  langugeService = inject(LangugeService);
+  languageService = inject(LanguageService);
 
   companyName: string = this.config.companyName;
   currentDate: Date = new Date();
@@ -68,8 +68,8 @@ export class HeaderComponent {
     this.router.navigate(['/login']);
   }
 
-  onLangSelect(event: SelectButtonOptionClickEvent): void {
-    this.langugeService.changeLanguge(event.option.value);
+  onLangSelect(event: SelectButtonChangeEvent): void {
+    this.languageService.changeLanguage(event.value);
   }
 
   navigations: INavigation[] = [
