@@ -291,6 +291,11 @@
       "browseFiles": "Выбрать файлы",
       "maximizeLabel": "Развернуть",
       "minimizeLabel": "Свернуть"
+    },
+    "LANGUAGES": {
+      "ru": "Русский",
+      "en": "Английский",
+      "de": "Немецкий"
     }
   },
   "NOT_FOUND_PAGE": {

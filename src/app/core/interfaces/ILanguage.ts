@@ -1,6 +1,6 @@
 import { Language } from '@ngx-translate/core';
 
-export interface ILangauge {
-  label: string,
-  lang: Language
+export interface ILanguage {
+  label: string;
+  lang: Language;
 }

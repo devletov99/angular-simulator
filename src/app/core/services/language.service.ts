@@ -1,7 +1,7 @@
 import { DestroyRef, inject, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { LocalStorageService } from '../../services/local-storage.service';
-import { ILangauge } from '../interfaces/ILanguage';
+import { ILanguage } from '../interfaces/ILanguage';
 import { Language } from '../enums/Language';
 import { PrimeNG } from 'primeng/config';
 import { tap } from 'rxjs';
@@ -17,13 +17,7 @@ export class LanguageService {
   private translateService: TranslateService = inject(TranslateService);
   private primeNG: PrimeNG = inject(PrimeNG);
   private destroyRef: DestroyRef = inject(DestroyRef);
-
-  languages: ILangauge[] = [
-    { lang: Language.RUSSIA,  label: 'Русский' },
-    { lang: Language.ENGLISH, label: 'English' },
-    { lang: Language.GERMAN, label: 'German' }
-  ];
-
+  languages!: ILanguage[];
   currentLang: string | null = this.localStorageService.getItem('lang');
 
   constructor() {
@@ -42,7 +36,14 @@ export class LanguageService {
   translatePrime(): void {
     this.translateService.stream('PRIME_NG')
       .pipe(
-        tap((lang: Translation) => this.primeNG.setTranslation(lang)),
+        tap((lang: Translation) => {
+          this.primeNG.setTranslation(lang);
+
+          this.languages = Object.values(Language).map((lang: Language) => ({
+            lang,
+            label: this.translateService.instant(`PRIME_NG.LANGUAGES.${ lang }`)
+          })); 
+        }),
         takeUntilDestroyed(this.destroyRef),
       ).subscribe();
   }
