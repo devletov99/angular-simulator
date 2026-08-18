@@ -36,14 +36,7 @@ export class LanguageService {
   translatePrime(): void {
     this.translateService.stream('PRIME_NG')
       .pipe(
-        tap((lang: Translation) => {
-          this.primeNG.setTranslation(lang);
-
-          this.languages = Object.values(Language).map((lang: Language) => ({
-            lang,
-            label: this.translateService.instant(`PRIME_NG.LANGUAGES.${ lang }`)
-          })); 
-        }),
+        tap((lang: Translation) => this.primeNG.setTranslation(lang)),
         takeUntilDestroyed(this.destroyRef),
       ).subscribe();
   }

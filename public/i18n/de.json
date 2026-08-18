@@ -297,13 +297,13 @@
       "browseFiles": "Dateien durchsuchen",
       "maximizeLabel": "Maximieren",
       "minimizeLabel": "Minimieren"
-    },
-    "LANGUAGES": {
-      "ru": "Russisch",
-      "en": "Englisch",
-      "de": "Deutsch"
     }
   },
+"LANGUAGES": {
+  "ru": "Russisch",
+  "en": "Englisch",
+  "de": "Deutsch"
+},
   "NOT_FOUND_PAGE": {
     "WORKS": "Seite nicht gefunden!"
   }

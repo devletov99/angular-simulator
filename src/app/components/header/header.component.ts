@@ -1,4 +1,4 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, DestroyRef, inject, Input } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { FormsModule } from '@angular/forms';
@@ -8,8 +8,12 @@ import { INavigation } from '../../interfaces/INavigation';
 import { AuthService } from '../../features/auth/services/auth.service';
 import { ThemeService } from '../../services/theme.service';
 import { APP_CONFIG } from '../../app.token';
-import { TranslatePipe } from '@ngx-translate/core';
+import { TranslatePipe, TranslateService, Translation } from '@ngx-translate/core';
 import { LanguageService } from '../../core/services/language.service';
+import { ILanguage } from '../../core/interfaces/ILanguage';
+import { Language } from '../../core/enums/Language';
+import { tap } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-header',
@@ -32,6 +36,8 @@ export class HeaderComponent {
   private authService: AuthService = inject(AuthService);
   private router: Router = inject(Router);
   private config = inject(APP_CONFIG);
+  private translateService: TranslateService = inject(TranslateService);
+  private destroyRef: DestroyRef = inject(DestroyRef);
   themeService: ThemeService = inject(ThemeService);
   languageService = inject(LanguageService);
 
@@ -40,11 +46,25 @@ export class HeaderComponent {
   isCounterVisible!: boolean;
   counter: number = 0;
   loginDate = this.authService.getLoginTime();
+  languages!: ILanguage[];
 
   constructor() {
     setInterval(() => {
       this.currentDate = new Date();
     }, 1000);
+  }
+
+  ngOnInit(): void {
+    this.translateService.stream('LANGUAGES')
+      .pipe(
+        tap((translations: Translation) => this.languages = Object.values(Language)
+          .map((lang: Language) => ({
+            lang,
+            label: translations[lang] 
+          }))
+        ),
+        takeUntilDestroyed(this.destroyRef)
+      ).subscribe();
   }
 
   onToggleMode(value: boolean): void {

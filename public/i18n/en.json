@@ -297,12 +297,12 @@
       "browseFiles": "Browse files",
       "maximizeLabel": "Maximize",
       "minimizeLabel": "Minimize"
-    },
-    "LANGUAGES": {
-      "ru": "Russian",
-      "en": "English",
-      "de": "German"
     }
+  },
+  "LANGUAGES": {
+    "ru": "Russian",
+    "en": "English",
+    "de": "German"
   },
   "NOT_FOUND_PAGE": {
     "WORKS": "not-found-page works!"
