@@ -1,13 +1,19 @@
-import { Component, inject, Input } from '@angular/core';
+import { Component, DestroyRef, inject, Input } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { FormsModule } from '@angular/forms';
-import { SelectButtonModule, SelectButtonOptionClickEvent } from 'primeng/selectbutton';
+import { SelectButtonChangeEvent, SelectButtonModule, SelectButtonOptionClickEvent } from 'primeng/selectbutton';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { INavigation } from '../../interfaces/INavigation';
 import { AuthService } from '../../features/auth/services/auth.service';
 import { ThemeService } from '../../services/theme.service';
 import { APP_CONFIG } from '../../app.token';
+import { TranslatePipe, TranslateService, Translation } from '@ngx-translate/core';
+import { LanguageService } from '../../core/services/language.service';
+import { ILanguage } from '../../core/interfaces/ILanguage';
+import { Language } from '../../core/enums/Language';
+import { tap } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +25,8 @@ import { APP_CONFIG } from '../../app.token';
     FormsModule,
     SelectButtonModule,
     AsyncPipe,
-    DatePipe
+    DatePipe,
+    TranslatePipe
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -29,18 +36,35 @@ export class HeaderComponent {
   private authService: AuthService = inject(AuthService);
   private router: Router = inject(Router);
   private config = inject(APP_CONFIG);
+  private translateService: TranslateService = inject(TranslateService);
+  private destroyRef: DestroyRef = inject(DestroyRef);
   themeService: ThemeService = inject(ThemeService);
+  languageService = inject(LanguageService);
 
   companyName: string = this.config.companyName;
   currentDate: Date = new Date();
   isCounterVisible!: boolean;
   counter: number = 0;
   loginDate = this.authService.getLoginTime();
+  languages!: ILanguage[];
 
   constructor() {
     setInterval(() => {
       this.currentDate = new Date();
     }, 1000);
+  }
+
+  ngOnInit(): void {
+    this.translateService.stream('LANGUAGES')
+      .pipe(
+        tap((translations: Translation) => this.languages = Object.values(Language)
+          .map((lang: Language) => ({
+            lang,
+            label: translations[lang] 
+          }))
+        ),
+        takeUntilDestroyed(this.destroyRef)
+      ).subscribe();
   }
 
   onToggleMode(value: boolean): void {
@@ -64,15 +88,19 @@ export class HeaderComponent {
     this.router.navigate(['/login']);
   }
 
+  onLangSelect(event: SelectButtonChangeEvent): void {
+    this.languageService.changeLanguage(event.value);
+  }
+
   navigations: INavigation[] = [
     {
       id: 1,
-      text: 'Главная',
+      text: 'NAV.MAIN',
       link: '/',
     },
     {
       id: 2,
-      text: 'Пользователи',
+      text: 'NAV.USERS',
       link: '/user-page',
     },
   ];

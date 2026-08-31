@@ -1,0 +1,310 @@
+{
+  "AUTH": {
+    "USERNAME_PLACEHOLDER": "E-Mail-Adresse oder Benutzername",
+    "PASSWORD_PLACEHOLDER": "Passwort",
+    "SUBMIT_BTN": "Anmelden"
+  },
+  "NAV": {
+    "MAIN": "Startseite",
+    "USERS": "Benutzer"
+  },
+  "COMMON": {
+    "UNKNOWN": "Unbekannt",
+    "SAVE": "Speichern",
+    "CANCEL": "Abbrechen"
+  },
+  "HEADER": {
+    "LOGO_COMPANY": "RUMTIBET",
+    "CONSULTATION_BTN": "Beratung",
+    "SHOW_COUNTER": "Zähler anzeigen",
+    "SHOW_DATE": "Datum anzeigen",
+    "LOGOUT_BTN": "Abmelden"
+  },
+  "BANNER": {
+    "TITLE": "Genieße eine Wanderung in den Bergen mit einem Team von Gleichgesinnten",
+    "FORM": {
+      "LOCATION_PLACEHOLDER": "Ort für die Tour",
+      "SELECT_FROM_LIST": "Aus der Liste auswählen",
+      "DATE_PLACEHOLDER": "Datum der Wanderung",
+      "SELECT_RANGE": "Zeitraum angeben",
+      "PARTICIPANTS_PLACEHOLDER": "Teilnehmer",
+      "SUBMIT_BTN": "Programm finden"
+    }
+  },
+  "TOUR_INFO": {
+    "SUBTITLE": "Über unsere Wanderung",
+    "TITLE": "Entdecken Sie alle Gebirge der Welt mit uns",
+    "DESCRIPTION": "Seine Wurzeln reichen zurück zu einem klassischen Stück lateinischer Literatur aus dem Jahr 45 v. Chr. – es ist also über zweitausend Jahre alt. Richard McClintock, ein Lateinprofessor am Hampden-Sydney College in Virginia, stieß dabei auf eines der seltensten lateinischen Wörter: \"consectetur\".",
+    "BTN": "Tourprogramm"
+  },
+  "SERVICES": {
+    "SUBTITLE": "Unser Angebot",
+    "TITLE": "Die besten Programme für Sie",
+    "DESCRIPTION": "Seine Wurzeln reichen zurück zu einem klassischen Stück lateinischer Literatur aus dem Jahr 45 v. Chr. – es ist also über zweitausend Jahre alt.",
+    "BTN": "Preise der Programme",
+    "items": {
+      "WALKING": {
+        "TITLE": "Erfahrener Guide",
+        "DESCRIPTION": "In der modernen Welt bedeutet der grundlegende Entwicklungsvektor, die relevanten Aktivierungsbedingungen eigenständig umzusetzen."
+      },
+      "SHEILD": {
+        "TITLE": "Sicheres Wandern",
+        "DESCRIPTION": "In der modernen Welt bedeutet der grundlegende Entwicklungsvektor, die relevanten Aktivierungsbedingungen eigenständig umzusetzen."
+      },
+      "TAG": {
+        "TITLE": "Faire Preise",
+        "DESCRIPTION": "In der modernen Welt bedeutet der grundlegende Entwicklungsvektor, die relevanten Aktivierungsbedingungen eigenständig umzusetzen."
+      }
+    }
+  },
+  "DESTINATIONS": {
+    "SUBTITLE": "Laut Reisenden",
+    "TITLE": "Beliebte Reiseziele",
+    "BTN": "Bewertung der Reiseziele",
+    "ITEMS": {
+      "LAKE": {
+        "TITLE": "See in den Bergen",
+        "SUBTITLE": "romantisches Abenteuer"
+      },
+      "NIGHT": {
+        "TITLE": "Nacht in den Bergen",
+        "SUBTITLE": "mit Freunden"
+      },
+      "SPORT": {
+        "TITLE": "Sport in den Bergen",
+        "SUBTITLE": "für alle, die auf sich achten"
+      }
+    }
+  },
+  "BLOG": {
+    "SUBTITLE": "Wir teilen unsere Erfahrungen",
+    "TITLE": "Tourismus-Blog",
+    "READ_MORE": "Artikel lesen",
+    "BTN": "Weitere Beiträge",
+    "ITEMS": {
+      "ITALY": {
+        "TITLE": "Das schöne Italien – wie ist es wirklich?",
+        "DESCRIPTION": "Die moderne Welt setzt voraus, die passenden Aktivierungsbedingungen eigenständig umzusetzen."
+      },
+      "DOUBTS": {
+        "TITLE": "Schluss mit Zweifeln! Die ganze Welt steht Ihnen offen!",
+        "DESCRIPTION": "Die moderne Welt setzt voraus, die entsprechenden Aktivierungsbedingungen eigenständig umzusetzen … eigenständige Wege zur Umsetzung der passenden Bedingungen …"
+      },
+      "SOLO": {
+        "TITLE": "Wie bereitet man sich auf eine Alleinreise vor?",
+        "DESCRIPTION": "Die moderne Welt setzt voraus."
+      },
+      "INDIA": {
+        "TITLE": "Indien … sollen wir fliegen?",
+        "DESCRIPTION": "Die moderne Welt."
+      }
+    }
+  },
+  "PHOTOREPORT": {
+    "SUBTITLE": "Fotoreportage",
+    "TITLE": "Eindrücke teilen",
+    "BTN": "Unser Pinterest"
+  },
+  "FOOTER": {
+    "NEWSLETTER": {
+      "SUBTITLE": "aktuell",
+      "TITLE": "Erhalten Sie nützliche Reise-Newsletter",
+      "LABEL": "E-Mail-Adresse eingeben",
+      "PLACEHOLDER": "name@domain.com",
+      "SUBMIT_BTN": "Newsletter abonnieren",
+      "POLICY_TEXT": "Mit der Anmeldung zum Newsletter stimmen Sie automatisch den",
+      "POLICY_LINK": "Bedingungen zur Verarbeitung personenbezogener Daten",
+      "AND": "und",
+      "TERMS_LINK": "Regeln für Werbesendungen"
+    },
+    "ABOUT": {
+      "TITLE": "Unternehmen „RUMTIBET“",
+      "DESCRIPTION": "Seine Wurzeln reichen zurück zu einem klassischen Stück lateinischer Literatur aus dem Jahr 45 v. Chr. und sind damit über zweitausend Jahre alt. Richard McClintock, ein Lateinprofessor am Hampden-Sydney College."
+    },
+    "SERVICES": {
+      "TITLE": "Unsere Dienstleistungen",
+      "SUMMER_HIKES": "Bergwanderungen im Sommer",
+      "WINTER_HIKES": "Winterwanderungen in den Bergen",
+      "TEMPLE_TOURS": "Besichtigung von Bergtempeln",
+      "EXTREME": "Extreme Formen des Tourismus",
+      "JUNGLE": "Wanderungen im Amazonas-Dschungel",
+      "AFRICA": "Reise nach Afrika"
+    },
+    "INFO": {
+      "TITLE": "Wichtig für Reisen",
+      "PACKING": "Wie packt man für eine lange Wanderung?",
+      "ESSENTIALS": "Unverzichtbare Ausrüstung für Wanderungen",
+      "INSURANCE": "Krankenversicherung und Sicherheitsgarantien",
+      "DOCTORS": "Wenn Sie Arzt sind – hier klicken"
+    }
+  },
+  "USER_CARD": {
+    "CONTACTS": "Kontakte",
+    "EMAIL": "E-Mail",
+    "PHONE": "Telefon",
+    "WEBSITE": "Website",
+    "ADDRESS_HEADER": "Wohnadresse",
+    "CITY": "Stadt",
+    "STREET": "Straße",
+    "SUITE": "Wohnung / Büro",
+    "ZIPCODE": "Postleitzahl",
+    "COORDS": "Koordinaten",
+    "WORK_HEADER": "Arbeitsplatz",
+    "COMPANY": "Firma",
+    "CATCH_PHRASE": "Mission",
+    "SPECIALIZATION": "Spezialisierung",
+    "DELETE_USER": "Benutzer löschen"
+  },
+  "USERS_LIST": {
+    "EMPTY": "Keine Benutzer zum Anzeigen",
+    "REFRESH_BTN": "Benutzer aktualisieren"
+  },
+  "USER_FORM": {
+    "NAME": "Name",
+    "USERNAME": "Benutzername",
+    "EMAIL": "E-Mail",
+    "STREET": "Straße",
+    "SUITE": "Wohnung / Büro",
+    "CITY": "Stadt",
+    "ZIPCODE": "Postleitzahl",
+    "LAT": "Breitengrad",
+    "LNG": "Längengrad",
+    "PHONE": "Telefon",
+    "WEBSITE": "Website",
+    "COMPANY_NAME": "Firmenname",
+    "CATCH_PHRASE": "Slogan des Unternehmens",
+    "BS": "Spezialisierung",
+    "SUBMIT_BTN": "Benutzer registrieren"
+  },
+  "POST_FORM": {
+    "TITLE": "Titel",
+    "BODY": "Beitragstext",
+    "TAGS": "Tags",
+    "PUBLISH_BTN": "Beitrag veröffentlichen"
+  },
+  "POST_TABLE": {
+    "TITLE": "Titel",
+    "BODY": "Inhalt",
+    "TAGS": "Tags",
+    "LIKES": "Gefällt mir",
+    "DISLIKES": "Gefällt mir nicht",
+    "VIEWS": "Aufrufe"
+  },
+  "PRIME_NG": {
+    "startsWith": "Beginnt mit",
+    "contains": "Enthält",
+    "notContains": "Enthält nicht",
+    "endsWith": "Endet mit",
+    "equals": "Ist gleich",
+    "notEquals": "Ist nicht gleich",
+    "noFilter": "Kein Filter",
+    "lt": "Kleiner als",
+    "lte": "Kleiner oder gleich",
+    "gt": "Größer als",
+    "gte": "Größer oder gleich",
+    "is": "Ist",
+    "isNot": "Ist nicht",
+    "before": "Vor",
+    "after": "Nach",
+    "dateIs": "Datum ist",
+    "dateIsNot": "Datum ist nicht",
+    "dateBefore": "Datum ist vor",
+    "dateAfter": "Datum ist nach",
+    "clear": "Löschen",
+    "apply": "Anwenden",
+    "matchAll": "Alle Bedingungen erfüllen",
+    "matchAny": "Eine Bedingung erfüllen",
+    "addRule": "Regel hinzufügen",
+    "removeRule": "Regel entfernen",
+    "accept": "Ja",
+    "reject": "Nein",
+    "choose": "Auswählen",
+    "upload": "Hochladen",
+    "cancel": "Abbrechen",
+    "completed": "Abgeschlossen",
+    "pending": "Ausstehend",
+    "dayNames": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+    "dayNamesShort": ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+    "dayNamesMin": ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+    "monthNames": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+    "monthNamesShort": ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
+    "today": "Heute",
+    "chooseDate": "Datum auswählen",
+    "chooseMonth": "Monat auswählen",
+    "chooseYear": "Jahr auswählen",
+    "prevMonth": "Vorheriger Monat",
+    "nextMonth": "Nächster Monat",
+    "prevYear": "Vorheriges Jahr",
+    "nextYear": "Nächstes Jahr",
+    "prevDecade": "Vorheriges Jahrzehnt",
+    "nextDecade": "Nächstes Jahrzehnt",
+    "prevHour": "Vorherige Stunde",
+    "nextHour": "Nächste Stunde",
+    "prevMinute": "Vorherige Minute",
+    "nextMinute": "Nächste Minute",
+    "prevSecond": "Vorherige Sekunde",
+    "nextSecond": "Nächste Sekunde",
+    "am": "vorm.",
+    "pm": "nachm.",
+    "weekHeader": "KW",
+    "firstDayOfWeek": 1,
+    "dateFormat": "dd.mm.yy",
+    "fileSizeTypes": ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"],
+    "weak": "Schwach",
+    "medium": "Mittel",
+    "strong": "Stark",
+    "passwordPrompt": "Passwort eingeben",
+    "fileChosenMessage": "Datei ausgewählt",
+    "noFileChosenMessage": "Keine Datei ausgewählt",
+    "emptyFilterMessage": "Keine Ergebnisse gefunden",
+    "searchMessage": "{0} Ergebnisse verfügbar",
+    "selectionMessage": "{0} Elemente ausgewählt",
+    "emptySelectionMessage": "Keine Elemente ausgewählt",
+    "emptySearchMessage": "Keine Ergebnisse gefunden",
+    "emptyMessage": "Keine Ergebnisse gefunden",
+    "aria": {
+      "trueLabel": "Wahr",
+      "falseLabel": "Falsch",
+      "nullLabel": "Nicht ausgewählt",
+      "star": "1 Stern",
+      "stars": "{star} Sterne",
+      "selectAll": "Alle Elemente ausgewählt",
+      "unselectAll": "Auswahl aller Elemente aufgehoben",
+      "close": "Schließen",
+      "previous": "Zurück",
+      "next": "Weiter",
+      "navigation": "Navigation",
+      "firstPageLabel": "Erste Seite",
+      "lastPageLabel": "Letzte Seite",
+      "nextPageLabel": "Nächste Seite",
+      "prevPageLabel": "Vorherige Seite",
+      "previousPageLabel": "Vorherige Seite",
+      "rowsPerPageLabel": "Zeilen pro Seite",
+      "selectRow": "Zeile ausgewählt",
+      "unselectRow": "Auswahl der Zeile aufgehoben",
+      "expandRow": "Zeile erweitert",
+      "collapseRow": "Zeile reduziert",
+      "showFilterMenu": "Filtermenü anzeigen",
+      "hideFilterMenu": "Filtermenü ausblenden",
+      "filterOperator": "Filteroperator",
+      "filterConstraint": "Filterbedingung",
+      "editRow": "Zeile bearbeiten",
+      "saveEdit": "Änderungen speichern",
+      "cancelEdit": "Änderungen abbrechen",
+      "listView": "Listenansicht",
+      "gridView": "Rasteransicht",
+      "removeLabel": "Entfernen",
+      "browseFiles": "Dateien durchsuchen",
+      "maximizeLabel": "Maximieren",
+      "minimizeLabel": "Minimieren"
+    }
+  },
+"LANGUAGES": {
+  "ru": "Russisch",
+  "en": "Englisch",
+  "de": "Deutsch"
+},
+  "NOT_FOUND_PAGE": {
+    "WORKS": "Seite nicht gefunden!"
+  }
+}

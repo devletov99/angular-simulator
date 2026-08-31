@@ -11,16 +11,21 @@ import { IParticipant } from '../../interfaces/IParticipant';
 import { IPhoto } from '../../interfaces/IPhoto';
 import { IService } from '../../interfaces/IService';
 import { MessageService } from '../../services/message.service';
+import { TranslatePipe, TranslateService } from '@ngx-translate/core';
+import { DatePickerModule } from 'primeng/datepicker';
+import { FluidModule } from 'primeng/fluid';
+
 
 @Component({
   selector: 'app-home-page',
-  imports: [FormsModule, FontAwesomeModule],
+  imports: [FormsModule, FontAwesomeModule, TranslatePipe, DatePickerModule, FluidModule,],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.scss',
 })
 export class HomePageComponent {
 
   messageService: MessageService = inject(MessageService);
+  translateService: TranslateService = inject(TranslateService);
 
   selectedLocation!: boolean;
   selectedParticipant!: boolean;
@@ -31,6 +36,7 @@ export class HomePageComponent {
   faStar: IconDefinition = faStar;
   faCalendar: IconDefinition = faCalendar;
   faChevronDown: IconDefinition = faChevronDown;
+  date: Date | undefined;
 
   isFormInValid(): boolean {
     return this.selectedLocation && this.selectedDate && this.selectedParticipant;
@@ -40,23 +46,20 @@ export class HomePageComponent {
     {
       id: 1,
       icon: faPersonWalking,
-      title: 'Опытный гид',
-      description:
-        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
+      title: 'SERVICES.ITEMS.WALKING.TITLE',
+      description: 'SERVICES.ITEMS.WALKING.DESCRIPTION',
     },
     {
       id: 2,
       icon: faShield,
-      title: 'Безопасный поход',
-      description:
-        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
+      title: 'SERVICES.ITEMS.SHEILD.TITLE',
+      description: 'SERVICES.ITEMS.SHEILD.DESCRIPTION',
     },
     {
       id: 3,
       icon: faTag,
-      title: 'Лояльные цены',
-      description:
-        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
+      title: 'SERVICES.ITEMS.TAG.TITLE',
+      description: 'SERVICES.ITEMS.TAG.DESCRIPTION',
     },
   ];
 
@@ -115,8 +118,8 @@ export class HomePageComponent {
       id: 1,
       img: 'lake-mountains',
       icon: 'asterisk-icon',
-      title: 'Озеро возле гор',
-      subtitle: 'романтическое приключение',
+      title: 'DESTINATIONS.ITEMS.LAKE.TITLE',
+      subtitle: 'DESTINATIONS.ITEMS.LAKE.SUBTITLE',
       price: 480,
       rating: 4.9,
     },
@@ -124,8 +127,8 @@ export class HomePageComponent {
       id: 2,
       img: 'night-mountain',
       icon: 'asterisk-icon',
-      title: 'Ночь в горах',
-      subtitle: 'в компании друзей',
+      title: 'DESTINATIONS.ITEMS.NIGHT.TITLE',
+      subtitle: 'DESTINATIONS.ITEMS.NIGHT.SUBTITLE',
       price: 500,
       rating: 4.5,
     },
@@ -133,8 +136,8 @@ export class HomePageComponent {
       id: 3,
       img: 'sport-mountain',
       icon: 'asterisk-icon',
-      title: 'Спорт в горах',
-      subtitle: 'для тех, кто забоится о себе',
+      title: 'DESTINATIONS.ITEMS.SPORT.TITLE',
+      subtitle: 'DESTINATIONS.ITEMS.SPORT.SUBTITLE',
       price: 230,
       rating: 5.0,
     },
@@ -144,31 +147,29 @@ export class HomePageComponent {
     {
       id: 1,
       img: 'italy-coast',
-      title: 'Красивая Италия, какая она в реальности?',
-      description:
-        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации.',
+      title: 'BLOG.ITEMS.ITALY.TITLE',
+      description:'BLOG.ITEMS.ITALY.DESCRIPTION',
       date: '01/04/2023',
     },
     {
       id: 2,
       img: 'airplane-sunset',
-      title: 'Долой сомнения! Весь мир открыт для вас!',
-      description:
-        'Для современного мира базовый вектор развития предполагает независимые способы реализации соответствующих условий активизации ... независимые способы реализации соответствующих...',
+      title: 'BLOG.ITEMS.DOUBTS.TITLE',
+      description: 'BLOG.ITEMS.DOUBTS.DESCRIPTION',
       date: '01/04/2023',
     },
     {
       id: 3,
       img: 'solo-travel',
-      title: 'Как подготовиться к путешествию в одиночку? ',
-      description: 'Для современного мира базовый вектор развития предполагает.',
+      title: 'BLOG.ITEMS.SOLO.TITLE',
+      description: 'BLOG.ITEMS.SOLO.DESCRIPTION',
       date: '01/04/2023',
     },
     {
       id: 4,
       img: 'india-travel',
-      title: 'Индия ... летим?',
-      description: 'Для современного мира базовый.',
+      title: 'BLOG.ITEMS.INDIA.TITLE',
+      description: 'BLOG.ITEMS.INDIA.DESCRIPTION',
       date: '01/04/2023',
     },
   ];

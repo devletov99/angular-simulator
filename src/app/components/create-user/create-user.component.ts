@@ -2,10 +2,11 @@ import { Component, EventEmitter, inject, Output, Pipe } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AddBoldDirective } from '../../directive/add-bold.directive';
 import { IUser } from '../../interfaces/IUser';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-create-user',
-  imports: [ReactiveFormsModule, AddBoldDirective],
+  imports: [ReactiveFormsModule, AddBoldDirective, TranslatePipe],
   templateUrl: './create-user.component.html',
   styleUrl: './create-user.component.scss',
 })

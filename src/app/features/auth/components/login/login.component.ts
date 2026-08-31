@@ -3,14 +3,13 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { catchError, EMPTY, finalize, tap } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { MessageService } from '../../../../services/message.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LoaderService } from '../../../../services/loader.service';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslatePipe],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -31,18 +30,17 @@ export class LoginComponent {
     this.loaderService.showLoader();
     this.authService
       .login(this.authForm.value)
-      .pipe(
-        tap(() => this.router.navigate(['/'])),
-        catchError((err: HttpErrorResponse) => {
-          this.errMessage =
-            err.status === 400
-              ? 'Неверный email или пароль.'
-              : 'Не удалось войти. Попрбуйте позже.';
-          return EMPTY;
-        }),
-        finalize(() => this.loaderService.hideLoader()),
-      )
-      .subscribe();
+        .pipe(
+          tap(() => this.router.navigate(['/'])),
+          catchError((err: HttpErrorResponse) => {
+            this.errMessage =
+              err.status === 400
+                ? 'Неверный email или пароль.'
+                : 'Не удалось войти. Попрбуйте позже.';
+            return EMPTY;
+          }),
+          finalize(() => this.loaderService.hideLoader()),
+        ).subscribe();
   }
 
 }

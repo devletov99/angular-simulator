@@ -2,57 +2,57 @@
   <form [formGroup]="userForm">
     <div>
       <label>
-        Name
+        {{ 'USER_FORM.NAME' | translate }}
         <input id="user-name" type="text" formControlName="name">
       </label>
     </div>
     <div>
       <label>
-        Username
+        {{ 'USER_FORM.USERNAME' | translate }}
         <input id="username" type="text" formControlName="username">
       </label>
     </div>
     <div>
       <label>
-        Email
+        {{ 'USER_FORM.EMAIL' | translate }}
         <input id="email" type="email" formControlName="email">
       </label>
     </div>
     <div formGroupName="address">
       <div>
         <label>
-          Street
+          {{ 'USER_FORM.STREET' | translate }}
           <input id="street" type="text" formControlName="street">
         </label>
       </div>
       <div>
         <label>
-          Suite
+          {{ 'USER_FORM.SUITE' | translate }}
           <input id="suite" type="text" formControlName="suite">
         </label>
       </div>
       <div>
         <label>
-          City
+          {{ 'USER_FORM.CITY' | translate }}
           <input id="city" type="text" formControlName="city">
         </label>
       </div>
       <div>
         <label>
-          Zipcode
+          {{ 'USER_FORM.ZIPCODE' | translate }}
           <input id="zipcode" type="text" formControlName="zipcode">
         </label>
       </div>
       <div formGroupName="geo">
         <div>
           <label>
-            Lat
+            {{ 'USER_FORM.LAT' | translate }}
             <input id="lat" type="text" formControlName="lat">
           </label>
         </div>
         <div>
           <label>
-            Lng
+            {{ 'USER_FORM.LNG' | translate }}
             <input id="lng" type="text" formControlName="lng">
           </label>
         </div>
@@ -60,36 +60,38 @@
     </div>
     <div>
       <label>
-        Phone
+        {{ 'USER_FORM.PHONE' | translate }}
         <input id="phone" type="tel" formControlName="phone">
       </label>
     </div>
     <div>
       <label>
-        Website
+        {{ 'USER_FORM.WEBSITE' | translate }}
         <input id="website" type="text" formControlName="website">
       </label>
     </div>
     <div formGroupName="company">
       <div>
         <label>
-          Name
+          {{ 'USER_FORM.COMPANY_NAME' | translate }}
           <input id="company-name" type="text" formControlName="name">
         </label>
       </div>
       <div>
         <label>
-          Catch Phrase
+          {{ 'USER_FORM.CATCH_PHRASE' | translate }}
           <input id="catch-phrase" type="text" formControlName="catchPhrase">
         </label>
       </div>
       <div>
         <label>
-          Bs
+          {{ 'USER_FORM.BS' | translate }}
           <input id="bs" type="text" formControlName="bs">
         </label>
       </div>
     </div>
   </form>
-  <button appBold id="bttn-form" type="button" (click)="onSubmitForm()" >Зарегистрировать пользователя</button>
+  <button appBold id="bttn-form" type="button" (click)="onSubmitForm()">
+    {{ 'USER_FORM.SUBMIT_BTN' | translate }}
+  </button>
 </div>

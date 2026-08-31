@@ -1,10 +1,11 @@
 import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TranslatePipe } from '@ngx-translate/core';
 import { DialogService, DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-post-edit-dialog',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslatePipe],
   templateUrl: './post-edit-dialog.component.html',
   styleUrl: './post-edit-dialog.component.scss',
   providers: [DialogService],

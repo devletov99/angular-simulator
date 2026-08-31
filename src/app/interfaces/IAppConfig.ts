@@ -4,5 +4,4 @@ export interface IAppConfig {
   enableNotifications: boolean;
   enableTheming: boolean;
   sessionTimeout: number;
-
 }

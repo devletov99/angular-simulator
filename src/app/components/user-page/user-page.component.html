@@ -11,8 +11,8 @@
       (deleteUser)="onDeleteUser(user)"
     />
     } @empty {
-      <p class="empty-message fs-26">Нет пользователей для отображения</p>
+      <p class="empty-message fs-26">{{ 'USERS_LIST.EMPTY' | translate}}</p>
     }
   </div>
-  <button appBold id="update-users" class="primary-button update-users" (click)="updateUsers()">обновить пользователей</button>.  
+  <button appBold id="update-users" class="primary-button update-users" (click)="updateUsers()">{{ 'USERS_LIST.REFRESH_BTN' | translate }}</button>.  
 </div>

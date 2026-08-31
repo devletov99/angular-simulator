@@ -9,6 +9,7 @@ import { PluralizePipe } from '../../pipes/pluralize.pipe';
 import { AddBoldDirective } from '../../directive/add-bold.directive';
 import { IUser } from '../../interfaces/IUser';
 import { UserCardComponent } from '../user/user-card.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-page',
@@ -19,6 +20,7 @@ import { UserCardComponent } from '../user/user-card.component';
     UsersFilterComponent,
     PluralizePipe,
     AddBoldDirective,
+    TranslatePipe
   ],
   templateUrl: './user-page.component.html',
   styleUrl: './user-page.component.scss',
