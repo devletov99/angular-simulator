@@ -2,10 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, EMPTY, Observable, tap } from 'rxjs';
 import { ILogin } from '../interfaces/ILogin';
-import { LocalStorageService } from '../../../services/local-storage.service';
 import { IAuthResponse } from '../interfaces/IAuthResponse';
 import { IAuthUser } from '../interfaces/IAuthUser';
 import { IToken } from '../interfaces/IToken';
+import { LocalStorageService } from '../../../core/services/local-storage.service';
 
 @Injectable({
   providedIn: 'root',

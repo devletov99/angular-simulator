@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostEditDialogComponent } from '../post-edit-dialog/post-edit-dialog.component';
 import { IPostResponse } from '../../interfaces/IPostResponse';
-import { MessageService } from '../../../../services/message.service';
 import { TranslatePipe } from '@ngx-translate/core';
+import { MessageService } from '../../../../core/services/message.service';
 
 @Component({
   selector: 'app-posts',
