@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { LocalStorageService } from './services/local-storage.service';
 import { RouterOutlet } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MessageComponent } from './components/message/message.component';
-import { LoaderComponent } from './loader/loader.component';
+import { MessageComponent } from './shared/components/message/message.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
+import { LocalStorageService } from './core/services/local-storage.service';
 
 @Component({
   selector: 'app-root',

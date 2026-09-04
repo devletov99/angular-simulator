@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { PostEditDialogComponent } from '../post-edit-dialog/post-edit-dialog.component';
 import { IPostResponse } from '../../interfaces/IPostResponse';
-import { MessageService } from '../../../../services/message.service';
 import { TranslatePipe } from '@ngx-translate/core';
+import { MessageService } from '../../../../core/services/message.service';
 
 @Component({
   selector: 'app-posts',
@@ -80,25 +80,24 @@ export class PostsComponent implements OnInit {
   private loadPosts(skip: number, rows: number): void {
     this.postService
       .loadPost(skip, rows)
-      .pipe(
-        tap((response: IPostResponse) => {
-          this.postService.setPost(response.posts);
-          this.postService.setTotal(response.total);
-          this.isLoading = false;
-        }),
-        catchError(() => {
-          this.messageService.showError('');
-          this.isLoading = false;
-          return of();
-        }),
-      )
-      .subscribe();
+        .pipe(
+          tap((response: IPostResponse) => {
+            this.postService.setPost(response.posts);
+            this.postService.setTotal(response.total);
+            this.isLoading = false;
+          }),
+          catchError(() => {
+            this.messageService.showError('');
+            this.isLoading = false;
+            return of();
+          }),
+        ).subscribe();
   }
 
   onPageChange(event: TablePageEvent): void {
     this.rows = event.rows;
     this.loadPosts(event.first, this.rows);
-  }
+  } 
 
   onRowDoubleClick(post: IPost): void {
     this.router.navigate(['/posts', post.id]);
