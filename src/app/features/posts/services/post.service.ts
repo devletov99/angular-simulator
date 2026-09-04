@@ -2,15 +2,11 @@ import { DestroyRef, inject, Injectable } from '@angular/core';
 import {
   BehaviorSubject,
   catchError,
-  filter,
-  finalize,
-  map,
   Observable,
   of,
-  ReplaySubject,
-  switchMap,
   tap,
-} from 'rxjs';
+}
+from 'rxjs';
 import { PostApiService } from './post-api.service';
 import { IPost } from '../interfaces/IPost';
 import { IPostCreate } from '../interfaces/IPostCreate';
