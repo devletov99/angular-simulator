@@ -1,0 +1,34 @@
+.container-card {
+  margin: 100px auto 300px auto;
+
+  .product-card-divider {
+    border: 0;
+    border-top: 1px solid #e5e7eb;
+    margin: 1rem 0;
+  } 
+
+  .container-card_list {
+    height: 145px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+
+    .product-card__main {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .container-search{
+    background-color: #1a3e3e;
+    height: 96px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

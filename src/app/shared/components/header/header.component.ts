@@ -10,7 +10,7 @@ import { tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ThemeService } from '../../../core/services/theme.service';
 import { APP_CONFIG } from '../../../app.token';
-import { AuthService } from '../../../features/auth/services/auth.service';
+import { AuthService } from '../../../core/services/auth.service';
 import { LanguageService } from '../../../core/services/language.service';
 import { Language } from '../../../core/enums/Language';
 import { ILanguage } from '../../../core/interfaces/ILanguage';
@@ -102,6 +102,16 @@ export class HeaderComponent {
       id: 2,
       text: 'NAV.USERS',
       link: '/user-page',
+    },
+    {
+      id: 3,
+      text: 'NAV.PRODUCTS',
+      link: '/products',
+    },
+    {
+      id: 4,
+      text: 'NAV.CART',
+      link: '/cart',
     },
   ];
 

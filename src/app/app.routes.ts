@@ -4,6 +4,7 @@ import { MainLayoutComponent } from './core/layouts/main-layout/main-layout.comp
 import { authGuard } from './core/guards/auth.guard';
 import { AuthLayoutComponent } from './core/layouts/auth-layout/auth-layout.component';
 import { unauthGuard } from './core/guards/unauth.guard';
+import { productResolver } from './features/products/resolver/product.resolver';
 
 export const routes: Routes = [
   {
@@ -47,6 +48,22 @@ export const routes: Routes = [
         path: 'cd-onPush',
         loadComponent: () => 
           import('./homework-28/cd-triggers-on-push/cd-triggers-on-push.component').then((m) => m.CdTriggersOnPushComponent),
+      },
+      {
+        path: 'products',
+        loadComponent: () => 
+          import('./features/products/components/products/products.component').then((m) => m.ProductsComponent),
+      },
+      {
+        path: 'products/:id',
+        loadComponent: () => 
+          import('./features/products/components/product-detail/product-detail.component').then((m) => m.ProductDetailComponent),
+        resolve: { product: productResolver },
+      },
+      {
+        path: 'cart',
+        loadComponent: () =>
+          import('./features/products/components/cart/cart.component').then((m) => m.CartComponent),
       }
     ],
   },

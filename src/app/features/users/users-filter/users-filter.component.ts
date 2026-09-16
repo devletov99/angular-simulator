@@ -24,8 +24,7 @@ export class UsersFilterComponent implements OnInit {
         distinctUntilChanged(),
         tap((value: string) => this.filterUser.emit(value)),
         takeUntilDestroyed(this.destroyRef),
-      )
-      .subscribe();
+      ).subscribe();
   }
 
 }

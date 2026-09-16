@@ -1,0 +1,88 @@
+<div class="container-card container margin-auto">
+  <div class="container container-search">
+    <app-search (productSearch)="onSearchProduct($event)" />
+  </div>
+  <div>
+    <app-select id="products-sort-by-select" (selectChange)="onSortByProduct($event)" [options]="sortList"
+      [placeholder]=" 'Сортировка по' " />
+    <app-select id="products-sort-direction-select" (selectChange)="onSortDirection($event)" [options]="sortDirections"
+      [placeholder]=" 'Порядок сортировки' " />
+    <app-select id="products-category-select" (selectChange)="onProductCategory($event)"
+      [options]="categoriesProducts()" [placeholder]=" 'Выберите категорию' " />
+  </div>
+  <p-dataview #dv [value]="productsResource.value().products" [layout]="layout">
+    <ng-template #header>
+      <div class="flex justify-end">
+        <p-selectbutton id="products-layout-select-button" [(ngModel)]="layout" [options]="options"
+          [allowEmpty]="false">
+          <ng-template #item let-item>
+            <i class="pi " [ngClass]="{ 'pi-bars': item === 'list', 'pi-table': item === 'grid' }"></i>
+          </ng-template>
+        </p-selectbutton>
+      </div>
+    </ng-template>
+    <ng-template #list let-items>
+      @if (productsResource.isLoading()) {
+      @for (skeleton of skeletonArray(); track $index) {
+      <div class="container-card_list">
+        <div class="product-card__main">
+          <p-skeleton width="160px" height="105px" class="container-card_image" />
+          <div class="">
+            <div>
+              <p-skeleton width="5rem" height="0.875rem" styleClass="mb-2" />
+              <p-skeleton width="10rem" height="1.25rem" />
+            </div>
+            <div class="flex align-items-center gap-1 mt-2">
+              <p-skeleton width="1.5rem" height="0.875rem" />
+              <p-skeleton shape="circle" size="0.875rem" />
+            </div>
+          </div>
+        </div>
+        <div class="">
+          <p-skeleton width="4rem" height="1.5rem" styleClass="mb-2" />
+          <div class="flex gap-2">
+            <p-skeleton width="2.5rem" height="2.5rem" />
+            <p-skeleton width="6rem" height="2.5rem" />
+          </div>
+        </div>
+      </div>
+      <hr class="product-card-divider">
+      }
+      }
+      @for (item of items; track item.id; let first = $first) {
+      <div class="container-card_list" (dblclick)="onProductDblClick(item)">
+        <div class="product-card__main">
+          <img class="container-card_image" [src]="item.thumbnail" [alt]="item.title" width="160px" height="105px" />
+          <div class="">
+            <div>
+              <span class="">{{ item.category }}</span>
+              <div class="">{{ item.title }}</div>
+            </div>
+            <div class="">
+              <span class="text-surface-900 font-medium text-xs">{{ item.rating }}</span>
+              <i class="pi pi-star-fill text-yellow-500"></i>
+            </div>
+          </div>
+        </div>
+        <div class="">
+          <span class="">{{ item.price | currency: 'USD' }}</span>
+          <div class="">
+            <button [id]="'product-favorite-btn-' + item.id" pButton [outlined]="true">
+              <i class="pi pi-heart"></i>
+            </button>
+            <button [id]="'product-add-to-cart-btn-' + item.id" (click)="addCart(item.id)" pButton class="">
+              <i class="pi pi-shopping-cart"></i>
+              Add to cart
+            </button>
+          </div>
+        </div>
+      </div>
+      <hr class="product-card-divider">
+      }
+    </ng-template>
+  </p-dataview>
+  <div class="flex justify-center">
+    <p-paginator id="products-paginator" (onPageChange)="onPageChange($event)" [first]="skip()" [rows]="rows()"
+      [totalRecords]="totalRecord()" [rowsPerPageOptions]="[10, 20, 30]" />
+  </div>
+</div>
