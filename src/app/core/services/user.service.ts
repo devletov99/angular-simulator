@@ -7,7 +7,7 @@ import { IAuthUser } from '../interfaces/IAuthUser';
 })
 export class UserService {
 
-  authService = inject(AuthService);
+  private authService: AuthService = inject(AuthService);
 
   userState: WritableSignal<IAuthUser | null> = signal(this.authService.getUser());
 

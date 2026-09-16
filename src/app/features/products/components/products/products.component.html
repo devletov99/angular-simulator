@@ -10,7 +10,7 @@
     <app-select id="products-category-select" (selectChange)="onProductCategory($event)"
       [options]="categoriesProducts()" [placeholder]=" 'Выберите категорию' " />
   </div>
-  <p-dataview #dv [value]="productsResource.value().products" [layout]="layout">
+  <p-dataview #dv [value]="productsResource.value().products" [layout]="layout()">
     <ng-template #header>
       <div class="flex justify-end">
         <p-selectbutton id="products-layout-select-button" [(ngModel)]="layout" [options]="options"

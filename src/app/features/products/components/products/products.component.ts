@@ -45,7 +45,7 @@ export class ProductsComponent {
   readonly skeletonArray: Signal<unknown[]> = computed<unknown[]>(() => new Array(this.rows())); 
   readonly totalRecord: Signal<number> = computed<number>(() => this.productsResource.value().total);
 
-  readonly layout: ('list' | 'grid') = <'list' | 'grid'>('list');
+  readonly layout: WritableSignal<'list' | 'grid'> =  signal<'list' | 'grid'>('list');
   readonly options: ('list' | 'grid')[] = ['list', 'grid'];
 
   readonly requestParams: Signal<IProductParams> = computed<IProductParams>(() => ({
