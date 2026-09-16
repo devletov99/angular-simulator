@@ -6,7 +6,9 @@
   },
   "NAV": {
     "MAIN": "Home",
-    "USERS": "Users"
+    "USERS": "Users",
+    "PRODUCTS": "Products",
+    "CART": "Cart"
   },
   "COMMON": {
     "UNKNOWN": "Unknown",

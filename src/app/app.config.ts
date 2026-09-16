@@ -10,14 +10,14 @@ import { routes } from './app.routes';
 import { providePrimeNG } from 'primeng/config';
 import Lara from '@primeuix/themes/lara';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
-import { loggingInterceptor } from './interceptors/logging.interceptor';
-import { errorInterceptor } from './interceptors/error.interceptor';
-import { authInterceptor } from './features/auth/interceptor/auth.interceptor';
-import { AuthService } from './features/auth/services/auth.service';
+import { AuthService } from './core/services/auth.service';
 import { DATE_PIPE_DEFAULT_OPTIONS } from '@angular/common';
 import { APP_CONFIG } from './app.token';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
+import { loggingInterceptor } from './core/interceptors/logging.interceptor';
+import { errorInterceptor } from './core/interceptors/error.interceptor';
+import { authInterceptor } from './core/interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -54,7 +54,6 @@ export const appConfig: ApplicationConfig = {
       }
 
     },
-    provideHttpClient(),
     provideTranslateService({
       loader: provideTranslateHttpLoader({
         prefix: '/i18n/',

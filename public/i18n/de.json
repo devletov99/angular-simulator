@@ -6,7 +6,9 @@
   },
   "NAV": {
     "MAIN": "Startseite",
-    "USERS": "Benutzer"
+    "USERS": "Benutzer",
+    "PRODUCTS": "Produkte",
+    "CART": "Warenkorb"
   },
   "COMMON": {
     "UNKNOWN": "Unbekannt",

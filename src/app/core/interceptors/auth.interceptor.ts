@@ -6,8 +6,8 @@ import {
 } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { catchError, exhaustMap, throwError } from 'rxjs';
-import { AuthService } from '../../features/auth/services/auth.service';
-import { IToken } from '../../features/auth/interfaces/IToken';
+import { AuthService } from '../services/auth.service';
+import { IToken } from '../interfaces/IToken';
 
 export const authInterceptor: HttpInterceptorFn = (
   req: HttpRequest<unknown>,

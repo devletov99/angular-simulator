@@ -20,7 +20,7 @@ import { IParticipant } from '../../shared/interfaces/IParticipant';
   selector: 'app-home-page',
   imports: [FormsModule, FontAwesomeModule, DatePickerModule, FluidModule, TranslatePipe],
   templateUrl: './home.component.html',
-  styleUrl: './home-page.component.scss',
+  styleUrl: './home.component.scss',
 })
 export class HomePageComponent {
 
