@@ -1,4 +1,4 @@
-export enum productSorting {
+export enum ProductSorting {
   TITLE = 'title',
   PRICE = 'price',
   RATING = 'rating',

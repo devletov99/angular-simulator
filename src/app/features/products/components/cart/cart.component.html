@@ -30,20 +30,37 @@
           </div>
           <div class="cart-card-footer">
             <div class="quantity-stepper">
-              <button type="button" class="stepper-btn stepper-minus" (click)="decreaseQuantity(item)"
-                [disabled]="item.quantity <= 1" aria-label="Уменьшить количество">
-                <i class="pi pi-minus"></i>
+              <button
+                [id]="'cart-decrease-btn-' + item.id"
+                type="button"
+                class="stepper-btn stepper-minus"
+                (click)="decreaseQuantity(item)"
+                [disabled]="item.quantity <= 1"
+                aria-label="Уменьшить количество"
+              >
+                <fa-icon [icon]="faMinus" />
               </button>
               <span class="stepper-value">{{ item.quantity }}</span>
-              <button type="button" class="stepper-btn stepper-plus" (click)="incrementQuantity(item)"
-                aria-label="Увеличить количество">
-                <i class="pi pi-plus"></i>
+              <button
+                [id]="'cart-increase-btn-' + item.id"
+                type="button"
+                class="stepper-btn stepper-plus"
+                (click)="incrementQuantity(item)"
+                aria-label="Увеличить количество"
+              >
+                <fa-icon [icon]="faPlus" />
               </button>
             </div>
             <div class="card-actions">
-              <button type="button" class="action-btn action-delete" (click)="removeProduct(item)"
-                aria-label="Удалить товар" title="Удалить">
-                <i class="pi pi-trash"></i>
+              <button
+                [id]="'cart-delete-btn-' + item.id"
+                type="button"
+                class="action-btn action-delete"
+                (click)="removeProduct(item)"
+                aria-label="Удалить товар"
+                title="Удалить"
+              >
+                <fa-icon [icon]="faTrash" />
               </button>
             </div>
           </div>
@@ -51,14 +68,14 @@
         } @empty {
         <div class="empty-cart-state">
           <div class="empty-cart-icon">
-            <i class="pi pi-shopping-cart"></i>
+            <fa-icon [icon]="faShoppingCart" />
           </div>
           <h2 class="empty-cart-title">В корзине пока ничего нет</h2>
           <p class="empty-cart-desc">
             У вас пока нет товаров в корзине. Перейдите в каталог, чтобы выбрать подходящие
             товары.
           </p>
-          <a routerLink="/products" class="btn-primary-catalog">Перейти в каталог</a>
+          <a id="cart-catalog-link" routerLink="/products" class="btn-primary-catalog">Перейти в каталог</a>
         </div>
         }
       </div>
@@ -68,27 +85,27 @@
       <div class="summary-card">
         <h3 class="summary-title">Итого</h3>
         <div class="summary-row">
-          <span class="summary-label">{{ 1 }}</span>
-          <span class="summary-val">{{ cart().total | number: '1.0-0' }} ₽</span>
+          <span class="summary-label">{{ cart().totalQuantity }} товаров на сумму</span>
+          <span class="summary-val">{{ cartService.subtotal() | number: '1.0-0' }} $</span>
         </div>
         @if (cart().discountedTotal) {
         <div class="summary-row discount">
           <span class="summary-label">Скидка</span>
-          <span class="summary-val">-{{ cart().discountedTotal | number: '1.0-0' }} ₽</span>
+          <span class="summary-val">-{{ cartService.discount() | number: '1.0-0' }} $</span>
         </div>
         }
-        <div class="summary-row delivery">
-          <span class="summary-label">Доставка</span>
-          <span class="summary-val free">Бесплатно</span>
+        <div class="summary-row">
+          <span class="summary-label">Налог (20%)</span>
+          <span class="summary-val">{{ cartService.tax() | number: '1.0-0' }} $</span>
         </div>
         <div class="summary-divider"></div>
         <div class="summary-total-row">
           <span class="total-label">К оплате</span>
-          <span class="total-price">{{ cart().total | number: '1.0-0' }} $</span>
+          <span class="total-price">{{ cartService.total() | number: '1.0-0' }} $</span>
         </div>
-        <button type="button" class="btn-checkout">Заказать</button>
+        <button id="cart-checkout-btn" type="button" class="btn-checkout">Заказать</button>
         <p class="checkout-hint">
-          <i class="pi pi-shield"></i>
+          <fa-icon [icon]="faShield" />
           Безопасная оплата и бесплатный возврат
         </p>
       </div>

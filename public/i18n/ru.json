@@ -300,6 +300,51 @@
     "en": "Английский",
     "de": "Немецкий"
   },
+  
+  "PRODUCTS": {
+    "SORT": {
+      "TITLE": "По названию",
+      "PRICE": "По цене",
+      "RATING": "По рейтингу",
+      "STOCK": "По наличию"
+    },
+    "SORT_DIRECTION": {
+      "ASCENDING": "По возрастанию",
+      "DESCENDING": "По убыванию"
+    },
+    "PLACEHOLDER": {
+      "SORT_BY": "Сортировка по",
+      "SORT_DIRECTION": "Порядок сортировки",
+      "CATEGORY": "Выберите категорию"
+    },
+    "ADD_TO_CART": "В корзину"
+  },
+  "PRODUCT_DETAIL": {
+    "BREADCRUMB_HOME": "Главная",
+    "CATEGORY": "Категория",
+    "BRAND": "Бренд",
+    "NO_BRAND": "Без бренда",
+    "REVIEWS": "отзывов",
+    "OFF": "СКИДКА",
+    "UNITS": "шт.",
+    "ADD_TO_CART": "В корзину",
+    "ADD_TO_WISHLIST": "В избранное",
+    "PRODUCT_DESCRIPTION": "Описание товара",
+    "SPECS": {
+      "DIMENSIONS": "Габариты",
+      "WARRANTY": "Гарантия",
+      "NO_WARRANTY": "Гарантия отсутствует",
+      "SHIPPING": "Информация о доставке",
+      "RETURN_POLICY": "Условия возврата",
+      "MIN_ORDER": "Минимальный заказ"
+    },
+    "QUICK_INFO": {
+      "MODEL_SKU": "Модель / Артикул",
+      "RETURN_POLICY": "Условия возврата",
+      "WEIGHT": "Вес",
+      "KG": "кг"
+    }
+  },
   "NOT_FOUND_PAGE": {
     "WORKS": "Страница не найдена!"
   }
