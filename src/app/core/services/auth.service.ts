@@ -5,7 +5,7 @@ import { ILogin } from '../interfaces/ILogin';
 import { IAuthResponse } from '../interfaces/IAuthResponse';
 import { IAuthUser } from '../interfaces/IAuthUser';
 import { IToken } from '../interfaces/IToken';
-import { LocalStorageService } from '../../../core/services/local-storage.service';
+import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +16,7 @@ export class AuthService {
   private localStorageService: LocalStorageService = inject(LocalStorageService);
   private apiUrl: string = 'https://dummyjson.com/auth';
 
-  private currentUserSubject: BehaviorSubject<IAuthUser | null> =
-    new BehaviorSubject<IAuthUser | null>(null);
+  private currentUserSubject: BehaviorSubject<IAuthUser | null> = new BehaviorSubject<IAuthUser | null>(null);
 
   currentUser$: Observable<IAuthUser | null> = this.currentUserSubject.asObservable();
 

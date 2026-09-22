@@ -1,4 +1,4 @@
-import { Message } from '../shared/enums/Message';
+import { Message } from '../enums/Message';
 
 export interface IMessage {
   text: string;

@@ -6,7 +6,9 @@
   },
   "NAV": {
     "MAIN": "Home",
-    "USERS": "Users"
+    "USERS": "Users",
+    "PRODUCTS": "Products",
+    "CART": "Cart"
   },
   "COMMON": {
     "UNKNOWN": "Unknown",
@@ -303,6 +305,50 @@
     "ru": "Russian",
     "en": "English",
     "de": "German"
+  },
+  "PRODUCTS": {
+    "SORT": {
+      "TITLE": "By title",
+      "PRICE": "By price",
+      "RATING": "By rating",
+      "STOCK": "By stock"
+    },
+    "SORT_DIRECTION": {
+      "ASCENDING": "Ascending",
+      "DESCENDING": "Descending"
+    },
+    "PLACEHOLDER": {
+      "SORT_BY": "Sort by",
+      "SORT_DIRECTION": "Sort direction",
+      "CATEGORY": "Choose category"
+    },
+    "ADD_TO_CART": "Add to cart"
+  },
+  "PRODUCT_DETAIL": {
+    "BREADCRUMB_HOME": "Home",
+    "CATEGORY": "Category",
+    "BRAND": "Brand",
+    "NO_BRAND": "No Brand",
+    "REVIEWS": "reviews",
+    "OFF": "OFF",
+    "UNITS": "units",
+    "ADD_TO_CART": "Add to Cart",
+    "ADD_TO_WISHLIST": "Add to Wishlist",
+    "PRODUCT_DESCRIPTION": "Product Description",
+    "SPECS": {
+      "DIMENSIONS": "Dimensions",
+      "WARRANTY": "Warranty",
+      "NO_WARRANTY": "There is no guarantee",
+      "SHIPPING": "Shipping Information",
+      "RETURN_POLICY": "Return Policy",
+      "MIN_ORDER": "Minimum Order"
+    },
+    "QUICK_INFO": {
+      "MODEL_SKU": "Model / SKU",
+      "RETURN_POLICY": "Return Policy",
+      "WEIGHT": "Weight",
+      "KG": "kg"
+    }
   },
   "NOT_FOUND_PAGE": {
     "WORKS": "not-found-page works!"

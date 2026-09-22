@@ -6,7 +6,9 @@
   },
   "NAV": {
     "MAIN": "Startseite",
-    "USERS": "Benutzer"
+    "USERS": "Benutzer",
+    "PRODUCTS": "Produkte",
+    "CART": "Warenkorb"
   },
   "COMMON": {
     "UNKNOWN": "Unbekannt",
@@ -299,11 +301,55 @@
       "minimizeLabel": "Minimieren"
     }
   },
-"LANGUAGES": {
-  "ru": "Russisch",
-  "en": "Englisch",
-  "de": "Deutsch"
-},
+  "LANGUAGES": {
+    "ru": "Russisch",
+    "en": "Englisch",
+    "de": "Deutsch"
+  },
+  "PRODUCTS": {
+    "SORT": {
+      "TITLE": "Nach Name",
+      "PRICE": "Nach Preis",
+      "RATING": "Nach Bewertung",
+      "STOCK": "Nach Verfügbarkeit"
+    },
+    "SORT_DIRECTION": {
+      "ASCENDING": "Aufsteigend",
+      "DESCENDING": "Absteigend"
+    },
+    "PLACEHOLDER": {
+      "SORT_BY": "Sortieren nach",
+      "SORT_DIRECTION": "Sortierreihenfolge",
+      "CATEGORY": "Kategorie auswählen"
+    },
+    "ADD_TO_CART": "In den Warenkorb"
+  },
+  "PRODUCT_DETAIL": {
+    "BREADCRUMB_HOME": "Startseite",
+    "CATEGORY": "Kategorie",
+    "BRAND": "Marke",
+    "NO_BRAND": "Keine Marke",
+    "REVIEWS": "Bewertungen",
+    "OFF": "RABATT",
+    "UNITS": "Stk.",
+    "ADD_TO_CART": "In den Warenkorb",
+    "ADD_TO_WISHLIST": "Auf die Wunschliste",
+    "PRODUCT_DESCRIPTION": "Produktbeschreibung",
+    "SPECS": {
+      "DIMENSIONS": "Abmessungen",
+      "WARRANTY": "Garantie",
+      "NO_WARRANTY": "Keine Garantie vorhanden",
+      "SHIPPING": "Versandinformationen",
+      "RETURN_POLICY": "Rückgaberecht",
+      "MIN_ORDER": "Mindestbestellmenge"
+    },
+    "QUICK_INFO": {
+      "MODEL_SKU": "Modell / SKU",
+      "RETURN_POLICY": "Rückgaberecht",
+      "WEIGHT": "Gewicht",
+      "KG": "kg"
+    }
+  },
   "NOT_FOUND_PAGE": {
     "WORKS": "Seite nicht gefunden!"
   }

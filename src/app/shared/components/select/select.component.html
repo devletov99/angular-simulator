@@ -1,0 +1,26 @@
+<div class="flex justify-center">
+  <p-select 
+    [options]="options()" 
+    (onChange)="selectChange.emit($event)"
+    optionLabel="label" 
+    [placeholder]="placeholder()"
+    class="w-full md:w-56" 
+    [showClear]="true">
+    <ng-template let-selectedOption #selectedItem>
+      <div class="flex items-center justify-between w-full">
+        <span>{{ selectedOption.label | translate }}</span>
+        @if (selectedOption.count) {
+          <p-tag [value]="'' + selectedOption.count" severity="secondary" [rounded]="true" />
+        }
+      </div>
+    </ng-template>
+    <ng-template let-option #item>
+      <div class="flex items-center justify-between w-full">
+        <span>{{ option.label | translate }}</span>
+        @if (option.count) {
+          <p-tag [value]="'' + option.count" severity="secondary" [rounded]="true" />
+        }
+      </div>
+    </ng-template>
+  </p-select>
+</div>

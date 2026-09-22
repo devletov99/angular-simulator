@@ -1,0 +1,153 @@
+<div class="product-detail-page">
+  <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+    <span class="crumb-link">{{ 'PRODUCT_DETAIL.BREADCRUMB_HOME' | translate }}</span>
+    <fa-icon [icon]="faChevronRight" class="crumb-sep" />
+    <span class="crumb-link">{{ product.category }}</span>
+    <fa-icon [icon]="faChevronRight" class="crumb-sep" />
+    <span class="crumb-current">{{ product.title }}</span>
+  </nav>
+  <div class="product-card">
+    <div class="product-gallery-section">
+      <p-galleria
+        [value]="product.images"
+        [numVisible]="5"
+        [circular]="true"
+        [showItemNavigators]="false"
+        [showThumbnails]="true"
+        [showIndicators]="false"
+        [containerStyle]="{ 'width': '100%' }"
+      >
+        <ng-template #item let-productImage>
+          <div class="main-image-container">
+            <img 
+              [src]="productImage" 
+              [alt]="product.title || 'Product Image'" 
+              class="main-image" 
+            />
+          </div>
+        </ng-template>
+        <ng-template #thumbnail let-productImages>
+          <div class="thumbnail-item">
+            <img 
+              [src]="productImages" 
+              [alt]="product.title" 
+              class="thumbnail-image" 
+            />
+          </div>
+        </ng-template>
+      </p-galleria>
+    </div>
+    <div class="product-info-section">
+      <div class="product-category">
+        {{ 'PRODUCT_DETAIL.CATEGORY' | translate }}: <span>{{ product.category }}</span>
+      </div>
+      <h1 class="product-title">{{ product.title }}</h1>
+      <div class="product-rating-row">
+        <p-rating 
+          id="product-detail-rating"
+          [ngModel]="product.rating" 
+          [readonly]="true"
+        />
+        <span class="rating-value">{{ product.rating }}</span>
+      </div>
+      <div class="product-badges-row">
+        <span class="brand-badge">{{ 'PRODUCT_DETAIL.BRAND' | translate }}: {{ product.brand || ('PRODUCT_DETAIL.NO_BRAND' | translate) }}</span>
+        @for (tag of product.tags; track tag) {
+          <span class="tag-badge">#{{ tag }}</span>
+        }
+      </div>
+      <div class="product-pricing-row">
+        <span class="price-current">$ {{ product.price }}</span>
+        
+        @if (product.discountPercentage) {
+          <span class="price-old">
+            $ {{ ((product.price || 0) / (1 - (product.discountPercentage || 0) / 100)) | number:'1.2-2' }}
+          </span>
+          <span class="badge-discount">{{ product.discountPercentage }}% {{ 'PRODUCT_DETAIL.OFF' | translate }}</span>
+        }
+        <span class="badge-stock">
+          <fa-icon [icon]="faCheck" />
+          {{ product.availabilityStatus + ': ' + product.stock + ' ' + ('PRODUCT_DETAIL.UNITS' | translate) }}
+        </span>
+      </div>
+      <div class="product-actions-row">
+        <button id="product-detail-add-to-cart-btn" type="button" class="btn-primary-cart">
+          <fa-icon [icon]="faShoppingCart" />
+          <span>{{ 'PRODUCT_DETAIL.ADD_TO_CART' | translate }}</span>
+        </button>
+        <button id="product-detail-wishlist-btn" type="button" class="btn-secondary-wishlist">
+          <fa-icon [icon]="faHeart" />
+          <span>{{ 'PRODUCT_DETAIL.ADD_TO_WISHLIST' | translate }}</span>
+        </button>
+      </div>
+      <details id="product-detail-description-details" class="product-description-dropdown" open>
+        <summary id="product-detail-description-summary" class="dropdown-header">
+          <span class="dropdown-title">{{ 'PRODUCT_DETAIL.PRODUCT_DESCRIPTION' | translate }}</span>
+          <fa-icon [icon]="faChevronUp" class="dropdown-icon" />
+        </summary>
+        <div class="dropdown-content">
+          <p>{{ product.description }}</p>
+        </div>
+      </details>
+      <div class="product-specs-card">
+        <table class="specs-table">
+          <tbody>
+            <tr>
+              <th class="spec-label">{{ 'PRODUCT_DETAIL.SPECS.DIMENSIONS' | translate }}</th>
+              <td class="spec-value">{{ product.weight ? ( product.weight + '"H') : '29.5"W x 26.5"D x 42"-45"H' }}</td>
+            </tr>
+            <tr>
+              <th class="spec-label">{{ 'PRODUCT_DETAIL.SPECS.WARRANTY' | translate }}</th>
+              <td class="spec-value">{{ product.warrantyInformation || ('PRODUCT_DETAIL.SPECS.NO_WARRANTY' | translate) }}</td>
+            </tr>
+            <tr>
+              <th class="spec-label">{{ 'PRODUCT_DETAIL.SPECS.SHIPPING' | translate }}</th>
+              <td class="spec-value">{{ product.shippingInformation }}</td>
+            </tr>
+            @if (product.returnPolicy) {
+              <tr>
+                <th class="spec-label">{{ 'PRODUCT_DETAIL.SPECS.RETURN_POLICY' | translate }}</th>
+                <td class="spec-value">{{ product.returnPolicy }}</td>
+              </tr>
+            }
+            @if (product.minimumOrderQuantity) {
+              <tr>
+                <th class="spec-label">{{ 'PRODUCT_DETAIL.SPECS.MIN_ORDER' | translate }}</th>
+                <td class="spec-value">{{ product.minimumOrderQuantity }} {{ 'PRODUCT_DETAIL.UNITS' | translate }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      <div class="product-quick-info-grid">
+        <div class="quick-info-card">
+          <div class="quick-icon-box">
+            <fa-icon [icon]="faBox" />
+          </div>
+          <div class="quick-info-text">
+            <span class="quick-label">{{ 'PRODUCT_DETAIL.QUICK_INFO.MODEL_SKU' | translate }}</span>
+            <span class="quick-value">{{ product.sku }}</span>
+          </div>
+        </div>
+        <div class="quick-info-card">
+          <div class="quick-icon-box">
+            <fa-icon [icon]="faShield" />
+          </div>
+          <div class="quick-info-text">
+            <span class="quick-label">{{ 'PRODUCT_DETAIL.QUICK_INFO.RETURN_POLICY' | translate }}</span>
+            <span class="quick-value">{{ product.returnPolicy }}</span>
+          </div>
+        </div>
+        <div class="quick-info-card">
+          <div class="quick-icon-box">
+            <fa-icon [icon]="faTruck" />
+          </div>
+          <div class="quick-info-text">
+            <span class="quick-label">{{ 'PRODUCT_DETAIL.QUICK_INFO.WEIGHT' | translate }}</span>
+            <span class="quick-value">{{ product.weight + ' ' + ('PRODUCT_DETAIL.QUICK_INFO.KG' | translate) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
