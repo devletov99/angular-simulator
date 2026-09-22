@@ -51,24 +51,24 @@ export class ProductService {
     }));
   }
 
-  pageChange(event: PaginatorState) {
+  pageChange(event: PaginatorState): void {
     this.updateFilters({ skip: event.first, rows: event.rows }, false);
   }
 
-  searchProduct(value: string) {
+  searchProduct(value: string): void {
     this.updateFilters({ search: value }, true);
   }
 
-  sortProduct(event: string) {
+  sortProduct(event: string): void {
     this.updateFilters({ sortBy: event }, true);
   }
 
-  sortDirectionProduct(event: string) {
+  sortDirectionProduct(event: string): void {
     this.updateFilters({ sortDirection: event }, true);
   }
 
-  categoryProduct(event: string) {
+  categoryProduct(event: string): void {
     this.updateFilters({ category: event }, true);
   }
-
+  
 }
