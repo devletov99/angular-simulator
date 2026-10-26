@@ -17,12 +17,6 @@ export class CartApiService {
     return this.httpClient.get<ICartResponse>(`${ this.url }/${ id }`);
   }
 
-  addCart(userId: number, products: Pick<ICartProduct, 'id' | 'quantity'>[]): Observable<ICartResponse> {
-    return this.httpClient.post<ICartResponse>(`${ this.url }/${ userId }`, {
-      products
-    });
-  }
-
   updateCart(cartId: number, productId: number, quantity: number): Observable<ICartResponse> {
     return this.httpClient.put<ICartResponse>(`${ this.url }/${ cartId }`, {
       merge: true,
