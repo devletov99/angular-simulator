@@ -18,6 +18,10 @@ import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { loggingInterceptor } from './core/interceptors/logging.interceptor';
 import { errorInterceptor } from './core/interceptors/error.interceptor';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
+import { provideStore } from '@ngrx/store';
+import { recipesReducer } from './features/recipes/state/recipes.reducer';
+import { provideEffects } from '@ngrx/effects';
+import { RecipesEffect } from './features/recipes/state/recipes.effect';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -61,6 +65,10 @@ export const appConfig: ApplicationConfig = {
       }),
       fallbackLang: 'en',
       lang: 'en'
-    })
+    }),
+    provideStore({
+      recipes: recipesReducer
+    }),
+    provideEffects([RecipesEffect])
   ],
 };
