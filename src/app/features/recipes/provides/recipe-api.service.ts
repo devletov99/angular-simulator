@@ -11,10 +11,10 @@ export class RecipeApiService {
 
   private httpClient: HttpClient = inject(HttpClient);
 
-  private api = 'https://dummyjson.com';
+  private api: string = 'https://dummyjson.com';
 
   getRecipes(): Observable<IRecipe[]> {
-    return this.httpClient.get<IRecipeResponse>(`${this.api}/recipes`)
+    return this.httpClient.get<IRecipeResponse>(`${ this.api }/recipes`)
       .pipe(
         map((response: IRecipeResponse) => response.recipes),
       );

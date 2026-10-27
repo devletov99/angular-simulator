@@ -5,9 +5,7 @@ import { IRecipe } from '../modeles/IRecipe';
 import { selectRecipes, selectRecipesLoading, selectRecipesError } from '../state/recipes.selectors';
 import { recipeActions } from '../state/recipes.actions';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class RecipeService {
 
   private store: Store = inject(Store);

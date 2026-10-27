@@ -7,6 +7,7 @@ import { RecipeService } from '../../provides/recipe.service';
 @Component({
   selector: 'app-recipe',
   imports: [AsyncPipe],
+  providers: [RecipeService],
   templateUrl: './recipe.component.html',
   styleUrl: './recipe.component.scss',
 })
