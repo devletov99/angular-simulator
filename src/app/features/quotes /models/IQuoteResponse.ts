@@ -1,4 +1,4 @@
-import { IQuote } from "./IQuote";
+import { IQuote } from './IQuote';
 
 export interface IQuoteResponse {
   quotes: IQuote[];

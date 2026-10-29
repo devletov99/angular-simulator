@@ -11,12 +11,13 @@ export class QuoteApiService {
 
   http: HttpClient = inject(HttpClient);
 
-  api: string = 'https://dummyjson.com/quotes'
+  private api: string = 'https://dummyjson.com/quotes';
 
   getQuotes(): Observable<IQuote[]> {
     return this.http.get<IQuoteResponse>(this.api)
       .pipe(
         map((response: IQuoteResponse) => response.quotes)
-      )
+      );
   }
+
 }

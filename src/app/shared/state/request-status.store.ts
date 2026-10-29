@@ -1,23 +1,23 @@
-import { withState, withMethods, signalStoreFeature, patchState, withComputed } from "@ngrx/signals";
-import { initialState } from "./request-status.state";
-import { computed } from "@angular/core";
+import { withState, withMethods, signalStoreFeature, patchState, withComputed } from '@ngrx/signals';
+import { initialState } from './request-status.state';
+import { computed } from '@angular/core';
 
-export const requestStatus = signalStoreFeature (
+export const withLoading = signalStoreFeature(
   withState(initialState),
 
   withComputed(({ error }) => ({
-    hasError: computed(() => error() !== null)
+    hasError: computed(() => error() !== null),
   })),
 
   withMethods((store) => ({
-    setLoading(): void {
-      patchState(store, { loading: true, error: null})
+    showLoader(): void {
+      patchState(store, { loading: true, error: null });
     },
-    setLoaded(): void {
-      patchState(store, { loading: false })
+    hideLoader(): void {
+      patchState(store, { loading: false });
     },
-    setError(error: string): void {
-      patchState(store, { loading: false, error })
-    }
+    withError(error: string): void {
+      patchState(store, { loading: false, error });
+    },
   }))
-)
+);

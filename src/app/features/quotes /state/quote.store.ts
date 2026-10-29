@@ -1,17 +1,17 @@
-import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals'
-import { initialState } from './quotes.state'
-import { computed, inject } from '@angular/core'
-import { IQuote } from '../models/IQuote'
-import { QuoteFilter } from '../enums/QuoteFilter'
-import { QuoteApiService } from '../provides/quote-api.service'
+import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals';
+import { initialState } from './quotes.state';
+import { computed, inject } from '@angular/core';
+import { IQuote } from '../models/IQuote';
+import { QuoteFilter } from '../enums/QuoteFilter';
+import { QuoteApiService } from '../provides/quote-api.service';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
-import { pipe, switchMap, tap } from 'rxjs'
-import { tapResponse } from '@ngrx/operators'
-import { requestStatus } from '../../../shared/state/request-status.store'
+import { pipe, switchMap, tap } from 'rxjs';
+import { tapResponse } from '@ngrx/operators';
+import { withLoading } from '../../../shared/state/request-status.store';
 
 export const QuoteStore = signalStore(
   withState(initialState),
-  requestStatus,
+  withLoading,
 
   withComputed((store) => ({
     favoriteCount: computed(() => store.favorites().length),
@@ -19,7 +19,7 @@ export const QuoteStore = signalStore(
     authorCount: computed(() => {
       const allAuthors: string[] = store.quotes().map((quote: IQuote) => quote.author);
 
-      return new Set(allAuthors).size
+      return new Set(allAuthors).size;
     }),
     quotesFilter: computed(() => {
       const quotes: IQuote[] = store.quotes();
@@ -30,41 +30,43 @@ export const QuoteStore = signalStore(
         return quotes.filter((quote: IQuote) => favorites.includes(quote.id));
       }
 
-      return quotes
+      return quotes;
     }),
   })),
 
   withMethods((store, quoteApiService: QuoteApiService = inject(QuoteApiService)) => ({
     loadQuotes: rxMethod<void>(
       pipe(
-        tap(() => store.setLoading()),
+        tap(() => store.showLoader()),
 
         switchMap(() => quoteApiService.getQuotes()
           .pipe(
             tapResponse({
-              next: (quotes) => patchState(store, { quotes }),
-              error: () => store.setError('Failed to load quotes'),
-              finalize: () => store.setLoaded()
+              next: (quotes: IQuote[]) => patchState(store, { quotes }),
+              error: () => store.withError('Failed to load quotes'),
+              finalize: () => store.hideLoader()
             })
           ))
       )
     ),
 
     toogleFavorite: (id: number) => {
-      const favorites = store.favorites();
-      const updateFavorites = favorites.includes(id) ? favorites.filter((favoriteId) => favoriteId !== id) : [...favorites, id];
+      const favorites: number[] = store.favorites();
+      const updateFavorites: number[] = favorites.includes(id)
+        ? favorites.filter((favoriteId: number) => favoriteId !== id)
+        : [...favorites, id];
 
       patchState(store, { favorites: updateFavorites });
     },
 
     setFilter(filter: QuoteFilter) {
-      patchState(store, { filter })
+      patchState(store, { filter });
     },
 
     setRandomQuote() {
       const quotes: IQuote[] = store.quotes();
 
-      const ramdomIndex = Math.floor(Math.random() * quotes?.length);
+      const ramdomIndex: number = Math.floor(Math.random() * quotes?.length);
 
       patchState(store, { randomQuote: quotes[ramdomIndex] });
     }

@@ -1,5 +1,5 @@
 import { QuoteFilter } from '../enums/QuoteFilter';
-import { IQuotesState } from "../models/IQuotesState";
+import { IQuotesState } from '../models/IQuotesState';
 
 export const initialState: IQuotesState = {
   quotes: [],
@@ -7,4 +7,4 @@ export const initialState: IQuotesState = {
   filter: QuoteFilter.ALL,
   randomQuote: null,
 
-}
+};

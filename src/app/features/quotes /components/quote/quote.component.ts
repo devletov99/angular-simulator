@@ -12,8 +12,8 @@ import { QuoteFilter } from '../../enums/QuoteFilter';
 })
 export class QuoteComponent implements OnInit {
 
-  store = inject(QuoteStore);
-  quoteFilter = QuoteFilter;
+  store: InstanceType<typeof QuoteStore> = inject(QuoteStore);
+  quoteFilter: typeof QuoteFilter = QuoteFilter;
 
   ngOnInit(): void {
     this.store.loadQuotes();

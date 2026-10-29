@@ -1,5 +1,5 @@
-import { QuoteFilter } from "../enums/QuoteFilter";
-import { IQuote } from "./IQuote";
+import { QuoteFilter } from '../enums/QuoteFilter';
+import { IQuote } from './IQuote';
 
 export interface IQuotesState {
   quotes: IQuote[];
