@@ -1,0 +1,89 @@
+<div class="quotes-container">
+  <header class="quotes-header">
+    <div class="quotes-title-group">
+      <h2 class="quotes-title">Цитаты</h2>
+      <div class="quotes-stats">
+        <span>Всего: {{ store.quotes().length }}</span>
+        <span>Авторов: {{ store.authorCount() }}</span>
+        <span>Избранное: {{ store.favoriteCount() }}</span>
+      </div>
+    </div>
+
+    <div class="quotes-actions">
+      <div class="filter-group">
+        <button
+          type="button"
+          class="filter-button"
+          [class.active]="store.filter() === quoteFilter.ALL"
+          (click)="store.setFilter(quoteFilter.ALL)"
+        >
+          Все
+        </button>
+        <button
+          type="button"
+          class="filter-button"
+          [class.active]="store.filter() === quoteFilter.FAVORITES"
+          (click)="store.setFilter(quoteFilter.FAVORITES)"
+        >
+          Избранные ({{ store.favoriteCount() }})
+        </button>
+      </div>
+
+      <button
+        type="button"
+        class="reload-button"
+        (click)="store.setRandomQuote()"
+        [disabled]="!store.quotes().length"
+      >
+        Случайная цитата
+      </button>
+    </div>
+  </header>
+  @if (store.randomQuote()) {
+    <article class="random-quote-card">
+      <h3 class="random-quote-title">Случайная цитата</h3>
+      <p class="quote-text">«{{ store.randomQuote()?.quote }}»</p>
+      <footer class="quote-footer">
+        <span class="quote-author">— {{ store.randomQuote()?.author }}</span>
+      </footer>
+    </article>
+  }
+  @if (store.loading()) {
+    <div class="status-message loading">Загрузка цитат...</div>
+  }
+  <div class="quotes-grid">
+    @for (quote of store.quotesFilter(); track quote.id) {
+      <article class="quote-card">
+        <p class="quote-text">«{{ quote.quote }}»</p>
+        <footer class="quote-footer">
+          <span class="quote-author">— {{ quote.author }}</span>
+          <button
+            type="button"
+            class="favorite-button"
+            [class.active]="store.favorites().includes(quote.id)"
+            [attr.aria-pressed]="store.favorites().includes(quote.id)"
+            (click)="store.toogleFavorite(quote.id)"
+          >
+            {{ store.favorites().includes(quote.id) ? '★ В избранном' : '☆ Добавить в избранное' }}
+          </button>
+        </footer>
+      </article>
+    } @empty {
+      @if (store.hasError()) {
+        <div class="status-message error">
+          <p>{{ store.error() }}</p>
+          <button
+            type="button"
+            class="reload-button"
+            (click)="store.loadQuotes()"
+            [disabled]="store.loading()"
+          >
+            Перезагрузить
+          </button>
+        </div>
+      } @else if (!store.loading()) {
+        <div class="status-message empty">Список пуст</div>
+      }
+    }
+  </div>
+</div>

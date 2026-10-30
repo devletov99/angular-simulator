@@ -5,7 +5,6 @@ import { authGuard } from './core/guards/auth.guard';
 import { AuthLayoutComponent } from './core/layouts/auth-layout/auth-layout.component';
 import { unauthGuard } from './core/guards/unauth.guard';
 import { productResolver } from './features/products/resolver/product.resolver';
-import { LoaderComponent } from './shared/components/loader/loader.component';
 
 export const routes: Routes = [
   {
@@ -71,6 +70,11 @@ export const routes: Routes = [
         loadComponent: () => 
           import('./features/recipes/components/recipe/recipe.component').then((m) => m.RecipeComponent),
       },
+      {
+        path: 'quotes',
+        loadComponent: () => 
+          import('./features/quotes /components/quote/quote.component').then((m) => m.QuoteComponent),
+      }
     ],
   },
   {
